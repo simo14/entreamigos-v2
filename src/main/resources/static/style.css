@@ -1,0 +1,118 @@
+#sidebar {
+    padding:1em;
+    padding-bottom:25%;
+    border-style:inset;
+    border-color:dark-grey;
+}
+
+#content{
+	margin-left:2em;
+	margin-top: 1em;
+}
+
+.chip{
+	width:75%;
+	height:11em;
+	position:relative;
+	display:block;
+	padding-bottom:1em;
+	margin-bottom:1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.catImg{
+	width:40em;
+	height:11em;
+	opacity: 0.4;
+	border-style: groove;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+.contenidoChip{
+	width:38.5em;
+	position:absolute;
+	top:0;
+	left:0;
+	margin-left:1.5em;
+}
+
+.link{
+	text-decoration:none;
+	color:black;
+}
+#login_button{
+	color: rgba(255, 255, 255, 0.87);
+	background-color: rgb(255,167,38);
+	
+}
+#botones_principal{
+	width: 90%;
+	vertical-align: middle;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 30px;
+}
+#toolbar_button{
+	font-size:x-large;
+	border-bottom-color: rgb(255,167,38);
+	border-bottom-width: medium;
+	border-bottom-style: inset;
+}
+
+#toolbar_button:hover{
+	background-color:rgb(200,230,201);
+}
+
+#toolbar_button:focus{
+	background-color:rgb(200,230,201);
+}
+
+#toolbar{
+	margin-left:auto;
+	margin-right:auto;
+	width:95%;
+}
+
+#avatarPersona {
+	border-radius: 30px;
+	border: 1px solid #ddd;
+	width: 100px;
+	height: 100px;
+	margin: 0.1em;
+	border-style: solid;
+	border-width: 0.3em;
+	border-color: rgb(60, 166, 77);
+  }
+  
+ .PersonChip{
+	background-color: rgba(255, 167, 38, 0.55);
+	width: 130px;
+	height: 220px;
+	margin: 0.5em;
+	border-radius: 5px;
+	border-width: 0.3em;
+	border-style: solid;
+	border-color: rgb(60, 166, 77);
+ }
+ 
+ .contenidoPersonChip{
+	background-color: rgb(60, 166, 77);
+	color: white;
+	border-top-style: solid;
+	border-top-width: 0.1em;
+	border-top-color: rgb(100, 97, 97);
+	width: 123px;
+	height: 104px;
+	padding: 5px;
+ }
+ 
+ .nombrePersonChip{
+ 	font-size:medium;
+ }
+
+ .barrioPersonChip{
+ 	font-size:small;
+ }

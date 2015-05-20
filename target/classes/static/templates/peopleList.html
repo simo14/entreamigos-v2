@@ -1,0 +1,37 @@
+<div flex layout="row" ng-controller="actorcontroller as vm">
+  <div flex="80" layout="row" layout-align="center top"> 
+        <div ng-repeat="actor in vm.actors" layout="column" layout-align="center center" class="PersonChip">
+	            <a href="/#/people/{{actor.id}}" class="link"> 
+
+		                <div layout="row" layout-align="center center">
+		                	<div><img src="/../img/mood/{{actor.mood}}.png"  id="avatarPersona" class="md-avatar avatarPersona" alt="{actor.mood}"> </img></div>
+		                </div>
+		                <div class="md-list-item-text contenidoPersonChip" layout="row" layout-align="center center" >
+		                    <div>
+		                  		<p class="nombrePersonChip">{{actor.name | uppercase}}</p>
+		                  		<p class="barrioPersonChip">{{actor.defaultLocation.neighborhood}}</p>
+		                    </div>
+
+		            </div>
+	            </a>
+    	</div>
+  </div> 
+  <div flex="20">
+    <md-toolbar id="sidebar" flex hide-sm class="md-primary md-hue-1">
+        <h2>Busca una persona</h2>
+        <!--input de buscar-->
+        <md-input-container>
+            <label>Buscar</label>
+            <input ng-model="searchparam" ng-change="vm.search(searchparam)"  md-maxlength="10" type="text">
+        </md-input-container>
+        <md-checkbox ng-model="ifEvents" type="checkbox" aria-label="eventosConmigo?">Sólo gente que comparta eventos contigo</md-checkbox>
+        <md-select ng-model="distance" placeholder="Distancia a ti">
+            <md-option ng-value="1">1 - 5 km</md-option>
+            <md-option ng-value="6">6 - 15 km</md-option>
+            <md-option ng-value="16">16 - 25 km</md-option>
+            <md-option ng-value="26">26 - 50 km</md-option>
+        </md-select>
+    </md-toolbar>
+    </div>  
+</div>
+

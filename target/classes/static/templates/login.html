@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Administración</title>
+        <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></link>
+        <!-- <script src="jquery.min.js"></script>
+        <script src="bootstrap.min.js"></script>
+        <link rel="stylesheet" href="bootstrap.min.css"></link>-->
+        <link href="portada_productoss.css" rel="stylesheet"></link>
+	</head>
+	<body>
+<div class="container">
+                <div class="row">
+                <div class="col-md-4">
+                    <!--Logo-->
+                    <img id="logo" src="poxmania.png" class="img-responsive"></img>
+                </div>
+                <div class="col-md-5">
+                   <!--Búsqueda-->
+                	<form action="/findProduct" method="post">
+                		<input name="name" type="text" placeholder="¿Qué estás buscando?" size="35"></input>
+                        <input type="submit" name="action" value="Buscar" class="btn pinkbutton" id="searchbtn"></input>
+                	</form>
+                </div>
+                <div class="col-md-3">
+                    <!--Mi cuenta y cesta-->
+                    <button class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Mi cuenta</button>
+                    <a href="/showBasket"><button class="btn pinkbutton"><span class="glyphicon glyphicon-shopping-cart"></span> Cesta</button></a>
+                </div>
+            </div>
+            <div class="row">
+            	<div role="group">
+                    <a href="/" class="barranav">
+                        <button type="button" class="btn btn-default navbutton" aria-label="home">
+                            <span class="glyphicon glyphicon-home"></span>
+                        </button>
+                    </a>
+                    <a href="/showCategoryList?cat=1" class="barranav">
+                        <button type="button" class="btn btn-default navbutton">Pequeño electrodoméstico</button>
+                    </a>
+                    <a href="/showCategoryList?cat=2" class="barranav">
+                        <button type="button" class="btn btn-default navbutton" >Televisiones</button>
+                    </a>
+            		<a href="/showCategoryList?cat=3" class="barranav">
+                        <button type="button" class="btn btn-default navbutton" >Informática</button>
+                    </a>
+            		<a href="/showCategoryList?cat=4" class="barranav">
+                        <button type="button" class="btn btn-default navbutton" >Videoconsolas</button>
+                    </a>
+            	</div>
+            </div>
+	<form action="/loginCheck">		<!-- OJO, no placeOrder, el form es el que procesa todo cuando haces el submit, ie la página siguiente, no la que lleva aquí -->
+		<h2>Administración</h2>
+    <div class="panel default-panel utilpanel loginpanel">
+        <h3>Introduzca su nombre y contraseña para acceder a administración</h3>
+        <p class="red" th:if="${fail} != null"><span th:text="${fail}">Usuario o contraseña</span> incorrecto.</p>
+		<div>
+            <div class="form-group">
+                <label for="name">Nombre de usuario</label>
+                <input type='text' name='userName' class="form-control inputform"></input>
+            </div>
+            <div class="form-group">
+                <label for="contraseña">Contraseña</label> 
+                <input type="password" name='password' id="contraseña" class="form-control inputform"></input>
+            </div>
+            <div class="aligncenter">
+                <input class="btn btn-default" type="submit"></input>
+            </div>
+		</div>
+    </div>
+	</form>
+    <nav role="navigation" class="row navigationparty panel-footer">
+	<!--Zones & Links -->
+        <ul class="col3 col-md-3">
+		  <li class="listHeader">¿Quiénes somos?</li>
+				<li><a href="http://www.urjc.es">URJC</a></li>
+				<li>Silvia Moreno Uribarri</li>
+				<li>Anny</li>
+				<li>Desarrollo de aplicaciones web 2014/15</li>
+			</ul>
+		<ul class="col3 col-md-3">
+		<li class="listHeader">Servicios</li>
+            <a href="/adminPage"> <button type="button" class="btn pinkbutton">Administración</button></a>
+        </ul>
+		<ul class="col3 col-md-3">
+		<li class="listHeader">Ayuda</li>
+				<li><a href="#">FAQ</a></li>
+				<li><a href="#">Opiniones consumidores Poxmania</a></li>
+				<li><a href="#">Mapa del sitio</a></li>
+				<li><a href="#">Vender en Poxmania</a></li>
+				<li><a href="#">Condiciones*</a></li>
+				<li><a href="#">Contacto</a></li>
+			</ul>
+    </nav>
+</div>
+	</body>
+</html>

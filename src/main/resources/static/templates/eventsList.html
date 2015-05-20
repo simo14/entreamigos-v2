@@ -1,0 +1,58 @@
+<div flex layout="row" ng-controller="ppcontroller as vm">
+   <div flex layout="row">
+       <div flex="100" layout="column">
+	       	<div id="toolbar">
+	       		<md-button id="toolbar_button" ng-click = "vm.searchCategory('excursiones')">Excursiones</md-button>
+	       		<md-button id="toolbar_button" ng-click = "vm.searchCategory('playa')">Playa</md-button>
+	       		<md-button id="toolbar_button" ng-click = "vm.searchCategory('montaña')">Montaña</md-button>
+	       		<md-button id="toolbar_button" ng-click = "vm.searchCategory('cultural')">Cultural</md-button>
+	       		<md-button id="toolbar_button" ng-click = "vm.searchCategory('fiesta')">Fiesta</md-button>
+	       		<md-button id="toolbar_button" ng-click = "vm.searchCategory('deportes')">Deportes</md-button>
+	       	</div>   
+       </div>  
+  </div>
+  <div flex="80"> 
+    <md-list>
+        <md-list-item class="md-3-line" ng-repeat="event in vm.events">
+        	<div class="chip">
+	            <a href="/#/event/{{event.id}}" class="link"> 
+	                <img src="/../img/{{event.category}}.png"  class="md-avatar catImg" alt="{event.category}"> </img>
+	                <div class="md-list-item-text contenidoChip" layout="row">
+	                    <div flex=80>
+	                  		<h2 >{{event.title | uppercase}}</h2>
+	                  		<h4>{{event.location.neighborhood}}</h4>
+	                  		<p >{{event.description | limitTo: 150}}</p>
+	                    </div>
+	                    <div flex=20>
+	                    	<p>{{event.date | date}}</p>
+	                    </div>
+	                </div>
+	            </a>
+	        </div>
+    	</md-list-item>
+	</md-list>
+  </div> 
+  <div flex="20">
+    <md-toolbar id="sidebar" flex hide-sm class="md-primary md-hue-1">
+        <h2>Busca un evento</h2>
+        <!--input de buscar-->
+        <md-input-container>
+            <label>Buscar</label>
+            <input ng-model="searchparam" ng-change="vm.search(searchparam)"  md-maxlength="10" type="text">
+        </md-input-container>
+        <!--calendario-->
+        <md-input-container  class="whiteFont">
+            <label>Consulta una fecha</label>
+            <input ng-model="DateSearch" ng-change="vm.searchDate(DateSearch)" type="date" name="date"></input>
+            <!--PLantearse esto: http://myplanet.github.io/angular-date-picker/-->
+        </md-input-container>
+        <md-checkbox ng-model="ifFree" ng-change="vm.freeEvents(ifFree)" type="checkbox" aria-label="gratis?">Sólo eventos gratis</md-checkbox>
+        <md-select ng-model="distance" ng-change="vm.searchDistance(distance)" placeholder="Distancia a ti">
+            <md-option ng-value="1">1 - 5 km</md-option>
+            <md-option ng-value="6">6 - 15 km</md-option>
+            <md-option ng-value="16">16 - 25 km</md-option>
+            <md-option ng-value="26">26 - 50 km</md-option>
+        </md-select>
+    </md-toolbar>
+    </div>  
+</div>
