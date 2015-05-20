@@ -1,13 +1,15 @@
-<div ng-controller="DemoCtrl" layout="column" class="inputdemoBasicUsage" ng-app="MyApp">
+<div ng-controller="logincontroller as vm" layout="column" class="inputdemoBasicUsage"">
   <md-content flex md-theme="docs-dark" layout="column" layout-align="center center">
-    <md-input-container>
-      <label>Usuario</label>
-      <input ng-model="user.title">
-    </md-input-container>
-    <md-input-container>
-      <label>Contraseña</label>
-      <input ng-model="user.email" type="email">
-    </md-input-container>
-    <md-button class="md-raised">Submit</md-button>
+  	<form action="/people/login/{{vm.id}}">
+	    <md-input-container>
+	      <label>Usuario</label>
+	      <input ng-model="vm.name">
+	    </md-input-container>
+	    <md-input-container>
+	      <label>ContraseÃ±a</label>
+	      <input type="email">
+	    </md-input-container>
+	    <md-button class="md-raised" ng-click = vm.submit>Submit</md-button>
+	 </form>
   </md-content>
 </div>

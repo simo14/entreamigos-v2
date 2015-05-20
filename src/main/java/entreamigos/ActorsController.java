@@ -48,6 +48,19 @@ public class ActorsController {
 		return new ResponseEntity<>(id,HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
+	public Actor findByName(@PathVariable String name){
+		ArrayList<Actor> a = (ArrayList<Actor>)actorService.findByName(name);
+		return a.get(0);
+	}
+	
+	@RequestMapping(value = "/login/{id}")
+	public void login(HttpSession session,@PathVariable long id){
+		session.setAttribute("id",id);
+		session.setAttribute("isLogged", true);
+		System.out.println("ha colado");
+	}
+	
 //FRIENDSSSSSSS
 	
 	@RequestMapping(value="/friends", method = RequestMethod.GET)
