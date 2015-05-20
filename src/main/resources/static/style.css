@@ -116,3 +116,27 @@
  .barrioPersonChip{
  	font-size:small;
  }
+
+#subtoolbar{
+	margin-left:auto;
+	margin-right:auto;
+	width:95%;
+	margin-bot:1em;
+}
+
+#subtoolbar_button{
+	font-size:large;
+	margin-left:0.3em;
+	border-bottom-color: rgb(255,167,38);
+	border-bottom-width: medium;
+	border-bottom-style: inset;
+	text-transform: capitalize;
+}
+
+#subtoolbar_button:hover{
+	background-color:rgb(200,230,201);
+}
+
+#subtoolbar_button:focus{
+	background-color:rgb(200,230,201);
+}
