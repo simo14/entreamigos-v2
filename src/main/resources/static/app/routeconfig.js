@@ -8,6 +8,6 @@ function RouteConfig($routeProvider) {
 	$routeProvider.when('/gente', { templateUrl : "templates/peopleList.html" });
 	$routeProvider.when('/event/:id', { templateUrl : "templates/eventDetail.html" });
 	$routeProvider.when('/person/:id', { templateUrl : "templates/personDetail.html" });
-	$routeProvider.when('/					login', { templateUrl : "templates/login.html" });
+	$routeProvider.when('/login', { templateUrl : "templates/login.html" });
 
 }
