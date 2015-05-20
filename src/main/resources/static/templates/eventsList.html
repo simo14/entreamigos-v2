@@ -1,16 +1,15 @@
 <div flex layout="row" ng-controller="ppcontroller as vm">
-   <div flex layout="row">
-       <div flex="100" layout="column">
-	       	<div id="toolbar">
-	       		<md-button id="toolbar_button" ng-click = "vm.searchCategory('excursiones')">Excursiones</md-button>
-	       		<md-button id="toolbar_button" ng-click = "vm.searchCategory('playa')">Playa</md-button>
-	       		<md-button id="toolbar_button" ng-click = "vm.searchCategory('montaÃ±a')">MontaÃ±a</md-button>
-	       		<md-button id="toolbar_button" ng-click = "vm.searchCategory('cultural')">Cultural</md-button>
-	       		<md-button id="toolbar_button" ng-click = "vm.searchCategory('fiesta')">Fiesta</md-button>
-	       		<md-button id="toolbar_button" ng-click = "vm.searchCategory('deportes')">Deportes</md-button>
+   <div flex="80" layout="column">
+       <div layout="row">
+	       	<div id="subtoolbar" layout="row">
+	       		<md-button id="subtoolbar_button" ng-click = "vm.searchCategory('excursiones')">Excursiones</md-button>
+	       		<md-button id="subtoolbar_button" ng-click = "vm.searchCategory('playa')">Playa</md-button>
+	       		<md-button id="subtoolbar_button" ng-click = "vm.searchCategory('montaña')">Montaña</md-button>
+	       		<md-button id="subtoolbar_button" ng-click = "vm.searchCategory('cultural')">Cultural</md-button>
+	       		<md-button id="subtoolbar_button" ng-click = "vm.searchCategory('fiesta')">Fiesta</md-button>
+	       		<md-button id="subtoolbar_button" ng-click = "vm.searchCategory('deportes')">Deportes</md-button>
 	       	</div>   
-       </div>  
-  </div>
+       </div>
   <div flex="80"> 
     <md-list>
         <md-list-item class="md-3-line" ng-repeat="event in vm.events">
@@ -32,6 +31,7 @@
     	</md-list-item>
 	</md-list>
   </div> 
+  </div>
   <div flex="20">
     <md-toolbar id="sidebar" flex hide-sm class="md-primary md-hue-1">
         <h2>Busca un evento</h2>
