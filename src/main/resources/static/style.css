@@ -140,3 +140,24 @@
 #subtoolbar_button:focus{
 	background-color:rgb(200,230,201);
 }
+
+#containerPersona{
+  background-color: rgb(231,235,222);
+}
+#containerPersonaFoto{
+  align:left;
+  margin:10px;  
+}
+#containerPersonaBio{
+  align:left;
+  margin:10px;
+  width:60%;
+}
+#containerEventData{
+  margin-left:20px;
+}
+#containerEventoDescripcion{
+  align:left;
+  margin:10px;
+  width:60%;
+}
