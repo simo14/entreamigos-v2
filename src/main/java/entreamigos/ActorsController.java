@@ -52,7 +52,6 @@ public class ActorsController {
 	public void login(HttpSession session,@PathVariable String name){
 		ArrayList<Actor> a = (ArrayList<Actor>)actorService.findByName(name);
 		Actor b = a.get(0);
-		System.out.println(b.getId());
 		session.setAttribute("userId",b.getId());
 		session.setAttribute("isLogged", true);
 	}
@@ -61,16 +60,20 @@ public class ActorsController {
 	
 	@RequestMapping(value="/friends", method = RequestMethod.GET)
 	public Iterable<Person> friendsP (HttpSession session){
-		Person aux = (Person) actorService.findOne((Long.parseLong((String)session.getAttribute("userId"))));
+		String prueba = session.getAttribute("userId")+"0";
+		Long idpersona = (Long.parseLong(prueba, 10))/10;
+		Person aux = (Person) actorService.findOne(idpersona);
 		return aux.getFriends();
 	}
 	
 	@RequestMapping(value="/friends", method = RequestMethod.POST)		//sin probar porq postman es tonto
 	public ResponseEntity<Person> addFriend (@RequestBody long idPerson, HttpSession session) {
-		String idusuario = ((String)session.getAttribute("userId"))+0;
-		System.out.println(idusuario);
 		
-		Person aux = (Person) actorService.findOne(1);
+		String prueba = session.getAttribute("userId")+"0";
+		Long idpersona = (Long.parseLong(prueba, 10))/10;
+		System.out.println(idpersona);
+		
+		Person aux = (Person) actorService.findOne(idpersona);
 		Person amigo = (Person)actorService.findOne(idPerson);
 		aux.getFriends().add(amigo);
 		actorService.save(aux);
