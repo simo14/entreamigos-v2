@@ -143,6 +143,16 @@ public class WebController implements CommandLineRunner {
 		uhu=new Person("Pedro","Picapiedra",2, null,null,null,aux3);
 		actorService.save(uhu);
 		
+		aux3=new Location("valencia","","",null);
+		ELService.save(aux);
+		uhu=new Person("Fodo","Me gusta andar y las cosas brillantes",2, null,null,null,aux3);
+		actorService.save(uhu);
+		
+		aux3=new Location("logroño","","",null);
+		ELService.save(aux);
+		uhu=new Person("xXQuixoteXx","De la mancha district, dude",1, null,null,null,aux3);
+		actorService.save(uhu);
+		
 		ArrayList<Actor> atendees=new ArrayList<Actor>();
 		atendees.add(jaime);
 		Happening h1=new Happening("Playa el viernes",atendees,aux,new Date(),"Día de sol y cervezas en las mejores playas españolas.",jaime,0,"playa");
