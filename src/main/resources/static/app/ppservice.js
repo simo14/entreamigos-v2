@@ -44,7 +44,7 @@ function autoreload(){
 	return {
 		reload : reload,
 		getEvents : getEvents,
-		getEvent : getEvent,
+		getEvent:getEvent,
 		join : join,
 		search : search,
 		searchCategory : searchCategory
@@ -63,9 +63,7 @@ function autoreload(){
 	}
 	
 	function getEvent (param) {
-		var event = EventResource.get({ id: param }, function() {
-		    return event
-		  });
+		var event = EventResource.get({ id: param });
 		return event;
 	}
 	
