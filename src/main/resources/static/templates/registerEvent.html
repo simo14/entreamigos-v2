@@ -1,14 +1,14 @@
-<div ng-controller="registercontroller as vm" layout="column" class="inputdemoBasicUsage">
+<div ng-controller="ppcontroller as vm" layout="column" class="inputdemoBasicUsage">
 	
 		  <md-content flex md-theme="docs-dark" layout="column" layout-align="center center">
-		  <form ng-submit="vm.addPersona(vm.persona)">
+		  <form ng-submit="vm.addEvent(vm.evento)">
 		    <md-input-container>
 		      <label>Usuario / Nombre</label>
-		      <input ng-model="vm.persona.name">
+		      <input ng-model="vm.evento.title">
 		    </md-input-container>
 		    <md-input-container>
 		      <label>Barrio</label>
-		      <input ng-model="vm.persona.defaultLocation.neighborhood">
+		      <input ng-model="vm.evento.defaultLocation.neighborhood">
 		    </md-input-container>
 		    <md-input-container>
 		      <label>Contraseï¿½a</label>
@@ -16,16 +16,16 @@
 		    </md-input-container>
 		    <md-input-container>
 		      <label>Bio</label>
-		      <textarea ng-model="vm.persona.bio" columns="1" md-maxlength="150"></textarea>
+		      <textarea ng-model="vm.evento.descripcion" columns="1" md-maxlength="150"></textarea>
 		    </md-input-container>
-		      	<md-select placeholder="Humor" ng-model="vm.persona.mood">
-				    <md-option value="1">Amoroso</md-option>
-				    <md-option value="2">Deportista</md-option>
-			        <md-option value="3">Aventurero</md-option>
-			        <md-option value="4">Fiestero</md-option>
+		      	<md-select placeholder="Categoria" ng-model="vm.evento.categoria">
+				    <md-option value="deportes">Deportes</md-option>
+				    <md-option value="cultural">Cultural</md-option>
+			        <md-option value="playa">Playa</md-option>
+			        <md-option value="montaña">Montaña</md-option>
 		  		</md-select>
 		  		<div></div>
-		    	<button  type="submit">Guardar</button>
+		    	<button  type="submit">Crear</button>
 		    	</form>
 		  </md-content>
 	
