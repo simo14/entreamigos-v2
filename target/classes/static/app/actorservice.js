@@ -88,9 +88,7 @@ function autoreload(){
 	}
   
 	function beFriends (param) {
-		var nuevo = getActor(param,{function(){
-			nuevo.PeopleSearch.save();	}	//data saved. nuevo is sent as the post body.
-		});
+		PeopleSearch.beFriends(param);	}	//data saved. nuevo is sent as the post body.
 		//nuevo.PeopleSearch.save();
 		console.log("pasamos por aqui" +param);
 	}
@@ -117,4 +115,3 @@ function autoreload(){
 			that.events.splice(that.posts.indexOf(post), 1);
 		});
 	}	*/
-}

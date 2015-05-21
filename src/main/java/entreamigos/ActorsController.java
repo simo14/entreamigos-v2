@@ -54,7 +54,6 @@ public class ActorsController {
 		Actor b =  a.get(0);
 		session.setAttribute("id",b.getId());
 		session.setAttribute("isLogged", true);
-		System.out.println(b.getName()+"is logged");
 	}
 	
 //FRIENDSSSSSSS
@@ -67,14 +66,15 @@ public class ActorsController {
 	}
 	
 	@RequestMapping(value="/friends", method = RequestMethod.POST)		//sin probar porq postman es tonto
-	public ResponseEntity<Person> addFriend (@RequestBody Person person, HttpSession session) {
-		session.setAttribute("userId", 2);
+	public ResponseEntity<Person> addFriend (@RequestBody long idPerson, HttpSession session) {
+		session.setAttribute("userId", "2");
 		Person aux = (Person) actorService.findOne(Long.parseLong((String)session.getAttribute("userId")));
-		aux.getFriends().add(person);
+		Person amigo = (Person)actorService.findOne(idPerson);		//persona que añadir
+		aux.getFriends().add(amigo);	
 		actorService.save(aux);
-		person.getFriends().add(aux);	//It has to be bidirectional
-		actorService.save(person);
-		return new ResponseEntity<>(person,HttpStatus.OK);
+		amigo.getFriends().add(aux);				//It has to be bidirectional
+		actorService.save(amigo);
+		return new ResponseEntity<>(amigo,HttpStatus.OK);
 	}
 	
 //No existe un people/friends/{id} get porque clickar en un amigo hace una petición get a people/{id}
