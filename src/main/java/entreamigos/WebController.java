@@ -111,6 +111,7 @@ public class WebController implements CommandLineRunner {
 		ELService.save(aux);
 		Location aux2=new Location("madrid","JAJAJA","",null);
 		ELService.save(aux2);
+		
 		Person jaime=new Person("jaime","Soy una taza",1, null,null,null,aux2);
 		actorService.save(jaime);
 		ArrayList<Person> a=new ArrayList<Person>();
@@ -126,6 +127,22 @@ public class WebController implements CommandLineRunner {
 		ratingRep.save(r);
 		jaime.setRating(r);
 		actorService.save(jaime);
+		
+		Location aux3=new Location("valencia","","",null);
+		ELService.save(aux);
+		Person uhu=new Person("Paola","Livin la vida loca",2, null,null,null,aux3);
+		actorService.save(uhu);
+		
+		aux3=new Location("valencia","","",null);
+		ELService.save(aux);
+		uhu=new Person("Brian","Romani Ite Domun",4, null,null,null,aux3);
+		actorService.save(uhu);
+		
+		aux3=new Location("valencia","","",null);
+		ELService.save(aux);
+		uhu=new Person("Pedro","Picapiedra",2, null,null,null,aux3);
+		actorService.save(uhu);
+		
 		ArrayList<Actor> atendees=new ArrayList<Actor>();
 		atendees.add(jaime);
 		Happening h1=new Happening("Playa el viernes",atendees,aux,new Date(),"Día de sol y cervezas en las mejores playas españolas.",jaime,0,"playa");
