@@ -16,6 +16,9 @@ public class ActorService {
 	@Autowired
 	private OrganizationRepository aOrg;
 	
+	@Autowired
+	private LocationRepository lRep;
+	
 //-----------------------------------------------	
 	
 	public Iterable<Actor> findAll(){
@@ -23,6 +26,7 @@ public class ActorService {
 	}
 	
 	public Actor save(Actor actor){
+		lRep.save(actor.getDefaultLocation());
 		return aRep.save(actor);
 	}
 	

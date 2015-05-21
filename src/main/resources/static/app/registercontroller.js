@@ -15,6 +15,6 @@ function registercontroller (actorservice,$location){
 		
 		vm.newPersona = {};
 		
-		$location.path("/people");
+		$location.path("/gente");
 	};
 }

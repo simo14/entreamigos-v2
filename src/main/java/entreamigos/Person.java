@@ -1,5 +1,6 @@
 package entreamigos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -23,6 +24,11 @@ public class Person extends Actor{
 	
 //Constructors
 	public Person(){}
+	
+	public Person(String name, String bio, int mood, Location defaultLocation){
+		super(name,bio,1,null,null,defaultLocation);
+		this.friends = new ArrayList<Person>();
+	}
 	
 	public Person(String name, String bio, int mood, List<Happening> happenings, Rating rating,
 			List<Person> friends,Location defaultLocation) {

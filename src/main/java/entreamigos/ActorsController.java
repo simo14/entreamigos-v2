@@ -30,11 +30,11 @@ public class ActorsController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Actor> addActor (@RequestBody Actor actor) {
+	public ResponseEntity<Person> addActor (@RequestBody Person person) {
 		/*happening.setId(0);
 		Happening newHappening = ELService.save(happening);*/
-		actorService.save(actor);
-		return new ResponseEntity<>(actor,HttpStatus.CREATED);
+		actorService.save(person);
+		return new ResponseEntity<>(person,HttpStatus.CREATED);
 	}
 	
 	@RequestMapping (value="/{id}", method = RequestMethod.GET)
