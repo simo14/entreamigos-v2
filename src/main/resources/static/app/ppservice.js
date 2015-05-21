@@ -5,9 +5,13 @@ ppservice.$inject = [ "$resource", "$timeout" ];
 function ppservice($resource, $timeout) {
 	var that = this;
 	var events = [];                          //Events = happenings
-	var EventResource = $resource('/events/:id',      //en vez de /event/:id para ser coherente con REST ponemos raíz
+	var sessionId = 0;
+	var EventResource = $resource('/events/:id/:action',      //en vez de /event/:id para ser coherente con REST ponemos raíz
 			{ id : '@id' },
-			{ update : { method : "PUT" }}
+			{ 
+				update : { method : "PUT" },
+				join : { method : "POST", params: { action:"join"}}
+			}
 		);
 	
 	var EventSearch = $resource('events/:action/:myParam',
@@ -42,6 +46,7 @@ function autoreload(){
 		reload : reload,
 		getEvents : getEvents,
 		getEvent : getEvent,
+		join : join,
 		search : search,
 		searchCategory : searchCategory
 	}
@@ -65,6 +70,12 @@ function autoreload(){
 		return event;
 	}
 	
+	function join (param) {
+		that.sessionId = EventResource.join({ id : param });
+		console.log(that.sessionId);
+		return that.sessionId;
+	}
+	
 
 //OJO!!!! antes asignábamos that.events en la función éxito de la query search, pero eso devolvía con el return un array antes de rellenarlo. El truco de $resource es hacerlos como están ahora, asignando una variable y devolviendo esa variable
 	function search (param) {
@@ -76,6 +87,7 @@ function autoreload(){
 		that.events = EventSearch.searchByCategory ({myParam : param});
 		return that.events;
 	}
+
   
  /*   
 	this.getEvents = function(){

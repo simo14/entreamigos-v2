@@ -143,7 +143,14 @@
 
 #containerPersona{
   background-color: rgb(231,235,222);
+      border-style:inset;
+    border-color:dark-grey;
 }
+
+#containerEvento{
+  width:70%;
+}
+
 #containerPersonaFoto{
   align:left;
   margin:10px;  
@@ -153,11 +160,15 @@
   margin:10px;
   width:60%;
 }
-#containerEventData{
-  margin-left:20px;
+.containerEventData{
+  margin-left:10px;
 }
 #containerEventoDescripcion{
   align:left;
   margin:10px;
-  width:60%;
+  width:90%;
+}
+
+#eventImg{
+	width:100%;
 }

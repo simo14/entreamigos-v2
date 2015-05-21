@@ -3,6 +3,8 @@ package entreamigos;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.http.HttpStatus;
@@ -23,8 +25,11 @@ public class WebController implements CommandLineRunner {
 	@Autowired
 	private ActorService actorService;
 	
-//------------------------------------------------	
+	@Autowired
+	private RatingRepository ratingRep;
 	
+//------------------------------------------------	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public Iterable<Happening> pp(){
 		return ELService.findAllHappeningsByDate();
@@ -46,6 +51,18 @@ public class WebController implements CommandLineRunner {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public Happening getEvent(@PathVariable long id) {
 		return ELService.findOneHappening(id);
+	}
+	
+//Participar en el evento
+	@RequestMapping(value="/{id}/join", method = RequestMethod.POST)
+	public long joinHappening(@PathVariable long id, HttpSession session){
+		if(session.getAttribute("isLogged")!=null && (boolean) session.getAttribute("isLogged")){
+			Happening h = getEvent(id);
+			h.getAttendees().add(actorService.findOne((long)session.getAttribute("userId")));
+			ELService.save(h);
+			return (long)session.getAttribute("userId");
+		}
+		else return 0;
 	}
 	
 	@RequestMapping(value = "/filter/{parameter}", method = RequestMethod.GET)
@@ -103,11 +120,16 @@ public class WebController implements CommandLineRunner {
 		ArrayList<Person> b=new ArrayList<Person>();
 		b.add(marta);
 		jaime.setFriends(b);
+		Person raul=new Person("raul","Una cuchara",4, null,null,b,aux);
+		actorService.save(raul);
+		Rating r = new Rating(3);
+		ratingRep.save(r);
+		jaime.setRating(r);
 		actorService.save(jaime);
 		ArrayList<Actor> atendees=new ArrayList<Actor>();
 		atendees.add(jaime);
-		Happening h1=new Happening("A la playa amigotes",atendees,aux,new Date(),"Día de sol y cervezas en las mejores playas españolas.",null,0,"playa");
-		Happening h2=new Happening("A la guay montaña",null,aux2,new Date(14318),"Montañismo mágico y especial",null,300,"montaña");
+		Happening h1=new Happening("A la playa amigotes",atendees,aux,new Date(),"Día de sol y cervezas en las mejores playas españolas.",jaime,0,"playa");
+		Happening h2=new Happening("A la guay montaña",atendees,aux2,new Date(14318),"Montañismo mágico y especial",null,300,"montaña");
 		ELService.save(h1);
 		ELService.save(h2);
 	}

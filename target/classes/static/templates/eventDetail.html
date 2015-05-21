@@ -1,21 +1,43 @@
-<div ng-controller="eventcontroller as vm">
-	<div layout="row" layout-fill="" style="padding-bottom: 32px;" ng-app="MyApp" layout-align="center center">
-  <md-whiteframe flex="50" class="md-whiteframe-z5" layout="column" id="containerPersona">
-    <div flex><h1> Titulo </h1> <h3>Categoria</h3></div>
-    <div layout="row">
-    <div layout="column" id="containerEventData">
-        			<h2> Lugar </h2>
-        			<p> Fecha </p>
-    </div>
-        <div layout="column" flex="50" id="containerEventData">
-          			<h2> Precio </h2>
-          <p> Organizador <a href="/#/organizador">Organizador</a> </p>
+<div ng-controller="eventcontroller as vm" id="containerEvento">
+	<div layout="row" layout-fill="" style="padding-bottom: 32px;" layout-align="center center">
+		<md-whiteframe flex="50" class="md-whiteframe-z5" layout="column" id="containerPersona">
+		    <div flex>
+		    	<img src="/img/{{vm.event.category}}.png" id="eventImg"></img>
+		    	<h1 class="containerEventData"> {{vm.event.title | uppercase}} </h1> 
+		    	<h3 class="containerEventData">{{vm.event.category | uppercase}}</h3>
 		    </div>
-      </div>
-      <div id="containerEventoDescripcion">asd adasdasda basiasdasdo dasdasddsa dasdasdas adasdasfsdfsgsg</div>
-    <div>
-      aqui podrian ir los participantes
-      </div>
-  </md-whiteframe>
-</div>
+		    <div layout="row">
+		    <div layout="column" class="containerEventData">
+		        			<h2> {{vm.event.location.neighborhood | uppercase}} </h2>
+		        			<p> {{vm.event.date | date}} </p>
+		    </div>
+		        <div layout="column" flex="50" class="containerEventData">
+		          			<h2> Precio: {{vm.event.prize}}</h2>
+		          <p> Organizador <a href="/#/people/name/{{vm.event.organizer}}">{{vm.event.organizer.name | uppercase}}</a></p>
+				    </div>
+		      </div>
+		      <div id="containerEventoDescripcion">{{vm.event.description}}</div>
+		    <div>
+		    	<h2 class="containerEventData">Participantes:</h2>
+		      	        <div ng-repeat="actor in vm.event.attendees" layout="column" layout-align="center center" class="PersonChip inEvent">
+			            	<a href="/#/people/{{actor.id}}" class="link"> 
+		
+				                <div layout="row" layout-align="center center">
+				                	<div><img src="/../img/mood/{{actor.mood}}.png"  id="avatarPersona" class="md-avatar avatarPersona" alt="{actor.mood}"> </img></div>
+				                </div>
+				                <div class="md-list-item-text contenidoPersonChip" layout="row" layout-align="center center" >
+				                    <div>
+				                  		<p class="nombrePersonChip">{{actor.name | uppercase}}</p>
+				                  		<p class="barrioPersonChip">{{actor.defaultLocation.neighborhood}}</p>
+				                    </div>
+		
+				            	</div>
+			            	</a>
+		    	</div>
+		      </div>
+		</md-whiteframe>
+	</div>
+	<div>
+		<md-button id="login_button" ng-click="vm.join()">Participar</md-button>
+	</div>
 </div>

@@ -20,6 +20,5 @@ function actorcontroller(actorservice) {
 	
     vm.search = function (param) {
 		vm.actors = actorservice.search(param);
-		console.log("pasamos por controller"+vm.actors);
     }
 }

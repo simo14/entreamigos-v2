@@ -83,7 +83,6 @@ public class ActorsController {
 	
 	@RequestMapping(value="/friends/{id}", method = RequestMethod.DELETE)				//funciona!
 	public ResponseEntity<Long> deleteFriend (@PathVariable long id, HttpSession session) {
-		session.setAttribute("userId","2");
 		Person aux = (Person) actorService.findOne(Long.parseLong((String)session.getAttribute("userId")));
 		Person amigoADeletear = (Person) actorService.findOne(id);
 		aux.getFriends().remove(amigoADeletear);

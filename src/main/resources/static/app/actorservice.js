@@ -30,6 +30,10 @@ function actorservice($resource, $timeout) {
 					}
 			}}
 	);
+	
+	var FriendsResource = $resource('/friends/:id',
+			{ id : '@id'}
+	);
 
 
 function autoreload(){
@@ -79,6 +83,11 @@ function autoreload(){
 		return that.actors;
 	}
   
+	function beFriends (param) {
+		var nuevo = getActor(param);
+		nuevo.FriendsResource.$save();		//data saved. nuevo is sent as the post body.
+	}
+	
  /*   
 	this.getEvents = function(){
 		this.events = EventResource.query();
