@@ -118,9 +118,11 @@ function autoreload(){
 	}
 	
 	function updatePersona(persona) {
-		new PeopleResource.update(persona, function(post) {
+		new PeopleResource.update(persona, function(logueado) {
+			return logueado;
 			reload();
 		});
+		return logueado;
 	}
 	
  /*   
