@@ -3,7 +3,7 @@ logincontroller.inject = ["$location","$resource"];
 
 function logincontroller($resource,$location) {
 	var vm = this;
-	var PeopleResource = $resource('/people/name/:name',
+	var PeopleResource = $resource('/people/login/:name',
 			{ name : '@name' },
 			{ update : { method : "PUT" }}
 		);

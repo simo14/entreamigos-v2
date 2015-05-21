@@ -48,15 +48,12 @@ public class ActorsController {
 		return new ResponseEntity<>(id,HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
-	public Actor findByName(@PathVariable String name){
+	@RequestMapping(value = "/login/{name}", method = RequestMethod.GET)
+	public void login(HttpSession session,@PathVariable String name){
 		ArrayList<Actor> a = (ArrayList<Actor>)actorService.findByName(name);
-		return a.get(0);
-	}
-	
-	@RequestMapping(value = "/login/{id}")
-	public void login(HttpSession session,@PathVariable long id){
-		session.setAttribute("id",id);
+		Actor b = a.get(0);
+		System.out.println(b.getId());
+		session.setAttribute("userId",b.getId());
 		session.setAttribute("isLogged", true);
 	}
 	
@@ -64,20 +61,22 @@ public class ActorsController {
 	
 	@RequestMapping(value="/friends", method = RequestMethod.GET)
 	public Iterable<Person> friendsP (HttpSession session){
-		session.setAttribute("userId","2");
-		Person aux = (Person) actorService.findOne(Long.parseLong((String)session.getAttribute("userId")));
+		Person aux = (Person) actorService.findOne((Long.parseLong((String)session.getAttribute("userId"))));
 		return aux.getFriends();
 	}
 	
 	@RequestMapping(value="/friends", method = RequestMethod.POST)		//sin probar porq postman es tonto
-	public ResponseEntity<Person> addFriend (@RequestBody Person person, HttpSession session) {
-		session.setAttribute("userId", 2);
-		Person aux = (Person) actorService.findOne(Long.parseLong((String)session.getAttribute("userId")));
-		aux.getFriends().add(person);
+	public ResponseEntity<Person> addFriend (@RequestBody long idPerson, HttpSession session) {
+		String idusuario = ((String)session.getAttribute("userId"))+0;
+		System.out.println(idusuario);
+		
+		Person aux = (Person) actorService.findOne(1);
+		Person amigo = (Person)actorService.findOne(idPerson);
+		aux.getFriends().add(amigo);
 		actorService.save(aux);
-		person.getFriends().add(aux);	//It has to be bidirectional
-		actorService.save(person);
-		return new ResponseEntity<>(person,HttpStatus.OK);
+		amigo.getFriends().add(aux);	//It has to be bidirectional
+		actorService.save(amigo);
+		return new ResponseEntity<>(amigo,HttpStatus.OK);
 	}
 	
 //No existe un people/friends/{id} get porque clickar en un amigo hace una petición get a people/{id}
