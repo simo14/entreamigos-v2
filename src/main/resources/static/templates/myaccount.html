@@ -1,0 +1,31 @@
+<div ng-controller="registercontroller" layout="column" class="inputdemoBasicUsage">
+	<form ng-submit="vm.modifyPerson(vm.persona)">
+		  <md-content flex md-theme="docs-dark" layout="column" layout-align="center center">
+		    <md-input-container>
+		      <label>Usuario / Nombre</label>
+		      <input ng-model="vm.persona.name">
+		    </md-input-container>
+		    <md-input-container>
+		      <label>Barrio</label>
+		      <input ng-model="vm.persona.location.neiberhood">
+		    </md-input-container>
+		    <md-input-container>
+		      <label>Contrase�a</label>
+		      <input type="password">
+		    </md-input-container>
+		    <md-input-container>
+		      <label>Bio</label>
+		      <textarea ng-model="vm.persona.bio" columns="1" md-maxlength="150"></textarea>
+		    </md-input-container>
+		    <md-input-container>
+		      <md-select placeholder="Humor" ng-model="vm.persona.mood">
+		    <md-option value="1">Amoroso</md-option>
+		    <md-option value="2">Deportista</md-option>
+		        <md-option value="3">Aventurero</md-option>
+		        <md-option value="4">Fiestero</md-option>
+		  </md-select>
+		    </md-input-container>
+		    <md-button class="md-raised">Guardar</md-button>
+		  </md-content>
+	</form>
+</div>
