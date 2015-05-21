@@ -56,7 +56,8 @@ function autoreload(){
 		search : search,
 		searchLocation : searchLocation,
 		getActor: getActor,
-		beFriends : beFriends
+		beFriends : beFriends,
+		newPersona : newPersona
 	}
 	
 
@@ -92,6 +93,13 @@ function autoreload(){
 	function beFriends (param) {
 		PeopleSearch.beFriends(param);
 		//nuevo.PeopleSearch.save();
+	}
+	
+	function newPersona(newPersona) {
+		new PeopleResource(newPersona).$save(function(post) {
+			actors.push(post);
+			console.log("pene2");
+		});
 	}
 	
  /*   
