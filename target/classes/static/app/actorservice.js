@@ -99,24 +99,27 @@ function autoreload(){
   
 	function beFriends (param) {
 		PeopleSearch.beFriends(param);
+		reload();
 		//nuevo.PeopleSearch.save();
 	}
 	
 	function newPersona(newPersona) {
 		new PeopleResource(newPersona).$save(function(post) {
 			actors.push(post);
+			reload();
 		});
 	}
 	
 	function newOrg(newOrg) {
 		new PeopleSearch.newOrganization(newOrg, function(post) {
 			actors.push(post);
+			reload();
 		});
 	}
 	
 	function updatePersona(persona) {
 		new PeopleResource.update(persona, function(post) {
-			actors.push(post);
+			reload();
 		});
 	}
 	
