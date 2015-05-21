@@ -22,7 +22,7 @@ function registercontroller (actorservice,$location){
 		console.log("h");
 		actorservice.updatePersona(upersona);
 		vm.upersona = {};
-		$location.path("/gente");
+		$location.path("/");
 	}
 	
 	vm.addOrg = function(org) {
@@ -31,6 +31,6 @@ function registercontroller (actorservice,$location){
 		
 		vm.newOrg = {};
 		
-		$location.path("/gente");
+		$location.path("/");
 	};
 }

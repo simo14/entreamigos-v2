@@ -49,16 +49,15 @@ public class ActorsController {
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
-	public ResponseEntity<Person> updatePersona(HttpSession session,@RequestBody Person newPerson) {
+	public boolean updatePersona(HttpSession session,@RequestBody Person newPerson) {
 		String prueba = session.getAttribute("userId")+"0";
 		Long idpersona = (Long.parseLong(prueba, 10))/10;	
 		Person antigua = (Person) actorService.findOne(idpersona);
-		antigua.setName(newPerson.getName());
 		antigua.setBio(newPerson.getBio());
 		antigua.setDefaultLocation(newPerson.getDefaultLocation());
 		antigua.setMood(newPerson.getMood());
 		actorService.save(antigua);
-		return new ResponseEntity<>(antigua,HttpStatus.OK);
+		return (boolean) session.getAttribute("isLogged");
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
