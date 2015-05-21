@@ -12,10 +12,9 @@ function logincontroller($resource,$location) {
 	vm.id = 0;
 	
     vm.submit = function() {
-    	vm.id = PeopleResource.get({ id: name }, function() {
+    	vm.id = PeopleResource.get({ name : vm.name }, function() {
 		    return person.id
 		  });
-    	console.log("pene");
     	alert("Has iniciado sesión");
 		$location.path("/");
 	};
