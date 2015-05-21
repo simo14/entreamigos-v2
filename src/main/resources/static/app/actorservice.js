@@ -37,10 +37,15 @@ function actorservice($resource, $timeout) {
 			findFriends: {
 					method:'GET',
 					params:{action:"myfriends"}
-			}
-			}
+			},
+			newOrganization: {
+				method: 'POST',
+				params: {
+					action:"org"
+				}
+		}
 			
-	);
+			});
 
 
 function autoreload(){
@@ -57,7 +62,8 @@ function autoreload(){
 		searchLocation : searchLocation,
 		getActor: getActor,
 		beFriends : beFriends,
-		newPersona : newPersona
+		newPersona : newPersona,
+		newOrg : newOrg
 	}
 	
 
@@ -98,8 +104,14 @@ function autoreload(){
 	function newPersona(newPersona) {
 		new PeopleResource(newPersona).$save(function(post) {
 			actors.push(post);
-			console.log("pene2");
 		});
+	}
+	
+	function newOrg(newOrg) {
+		new PeopleSearch.newOrganization(newOrg, function(post) {
+			actors.push(post);
+		});
+
 	}
 	
  /*   

@@ -9,11 +9,19 @@ function registercontroller (actorservice,$location){
 	
 	
 	vm.addPersona = function(persona) {
-		console.log("pene1");
 		
 		actorservice.newPersona(persona);
 		
 		vm.newPersona = {};
+		
+		$location.path("/gente");
+	};
+	
+	vm.addOrg = function(org) {
+		
+		actorservice.newOrg(org);
+		
+		vm.newOrg = {};
 		
 		$location.path("/gente");
 	};

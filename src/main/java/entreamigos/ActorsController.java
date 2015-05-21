@@ -30,11 +30,17 @@ public class ActorsController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Person> addActor (@RequestBody Person person) {
+	public ResponseEntity<Person> addPerson (@RequestBody Person person) {
 		/*happening.setId(0);
 		Happening newHappening = ELService.save(happening);*/
 		actorService.save(person);
 		return new ResponseEntity<>(person,HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value = "/org", method = RequestMethod.POST)
+	public ResponseEntity<Organization> addOrg (@RequestBody Organization organization) {
+		actorService.save(organization);
+		return new ResponseEntity<>(organization, HttpStatus.CREATED);
 	}
 	
 	@RequestMapping (value="/{id}", method = RequestMethod.GET)
