@@ -96,6 +96,7 @@
 	border-width: 0.3em;
 	border-style: solid;
 	border-color: rgb(60, 166, 77);
+	display: inline-flex;
  }
  
  .contenidoPersonChip{
