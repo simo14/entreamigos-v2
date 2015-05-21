@@ -4,7 +4,7 @@ ppservice.$inject = [ "$resource", "$timeout" ];
 
 function ppservice($resource, $timeout) {
 	var that = this;
-	var events = [];                          //Events = happenings
+	var events = []; //Events = happenings
 	var sessionId = 0;
 	var EventResource = $resource('/events/:id/:action',      //en vez de /event/:id para ser coherente con REST ponemos raíz
 			{ id : '@id' },
@@ -62,10 +62,8 @@ function autoreload(){
 		return events;
 	}
 	
-	function getEvent (param) {
-		var event = EventResource.get({ id: param }, function() {
-		    return event
-		  });
+	function getEvent(param) {
+		var event = EventResource.get({ id: param });
 		return event;
 	}
 	

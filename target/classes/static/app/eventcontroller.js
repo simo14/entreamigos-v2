@@ -13,7 +13,7 @@ function eventcontroller(ppservice, $routeParams) {
 		
 	//Controller logic
 	
-	vm.event = ppservice.getEvent($routeParams.id);
+	vm.event = ppservice.getEvent(2);
 
 
 	//Controller actions
@@ -26,4 +26,4 @@ function eventcontroller(ppservice, $routeParams) {
 			alert("Por favor, inicia sesión antes de inscribirte.");
 		}
 	}
-};
+}

@@ -3,7 +3,7 @@ logincontroller.inject = ["$location","$resource"];
 
 function logincontroller($resource,$location) {
 	var vm = this;
-	var PeopleResource = $resource('/people/name/:name',
+	var PeopleResource = $resource('/people/login/:name',
 			{ name : '@name' },
 			{ update : { method : "PUT" }}
 		);
@@ -12,9 +12,7 @@ function logincontroller($resource,$location) {
 	vm.id = 0;
 	
     vm.submit = function() {
-    	vm.id = PeopleResource.get({ name : vm.name }, function() {
-		    return person.id
-		  });
+    	PeopleResource.get({name : vm.name});
     	alert("Has iniciado sesión");
 		$location.path("/");
 	};
