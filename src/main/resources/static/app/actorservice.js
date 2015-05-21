@@ -33,6 +33,10 @@ function actorservice($resource, $timeout) {
 					params: {
 						action:"friends"
 					}
+			},
+			findFriends: {
+					method:'GET',
+					params:{action:"myfriends"}
 			}
 			}
 			
@@ -77,9 +81,7 @@ function autoreload(){
 	
 	function search (param) {
 		that.actors = PeopleSearch.search ({myParam : param});
-		console.log(that.actors);
 		return that.actors;
-
 	}
 	
 	function searchLocation (param) {
