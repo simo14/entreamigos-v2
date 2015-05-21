@@ -145,7 +145,7 @@
   background-color: rgb(231,235,222);
       border-style:inset;
     border-color:dark-grey;
-    width:500px;
+    width:60em;
 }
 
 #containerEvento{
@@ -158,7 +158,8 @@
 }
 #containerPersonaBio{
   align:left;
-  margin:10px;
+  margin:2em;
+  margin-left:4em;
   width:100%;
 }
 .containerEventData{
