@@ -1,29 +1,35 @@
-angular.module("webapp").controller("eventcontroller", eventcontroller)
+"use strict";
+angular.module("webapp").controller("eventcontroller", eventcontroller);
+ppcontroller.$inject = [ "ppservice","$location","$routeParams" ];
 
-eventcontroller.$inject = ["ppservice", "$routeParams"];
-
-function eventcontroller(ppservice, $routeParams) {
-
+function eventcontroller(ppservice,$location,$routeParams) {
 	var vm = this;
-	
-	//View model properties
-	
+    
+    //View model properties
 	vm.event = {};
-	vm.sessionId = 0;
-		
-	//Controller logic
-	
-	vm.event = ppservice.getEvent($routeParams.id);
-
-
-	//Controller actions
-	vm.join = function () {
-		vm.sessionId = ppservice.join($routeParams.id);
-		console.log(vm.sessionId);
-		if(vm.sessionId!==0){
-			alert("¡Te has inscrito con éxito!");
-		}else {
-			alert("Por favor, inicia sesión antes de inscribirte.");
-		}
-	}
-};
+    vm.events = [];
+    vm.newEvent = {};
+    vm.searchparam="";
+    
+    //Controller logic
+    vm.events = ppservice.getEvents();
+   
+    //Controller actions
+    vm.viewEvent = function(event) {
+ 
+		$location.path("/event");
+	};
+    
+    vm.search = function (param) {
+    	vm.events = ppservice.search(param);
+    }
+    
+    vm.searchCategory = function (param) {
+    	vm.events = ppservice.searchCategory(param);
+    }
+    vm.event = ppservice.getEvent ($routeParam);
+	/*
+	  vm.search = ppservice.search({
+    	   query: vm.searchparam  
+    	}, function(result){}); */
+}
