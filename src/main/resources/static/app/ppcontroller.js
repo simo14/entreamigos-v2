@@ -29,7 +29,7 @@ function ppcontroller(ppservice,$location,$routeParams) {
     	vm.events = ppservice.searchCategory(param);
     }
     vm.event = {}
-    vm.event = ppservice.getEvent(2)
+    vm.event = ppservice.getEvent($routeParams.id)
 	/*
 	  vm.search = ppservice.search({
     	   query: vm.searchparam  

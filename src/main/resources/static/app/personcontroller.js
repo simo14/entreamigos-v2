@@ -1,6 +1,6 @@
 angular.module("webapp").controller("personcontroller", personcontroller)
 
-eventcontroller.$inject = ["actorservice", "$routeParams"];
+personcontroller.$inject = ["actorservice", "$routeParams"];
 
 function personcontroller(actorservice, $routeParams) {
 
