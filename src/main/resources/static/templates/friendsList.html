@@ -2,6 +2,7 @@
 
 <div flex layout="row" ng-controller="actorcontroller as vm">
   <div flex="80" layout="row" layout-align="center top"> 
+        <div ng-repeat="actor in vm.friends" layout="column" layout-align="center center" class="PersonChip">
 	            <a href="/#/people/{{actor.id}}" class="link"> 
 
 		                <div layout="row" layout-align="center center">
@@ -35,5 +36,4 @@
     </md-toolbar>
     </div>  
 </div>
-
 
