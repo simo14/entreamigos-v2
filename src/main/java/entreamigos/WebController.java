@@ -128,9 +128,15 @@ public class WebController implements CommandLineRunner {
 		actorService.save(jaime);
 		ArrayList<Actor> atendees=new ArrayList<Actor>();
 		atendees.add(jaime);
-		Happening h1=new Happening("A la playa amigotes",atendees,aux,new Date(),"Día de sol y cervezas en las mejores playas españolas.",jaime,0,"playa");
-		Happening h2=new Happening("A la guay montaña",atendees,aux2,new Date(14318),"Montañismo mágico y especial",null,300,"montaña");
+		Happening h1=new Happening("Playa el viernes",atendees,aux,new Date(),"Día de sol y cervezas en las mejores playas españolas.",jaime,0,"playa");
 		ELService.save(h1);
-		ELService.save(h2);
+		h1=new Happening("A la guay montaña",atendees,aux2,new Date(14318),"Montañismo mágico y especial",null,300,"montaña");
+		ELService.save(h1);
+		h1=new Happening("Copas??",atendees,aux2,new Date(14318),"Y lo que surja",null,300,"fiesta");
+		ELService.save(h1);
+		h1=new Happening("Visitamos el museo",atendees,aux2,new Date(14318),"Nobody expects the spanish inquisition",null,300,"cultural");
+		ELService.save(h1);
+		h1=new Happening("Dia de piscina",atendees,aux2,new Date(14318),"Traed cremita",null,300,"deportes");
+		ELService.save(h1);
 	}
 }
