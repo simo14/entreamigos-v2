@@ -63,7 +63,8 @@ function autoreload(){
 		getActor: getActor,
 		beFriends : beFriends,
 		newPersona : newPersona,
-		newOrg : newOrg
+		newOrg : newOrg,
+		updatePersona : updatePersona
 	}
 	
 
@@ -111,7 +112,12 @@ function autoreload(){
 		new PeopleSearch.newOrganization(newOrg, function(post) {
 			actors.push(post);
 		});
-
+	}
+	
+	function updatePersona(persona) {
+		new PeopleResource.update(persona, function(post) {
+			actors.push(post);
+		});
 	}
 	
  /*   

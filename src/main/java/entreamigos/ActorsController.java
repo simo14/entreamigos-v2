@@ -48,6 +48,19 @@ public class ActorsController {
 		return actorService.findOne(id);
 	}
 	
+	@RequestMapping(method = RequestMethod.PUT)
+	public ResponseEntity<Person> updatePersona(HttpSession session,@RequestBody Person newPerson) {
+		String prueba = session.getAttribute("userId")+"0";
+		Long idpersona = (Long.parseLong(prueba, 10))/10;	
+		Person antigua = (Person) actorService.findOne(idpersona);
+		antigua.setName(newPerson.getName());
+		antigua.setBio(newPerson.getBio());
+		antigua.setDefaultLocation(newPerson.getDefaultLocation());
+		antigua.setMood(newPerson.getMood());
+		actorService.save(antigua);
+		return new ResponseEntity<>(antigua,HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Long> deleteActor(@PathVariable long id) {
 		actorService.delete(id);
@@ -77,7 +90,6 @@ public class ActorsController {
 		
 		String prueba = session.getAttribute("userId")+"0";
 		Long idpersona = (Long.parseLong(prueba, 10))/10;
-		System.out.println(idpersona);
 		
 		Person aux = (Person) actorService.findOne(idpersona);
 		Person amigo = (Person)actorService.findOne(idPerson);
