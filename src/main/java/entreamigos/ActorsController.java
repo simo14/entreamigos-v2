@@ -58,7 +58,6 @@ public class ActorsController {
 	public void login(HttpSession session,@PathVariable long id){
 		session.setAttribute("id",id);
 		session.setAttribute("isLogged", true);
-		System.out.println("ha colado");
 	}
 	
 //FRIENDSSSSSSS

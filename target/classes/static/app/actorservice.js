@@ -68,18 +68,14 @@ function autoreload(){
 	}
 	
 	function search (param) {
-		PeopleSearch.search ({myParam : param}, function(data){
-			that.actors = data;
-		});
+		that.actors = PeopleSearch.search ({myParam : param});
 		console.log(that.actors);
 		return that.actors;
 
 	}
 	
 	function searchLocation (param) {
-		PeopleSearch.searchByLocation ({myParam : param}, function(data){
-			that.actors = data;
-		});
+		that.actors = PeopleSearch.searchByLocation ({myParam : param});
 		return that.actors;
 	}
   

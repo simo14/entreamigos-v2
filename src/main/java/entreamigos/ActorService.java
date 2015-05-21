@@ -39,7 +39,7 @@ public class ActorService {
 	}
 	
 	public Iterable<Actor> findByName(String name){
-		return aRep.findByName(name);
+		return aRep.findByNameContains(name);
 	}
 	
 	public Iterable<Actor> findByRating(Rating rating){

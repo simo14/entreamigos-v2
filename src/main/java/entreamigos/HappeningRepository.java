@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface HappeningRepository extends CrudRepository <Happening, Long> {
 	
 	//LET JPA MAKE HIS MAGIC *_*_*_*_*
-	public Iterable<Happening> findByLocationNeighborhood	(String neighborhood);
+	public Iterable<Happening> findByLocationNeighborhoodContains	(String neighborhood);
 	
 	public Iterable<Happening> findByDate		(Date date);
 	

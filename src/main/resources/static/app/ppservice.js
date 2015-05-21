@@ -66,18 +66,14 @@ function autoreload(){
 	}
 	
 
-//la buena:
+//OJO!!!! antes asignábamos that.events en la función éxito de la query search, pero eso devolvía con el return un array antes de rellenarlo. El truco de $resource es hacerlos como están ahora, asignando una variable y devolviendo esa variable
 	function search (param) {
-		EventSearch.search ({myParam : param}, function(data){
-			that.events = data;
-		});
+		that.events = EventSearch.search ({myParam : param});
 		return that.events;
 	}
 	
 	function searchCategory (param) {
-		EventSearch.searchByCategory ({myParam : param}, function(data){
-			that.events = data;
-		});
+		that.events = EventSearch.searchByCategory ({myParam : param});
 		return that.events;
 	}
   

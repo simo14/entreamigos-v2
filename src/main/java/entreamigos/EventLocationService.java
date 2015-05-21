@@ -56,7 +56,7 @@ public class EventLocationService {
 	}
 	
 	public Iterable<Happening> findByLocation	(String location){
-		return hRep.findByLocationNeighborhood(location);
+		return hRep.findByLocationNeighborhoodContains(location);
 	}
 	
 	public Iterable<Happening> findByDate	(Date date){

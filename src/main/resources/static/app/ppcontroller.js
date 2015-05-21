@@ -20,7 +20,7 @@ function ppcontroller(ppservice) {
 	};
     
     vm.search = function (param) {
-    		vm.events = ppservice.search(param);
+    	vm.events = ppservice.search(param);
     }
     
     vm.searchCategory = function (param) {

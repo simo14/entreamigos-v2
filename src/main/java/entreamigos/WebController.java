@@ -89,15 +89,16 @@ public class WebController implements CommandLineRunner {
 	
 	@Override
 	public void run(String... arg0) throws Exception {
-		Location aux=new Location("Madrid","","",null);
+//NOMBRES SIEMPRE EN MINUSCULA TODOS
+		Location aux=new Location("madrid","","",null);
 		ELService.save(aux);
-		Location aux2=new Location("Madrid","JAJAJA","",null);
+		Location aux2=new Location("madrid","JAJAJA","",null);
 		ELService.save(aux2);
-		Person jaime=new Person("Jaime","Soy una taza",1, null,null,null,aux2);
+		Person jaime=new Person("jaime","Soy una taza",1, null,null,null,aux2);
 		actorService.save(jaime);
 		ArrayList<Person> a=new ArrayList<Person>();
 		a.add(jaime);
-		Person marta=new Person("Marta","Una tetera",2, null,null,a,aux);
+		Person marta=new Person("marta","Una tetera",2, null,null,a,aux);
 		actorService.save(marta);
 		ArrayList<Person> b=new ArrayList<Person>();
 		b.add(marta);
