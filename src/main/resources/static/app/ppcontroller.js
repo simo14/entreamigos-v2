@@ -1,15 +1,14 @@
 "use strict";
 angular.module("webapp").controller("ppcontroller", ppcontroller);
-ppcontroller.$inject = [ "ppservice","$location","$routeParams" ];
+ppcontroller.$inject = [ "ppservice","$location" ];
 
-function ppcontroller(ppservice,$location,$routeParams) {
+function ppcontroller(ppservice) {
 	var vm = this;
     
     //View model properties
     
     vm.events = [];
     vm.newEvent = {};
-    vm.event = {}
     vm.searchparam="";
     
     //Controller logic
@@ -17,7 +16,6 @@ function ppcontroller(ppservice,$location,$routeParams) {
    
     //Controller actions
     vm.viewEvent = function(event) {
- 
 		$location.path("/event");
 	};
     
@@ -28,8 +26,6 @@ function ppcontroller(ppservice,$location,$routeParams) {
     vm.searchCategory = function (param) {
     	vm.events = ppservice.searchCategory(param);
     }
-    vm.event = {}
-    vm.event = ppservice.getEvent(2)
 	/*
 	  vm.search = ppservice.search({
     	   query: vm.searchparam  
