@@ -71,6 +71,7 @@ public class ActorsController {
 	
 	@RequestMapping(value="/friends", method = RequestMethod.POST)		//sin probar porq postman es tonto
 	public ResponseEntity<Person> addFriend (@RequestBody Person person, HttpSession session) {
+		session.setAttribute("userId", 2);
 		Person aux = (Person) actorService.findOne(Long.parseLong((String)session.getAttribute("userId")));
 		aux.getFriends().add(person);
 		actorService.save(aux);

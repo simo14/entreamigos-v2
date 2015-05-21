@@ -23,8 +23,7 @@ function ppservice($resource, $timeout) {
 		                action:"search",
 		            	query: '@query'
 		            }
-			}
-			,
+			},
 			 'searchByCategory': {
 					method: 'GET',
 					isArray: true,

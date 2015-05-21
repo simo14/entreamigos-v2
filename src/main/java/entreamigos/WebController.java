@@ -120,7 +120,7 @@ public class WebController implements CommandLineRunner {
 		ArrayList<Person> b=new ArrayList<Person>();
 		b.add(marta);
 		jaime.setFriends(b);
-		Person raul=new Person("raul","Una cuchara",4, null,null,b,aux);
+		Person raul=new Person("raul","Una cuchara",4, null,null,a,aux);
 		actorService.save(raul);
 		Rating r = new Rating(3);
 		ratingRep.save(r);

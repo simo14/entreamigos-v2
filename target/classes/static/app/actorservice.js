@@ -19,20 +19,23 @@ function actorservice($resource, $timeout) {
 		                action:"search",
 		            	query: '@query'
 		            }
-			}
 			},
-			{ searchByLocation: {
+			searchByLocation: {
 					method: 'GET',
 					isArray: true,
 					params: {
 						action:"filter",
 						query: '@query'
 					}
-			}}
-	);
-	
-	var FriendsResource = $resource('/friends/:id',
-			{ id : '@id'}
+			},
+			beFriends: {
+					method: 'POST',
+					params: {
+						action:"friends"
+					}
+			}
+			}
+			
 	);
 
 
@@ -48,7 +51,8 @@ function autoreload(){
 		getActors : getActors,
 		search : search,
 		searchLocation : searchLocation,
-		getActor: getActor
+		getActor: getActor,
+		beFriends : beFriends
 	}
 	
 
@@ -84,8 +88,11 @@ function autoreload(){
 	}
   
 	function beFriends (param) {
-		var nuevo = getActor(param);
-		nuevo.FriendsResource.$save();		//data saved. nuevo is sent as the post body.
+		var nuevo = getActor(param,{function(){
+			nuevo.PeopleSearch.save();	}	//data saved. nuevo is sent as the post body.
+		});
+		//nuevo.PeopleSearch.save();
+		console.log("pasamos por aqui" +param);
 	}
 	
  /*   

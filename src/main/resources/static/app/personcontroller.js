@@ -18,7 +18,7 @@ function personcontroller(actorservice, $routeParams) {
 
 	//Controller actions
 	vm.beFriends = function () {
-		actorService.beFriends($routeParams.id);
+		actorservice.beFriends($routeParams.id);
 		alert("¡Añadido!");
 	}
 };
