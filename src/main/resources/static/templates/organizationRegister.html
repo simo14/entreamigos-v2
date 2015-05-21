@@ -1,26 +1,26 @@
-<div ng-controller="DemoCtrl" layout="column" class="inputdemoBasicUsage" ng-app="MyApp">
+<div ng-controller="registercontroller" layout="column" class="inputdemoBasicUsage" ng-app="MyApp">
   <md-content flex md-theme="docs-dark" layout="column" layout-align="center center">
   String name, String bio, int mood, List<Happening> happenings,
 			Rating rating, List<Person> friends, Person head, String principles, List<Person> crew, Location defaultLocation
     <md-input-container>
       <label>Usuario / Nombre</label>
-      <input ng-model="newOrg.name">
+      <input ng-model="vm.newOrg.name">
     </md-input-container>
     <md-input-container>
       <label>Barrio</label>
-      <input ng-model="newOrg.defaultLocation.neighborhood">
+      <input ng-model="vm.newOrg.defaultLocation.neighborhood">
     </md-input-container>
     <md-input-container>
-      <label>Contraseña</label>
+      <label>Contraseï¿½a</label>
       <input type="password">
     </md-input-container>
     <md-input-container>
       <label>Bio</label>
-      <textarea ng-model="newOrg.bio" columns="1" md-maxlength="150"></textarea>
+      <textarea ng-model="vm.newOrg.bio" columns="1" md-maxlength="150"></textarea>
     </md-input-container>
     <md-input-container>
       <label>Principles</label>
-      <textarea ng-model="newOrg.principles" columns="1" md-maxlength="150"></textarea>
+      <textarea ng-model="vm.newOrg.principles" columns="1" md-maxlength="150"></textarea>
     </md-input-container>
     <md-button class="md-raised">Guardar</md-button>
   </md-content>
