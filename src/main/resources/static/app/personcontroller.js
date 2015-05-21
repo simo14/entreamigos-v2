@@ -9,6 +9,7 @@ function personcontroller(actorservice, $routeParams) {
 	//View model properties
 	
 	vm.actor = {};
+	vm.friends = [];
 	vm.sessionId = 0;
 		
 	//Controller logic
@@ -21,4 +22,7 @@ function personcontroller(actorservice, $routeParams) {
 		actorservice.beFriends($routeParams.id);
 		alert("¡Añadido!");
 	}
+	vm.friends = function (param) {
+		vm.actors = actorservice.friends(param);
+    }
 };

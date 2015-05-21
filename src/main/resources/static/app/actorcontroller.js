@@ -8,6 +8,7 @@ function actorcontroller(actorservice) {
     //View model properties
     
     vm.actors = [];
+    vm.friends =[];
     vm.newActor = {};
     
     //Controller logic
@@ -20,5 +21,9 @@ function actorcontroller(actorservice) {
 	
     vm.search = function (param) {
 		vm.actors = actorservice.search(param);
+    }
+    
+    vm.friends = function (param) {
+		vm.actors = actorservice.friends(param);
     }
 }
