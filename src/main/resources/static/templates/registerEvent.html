@@ -3,7 +3,7 @@
 		  <md-content flex md-theme="docs-dark" layout="column" layout-align="center center">
 		  <form ng-submit="vm.addEvent(vm.evento)">
 		    <md-input-container>
-		      <label>Usuario / Nombre</label>
+		      <label>Titulo</label>
 		      <input ng-model="vm.evento.title">
 		    </md-input-container>
 		    <md-input-container>
@@ -11,11 +11,7 @@
 		      <input ng-model="vm.evento.defaultLocation.neighborhood">
 		    </md-input-container>
 		    <md-input-container>
-		      <label>Contrase�a</label>
-		      <input type="password">
-		    </md-input-container>
-		    <md-input-container>
-		      <label>Bio</label>
+		      <label>Descripcion</label>
 		      <textarea ng-model="vm.evento.descripcion" columns="1" md-maxlength="150"></textarea>
 		    </md-input-container>
 		      	<md-select placeholder="Categoria" ng-model="vm.evento.categoria">

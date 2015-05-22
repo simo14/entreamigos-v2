@@ -11,6 +11,7 @@ function ppcontroller(ppservice,$location,$routeParams) {
     vm.newEvent = {};
     vm.event = {}
     vm.searchparam="";
+    vm.evento = {}
     
     //Controller logic
     vm.events = ppservice.getEvents();
@@ -29,6 +30,21 @@ function ppcontroller(ppservice,$location,$routeParams) {
     vm.searchCategory = function (param) {
     	vm.events = ppservice.searchCategory(param);
     }
+    
+    vm.addEvent = function(evt) {
+		
+		ppservice.newPersona(evt);
+		
+		vm.evento= {};
+		
+		$location.path("/gente");
+	};
+	function newEvent(newEvt) {
+		new EventResource(newEvt).$save(function(post) {
+			event.push(post);
+			reload();
+		});
+	}
 	/*
 	  vm.search = ppservice.search({
     	   query: vm.searchparam  
