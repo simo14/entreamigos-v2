@@ -9,6 +9,7 @@
 				</div>
 		      </div>
 		      <div id="containerPersonaBio">{{vm.actor.bio}}</div>
+<<<<<<< HEAD
 		    <div ng-controller="actorcontroller as wm">
 		    	<div ng-repeat="actor in wm.friends" layout="column" layout-align="center center" class="PersonChip">
 		            <a href="/#/people/{{actor.id}}" class="link"> 
@@ -25,6 +26,26 @@
 		            </a>
     			</div>
 		     </div>
+=======
+		    <div>
+		    <h2 class="containerEventData">Amigos:</h2>
+		      <div ng-repeat="event in vm.person.friends" layout="column" layout-align="center center" class="PersonChip inEvent">
+			            	<a href="/#/people/{{actor.id}}" class="link"> 
+		
+				                <div layout="row" layout-align="center center">
+				                	<div><img src="/../img/mood/{{event.mood}}.png"  id="eventPersona" class="md-avatar avatarPersona" alt="{actor.mood}"> </img></div>
+				                </div>
+				                <div class="md-list-item-text contenidoPersonChip" layout="row" layout-align="center center" >
+				                    <div>
+				                  		<p class="eventPersonChip">{{actor.name | uppercase}}</p>
+				                  		<p class="eventPersonChip">{{actor.defaultLocation.neighborhood | uppercase}}</p>
+				                    </div>
+		
+				            	</div>
+			            	</a>
+		    	</div>
+		      </div>
+>>>>>>> origin/master
 		  </md-whiteframe>
 	</div>
 </div>

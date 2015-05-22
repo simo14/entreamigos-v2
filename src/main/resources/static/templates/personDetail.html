@@ -14,9 +14,9 @@
 		            <a href="/#/people/{{actor.id}}" class="link"> 
 	
 			                <div layout="row" layout-align="center center">
-			                	<div><img src="/../img/mood/{{actor.mood}}.png"  id="avatarPersona" class="md-avatar avatarPersona" alt="{actor.mood}"> </img></div>
+			                	<div><img src="/../img/mood/{{actor.mood}}.png"  id="avatarPersona" class="md-avatar avatarPersona" alt="{{actor.mood}}"> </img></div>
 			                </div>
-			                <div class="md-list-item-text contenidoPersonChip" layout="row" layout-align="center center" >
+			                <div class="md-list-item-text contenidoPersonChip" layout="row" layout-align="center" >
 			                    <div>
 			                  		<p class="nombrePersonChip">{{actor.name | uppercase}}</p>
 			                  		<p class="barrioPersonChip">{{actor.defaultLocation.neighborhood | uppercase}}</p>
@@ -25,6 +25,24 @@
 		            </a>
     			</div>
 		     </div>
+		    <div>
+		    <h2 class="containerEventData">Amigos:</h2>
+		      <div ng-repeat="event in vm.person.friends" layout="column" layout-align="center center" class="PersonChip inEvent">
+			            	<a href="/#/people/{{actor.id}}" class="link"> 
+		
+				                <div layout="row" layout-align="center center">
+				                	<div><img src="/../img/mood/{{event.mood}}.png"  id="eventPersona" class="md-avatar avatarPersona" alt="{actor.mood}"> </img></div>
+				                </div>
+				                <div class="md-list-item-text contenidoPersonChip" layout="row" layout-align="center center" >
+				                    <div>
+				                  		<p class="eventPersonChip">{{actor.name | uppercase}}</p>
+				                  		<p class="eventPersonChip">{{actor.defaultLocation.neighborhood | uppercase}}</p>
+				                    </div>
+		
+				            	</div>
+			            	</a>
+		    	</div>
+		      </div>
 		  </md-whiteframe>
 	</div>
 </div>
