@@ -48,13 +48,6 @@ public class ActorsController {
 		return actorService.findOne(id);
 	}
 	
-	@RequestMapping (value="/isLogged", method = RequestMethod.GET)
-	public boolean isLogged(HttpSession session){
-		if(session.getAttribute("isLogged")!=null){
-			return (boolean) session.getAttribute("isLogged");
-		}else return false;
-	}
-	
 	@RequestMapping(method = RequestMethod.PUT)
 	public ResponseEntity<Person> updatePersona(HttpSession session,@RequestBody Person newPerson) {
 		String prueba = session.getAttribute("userId")+"0";

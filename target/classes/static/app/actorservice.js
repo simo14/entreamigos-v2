@@ -21,12 +21,6 @@ function actorservice($resource, $timeout) {
 		            	query: '@query'
 		            }
 			},
-			isLogged : {
-				method : "GET",
-				params : {
-					action:"isLogged"
-				}
-			},
 			searchByLocation: {
 					method: 'GET',
 					isArray: true,
@@ -73,7 +67,6 @@ function autoreload(){
 		newPersona : newPersona,
 		newOrg : newOrg,
 		updatePersona : updatePersona,
-		isLogg : isLogg,
 		findFriends : findFriends
 	}
 	
@@ -131,14 +124,6 @@ function autoreload(){
 		new PeopleResource.update(persona, function() {
 			reload();
 		});
-	}
-	
-	function isLogg(){
-		var logg = PeopleSearch.isLogged(function(){
-			return loog;
-		});
-		console.log(logg);
-		return logg;
 	}
 	
 	function findFriends(){

@@ -7,19 +7,6 @@ function registercontroller (actorservice,$location,$routeParams){
 	vm.persona = {};
 	vm.upersona = {};
 	vm.newOrg = {};
-	vm.logged = {};
-	
-	var pene = actorservice.isLogged();
-				vm.logged = pene;
-				vm.modifyPerson = function(upersona){
-					console.log("h");
-					vm.logged = actorservice.updatePersona(upersona);
-					vm.upersona = {};
-					$location.path("/");
-				}
-				
-				console.log("reputa"+vm.logged);
-	
 	
 	vm.addPersona = function(persona) {
 		
