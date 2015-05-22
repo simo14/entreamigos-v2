@@ -33,18 +33,12 @@ function ppcontroller(ppservice,$location,$routeParams) {
     
     vm.addEvent = function(evt) {
 		
-		ppservice.newPersona(evt);
+		ppservice.newEvent(evt);
 		
-		vm.evento= {};
+		vm.newEvent= {};
 		
-		$location.path("/gente");
+		$location.path("/");
 	};
-	function newEvent(newEvt) {
-		new EventResource(newEvt).$save(function(post) {
-			event.push(post);
-			reload();
-		});
-	}
 	
 	vm.join = function () {
 		vm.sessionId = ppservice.join($routeParams.id);

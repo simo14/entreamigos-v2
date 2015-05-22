@@ -39,6 +39,7 @@ public class WebController implements CommandLineRunner {
 	public ResponseEntity<Happening> addHappening(@RequestBody Happening happening) {
 		/*happening.setId(0);
 		Happening newHappening = ELService.save(happening);*/
+		ELService.save(happening.getLocation());
 		ELService.save(happening);
 		return new ResponseEntity<>(happening,HttpStatus.CREATED);
 	}

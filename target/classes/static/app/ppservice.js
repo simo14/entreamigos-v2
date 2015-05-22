@@ -47,7 +47,8 @@ function autoreload(){
 		getEvent:getEvent,
 		join : join,
 		search : search,
-		searchCategory : searchCategory
+		searchCategory : searchCategory,
+		newEvent : newEvent
 	}
 
 	function reload(){
@@ -84,6 +85,12 @@ function autoreload(){
 		that.events = EventSearch.searchByCategory ({myParam : param});
 		return that.events;
 	}
+	
+	function newEvent (param) {		
+		new EventResource(param).$save(function(event) {
+			that.events.push(event);
+		});
+	}
 
   
  /*   
@@ -93,11 +100,7 @@ function autoreload(){
 		return this.events;
 	}
     
-	this.newEvent = function(newEvent) {		
-		new EventResource(newEvent).$save(function(event) {
-			that.Events.push(event);
-		});
-	}
+
     
 	this.updateEvent = function(updatedEvent) {
 		updatedPost.$update();
