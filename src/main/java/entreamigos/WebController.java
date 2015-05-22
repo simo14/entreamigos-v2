@@ -31,7 +31,7 @@ public class WebController implements CommandLineRunner {
 //------------------------------------------------	
 
 	@RequestMapping(method = RequestMethod.GET)
-	public Iterable<Happening> pp(){
+	public Iterable<Happening> pp(HttpSession session){
 		return ELService.findAllHappeningsByDate();
 	}
 	

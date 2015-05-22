@@ -13,6 +13,7 @@ function actorcontroller(actorservice) {
     
     //Controller logic
     vm.actors = actorservice.getActors();
+	vm.friends = actorservice.findFriends();
    
     //Controller actions
     vm.viewEvent = function(event) {
@@ -23,7 +24,4 @@ function actorcontroller(actorservice) {
 		vm.actors = actorservice.search(param);
     }
     
-    vm.friends = function (param) {
-		vm.actors = actorservice.friends(param);
-    }
 }

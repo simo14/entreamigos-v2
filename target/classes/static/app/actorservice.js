@@ -41,9 +41,10 @@ function actorservice($resource, $timeout) {
 						action:"friends"
 					}
 			},
-			findFriends: {
+			getFriends: {
 					method:'GET',
-					params:{action:"myfriends"}
+					isArray: true,
+					params : {action:"friends"}
 			},
 			newOrganization: {
 				method: 'POST',
@@ -72,7 +73,8 @@ function autoreload(){
 		newPersona : newPersona,
 		newOrg : newOrg,
 		updatePersona : updatePersona,
-		isLogged : isLogged
+		isLogg : isLogg,
+		findFriends : findFriends
 	}
 	
 
@@ -131,10 +133,19 @@ function autoreload(){
 		});
 	}
 	
-	function isLogged(){
-		var logg = PeopleSearch.isLogged();
+	function isLogg(){
+		var logg = PeopleSearch.isLogged(function(){
+			return loog;
+		});
 		console.log(logg);
 		return logg;
+	}
+	
+	function findFriends(){
+		that.friends = PeopleSearch.getFriends(function(){
+			return that.friends
+		});
+		return that.friends;
 	}
 	
  /*   

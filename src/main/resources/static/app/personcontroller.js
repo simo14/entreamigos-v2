@@ -23,6 +23,6 @@ function personcontroller(actorservice, $routeParams) {
 		alert("¡Añadido!");
 	}
 	vm.friends = function (param) {
-		vm.actors = actorservice.friends(param);
+		vm.actors = actorservice.findFriends(param);
     }
 };

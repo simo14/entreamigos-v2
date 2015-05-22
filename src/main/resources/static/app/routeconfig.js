@@ -12,4 +12,5 @@ function RouteConfig($routeProvider) {
 	$routeProvider.when('/registerPerson', {templateUrl : "templates/register.html"});
 	$routeProvider.when('/registerOrganization', {templateUrl: "templates/organizationRegister.html"});
 	$routeProvider.when('/myAccount', {templateUrl: "templates/myaccount.html"});
+	$routeProvider.when('/amigos', { templateUrl : "templates/friendsList.html"});
 }
