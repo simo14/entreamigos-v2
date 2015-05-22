@@ -45,6 +45,16 @@ function ppcontroller(ppservice,$location,$routeParams) {
 			reload();
 		});
 	}
+	
+	vm.join = function () {
+		vm.sessionId = ppservice.join($routeParams.id);
+		if(vm.sessionId!==0){
+			alert("¡Te has inscrito con éxito!");
+		}else {
+			alert("Por favor, inicia sesión antes de inscribirte.");
+		}
+	}
+	
 	/*
 	  vm.search = ppservice.search({
     	   query: vm.searchparam  
