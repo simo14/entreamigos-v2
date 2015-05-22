@@ -13,7 +13,7 @@
 		    </div>
 		        <div layout="column" flex="50" class="containerEventData">
 		          			<h2> Precio: {{vm.event.prize}}</h2>
-		          <p> Organizador <a href="/#/people/name/{{vm.event.organizer}}">{{vm.event.organizer.name | uppercase}}</a></p>
+		          <p> Organizador <a href="/#/people/{{vm.event.organizer.id}}">{{vm.event.organizer.name | uppercase}}</a></p>
 				    </div>
 		      </div>
 		      <div id="containerEventoDescripcion">{{vm.event.description}}</div>

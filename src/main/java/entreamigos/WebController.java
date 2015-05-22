@@ -36,9 +36,15 @@ public class WebController implements CommandLineRunner {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Happening> addHappening(@RequestBody Happening happening) {
+	public ResponseEntity<Happening> addHappening(HttpSession session, @RequestBody Happening happening) {
 		/*happening.setId(0);
 		Happening newHappening = ELService.save(happening);*/
+		String prueba = session.getAttribute("userId")+"0";
+		Long idpersona = (Long.parseLong(prueba, 10))/10;	
+		Actor p = actorService.findOne(idpersona);
+		if(p!=null){
+			happening.setOrganizer(p);
+		}
 		ELService.save(happening.getLocation());
 		ELService.save(happening);
 		return new ResponseEntity<>(happening,HttpStatus.CREATED);

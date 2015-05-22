@@ -36,7 +36,7 @@ function ppservice($resource, $timeout) {
 
 function autoreload(){
     reload();
-    $timeout(autoreload, 500000);
+    $timeout(autoreload, 5000);
 }
 	
 	autoreload();
@@ -87,8 +87,9 @@ function autoreload(){
 	}
 	
 	function newEvent (param) {		
-		new EventResource(param).$save(function(event) {
-			that.events.push(event);
+		new EventResource(param).$save(function(post) {
+			that.events.push(post);
+			reload();
 		});
 	}
 
