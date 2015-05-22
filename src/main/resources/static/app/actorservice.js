@@ -5,9 +5,10 @@ actorservice.$inject = [ "$resource", "$timeout" ];
 function actorservice($resource, $timeout) {
 	var that = this;
 	var actors = [];                          
-	var PeopleResource = $resource('/people/:id',
+	var PeopleResource = $resource('/people/:id/:action',
 			{ id : '@id' },
-			{ update : { method : "PUT" }}
+			{ 	update : { method : "PUT" },
+			}
 		);
 	
 	var PeopleSearch = $resource('people/:action/:myParam',
@@ -19,6 +20,12 @@ function actorservice($resource, $timeout) {
 		                action:"search",
 		            	query: '@query'
 		            }
+			},
+			isLogged : {
+				method : "GET",
+				params : {
+					action:"isLogged"
+				}
 			},
 			searchByLocation: {
 					method: 'GET',
@@ -64,7 +71,8 @@ function autoreload(){
 		beFriends : beFriends,
 		newPersona : newPersona,
 		newOrg : newOrg,
-		updatePersona : updatePersona
+		updatePersona : updatePersona,
+		isLogged : isLogged
 	}
 	
 
@@ -118,11 +126,15 @@ function autoreload(){
 	}
 	
 	function updatePersona(persona) {
-		new PeopleResource.update(persona, function(logueado) {
-			return logueado;
+		new PeopleResource.update(persona, function() {
 			reload();
 		});
-		return logueado;
+	}
+	
+	function isLogged(){
+		var logg = PeopleSearch.isLogged();
+		console.log(logg);
+		return logg;
 	}
 	
  /*   

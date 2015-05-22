@@ -48,8 +48,15 @@ public class ActorsController {
 		return actorService.findOne(id);
 	}
 	
+	@RequestMapping (value="/isLogged", method = RequestMethod.GET)
+	public boolean isLogged(HttpSession session){
+		if(session.getAttribute("isLogged")!=null){
+			return (boolean) session.getAttribute("isLogged");
+		}else return false;
+	}
+	
 	@RequestMapping(method = RequestMethod.PUT)
-	public boolean updatePersona(HttpSession session,@RequestBody Person newPerson) {
+	public ResponseEntity<Person> updatePersona(HttpSession session,@RequestBody Person newPerson) {
 		String prueba = session.getAttribute("userId")+"0";
 		Long idpersona = (Long.parseLong(prueba, 10))/10;	
 		Person antigua = (Person) actorService.findOne(idpersona);
@@ -57,7 +64,7 @@ public class ActorsController {
 		antigua.setDefaultLocation(newPerson.getDefaultLocation());
 		antigua.setMood(newPerson.getMood());
 		actorService.save(antigua);
-		return (boolean) session.getAttribute("isLogged");
+		return new ResponseEntity<>(antigua,HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

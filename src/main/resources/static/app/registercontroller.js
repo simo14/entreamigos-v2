@@ -1,12 +1,24 @@
 angular.module("webapp").controller("registercontroller", registercontroller)
 
-registercontroller.$inject = ["actorservice","$location"];
+registercontroller.$inject = ["actorservice","$location","$routeParams"];
 
-function registercontroller (actorservice,$location){
+function registercontroller (actorservice,$location,$routeParams){
 	var vm = this;
 	vm.persona = {};
 	vm.upersona = {};
 	vm.newOrg = {};
+	vm.logged = {};
+	
+	var pene = actorservice.isLogged();
+				vm.logged = pene;
+				vm.modifyPerson = function(upersona){
+					console.log("h");
+					vm.logged = actorservice.updatePersona(upersona);
+					vm.upersona = {};
+					$location.path("/");
+				}
+				
+				console.log("reputa"+vm.logged);
 	
 	
 	vm.addPersona = function(persona) {
@@ -17,13 +29,6 @@ function registercontroller (actorservice,$location){
 		
 		$location.path("/gente");
 	};
-	
-	vm.modifyPerson = function(upersona){
-		console.log("h");
-		actorservice.updatePersona(upersona);
-		vm.upersona = {};
-		$location.path("/");
-	}
 	
 	vm.addOrg = function(org) {
 		
