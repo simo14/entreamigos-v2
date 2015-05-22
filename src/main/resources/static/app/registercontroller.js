@@ -25,4 +25,10 @@ function registercontroller (actorservice,$location,$routeParams){
 		
 		$location.path("/");
 	};
+	
+	vm.modifyPerson = function(){
+		actorservice.updatePersona(vm.upersona);
+		vm.upersona = {};
+		$location.path("/");
+	};
 }
