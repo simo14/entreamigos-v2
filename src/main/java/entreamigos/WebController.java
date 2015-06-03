@@ -137,22 +137,22 @@ public class WebController implements CommandLineRunner {
 		
 		Location aux3=new Location("valencia","","",null);
 		ELService.save(aux);
-		Person uhu=new Person("Paola","Livin la vida loca",2, null,null,null,aux3);
+		Person uhu=new Person("paola","Livin la vida loca",2, null,null,null,aux3);
 		actorService.save(uhu);
 		
 		aux3=new Location("valencia","","",null);
 		ELService.save(aux);
-		uhu=new Person("Brian","Romani Ite Domun",4, null,null,null,aux3);
+		uhu=new Person("brian","Romani Ite Domun",4, null,null,null,aux3);
 		actorService.save(uhu);
 		
 		aux3=new Location("valencia","","",null);
 		ELService.save(aux);
-		uhu=new Person("Pedro","Picapiedra",2, null,null,null,aux3);
+		uhu=new Person("pedro","Picapiedra",2, null,null,null,aux3);
 		actorService.save(uhu);
 		
 		aux3=new Location("valencia","","",null);
 		ELService.save(aux);
-		uhu=new Person("Fodo","Me gusta andar y las cosas brillantes",2, null,null,null,aux3);
+		uhu=new Person("fodo","Me gusta andar y las cosas brillantes",2, null,null,null,aux3);
 		actorService.save(uhu);
 		
 		aux3=new Location("logroño","","",null);
