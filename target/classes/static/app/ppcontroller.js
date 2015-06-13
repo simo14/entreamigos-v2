@@ -11,7 +11,6 @@ function ppcontroller(ppservice,$location,$routeParams) {
     vm.newEvent = {};
     vm.event = {}
     vm.searchparam="";
-    vm.evento = {}
     
     //Controller logic
     vm.events = ppservice.getEvents();
