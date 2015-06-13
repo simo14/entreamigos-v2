@@ -1,0 +1,11 @@
+Session en angular:
+http://brewhouse.io/blog/2014/12/09/authentication-made-simple-in-single-page-angularjs-applications.html
+http://blog.brunoscopelliti.com/deal-with-users-authentication-in-an-angularjs-web-app/
+https://medium.com/opinionated-angularjs/techniques-for-authentication-in-angularjs-applications-7bbf0346acec
+
+
+
+Utilizamos un servicio para guardar la sesión porque son singletons y porque en él podremos almacenar la info cuando se loguee which is nice.
+
+La implementación de una contraseña en credenciales sirve para en un futuro poder crear un mecanismo sólido de identificación, ya que el mecanismo estará implementado como tal en angular y sólo se necesitará adaptar el servidor para crear y mantener un campo encriptado de contraseña de actor.
+Se asume que el nombre del actor es su usuario único.

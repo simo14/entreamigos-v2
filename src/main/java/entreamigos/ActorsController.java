@@ -22,6 +22,8 @@ public class ActorsController {
 	@Autowired
 	private RatingService ratingService;
 	
+	private String PASS = "1234";
+	
 //------------------------------------------------
 	
 	@RequestMapping(method = RequestMethod.GET)
@@ -66,12 +68,21 @@ public class ActorsController {
 		return new ResponseEntity<>(id,HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/login/{name}", method = RequestMethod.GET)
-	public void login(HttpSession session,@PathVariable String name){
-		ArrayList<Actor> a = (ArrayList<Actor>)actorService.findByName(name);
-		Actor b = a.get(0);
-		session.setAttribute("userId",b.getId());
-		session.setAttribute("isLogged", true);
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public Actor login(HttpSession session, @RequestBody String[] cred){
+		if(cred[2] == this.PASS){				
+			ArrayList<Actor> a = (ArrayList<Actor>)actorService.findByName(cred[1]);
+			Actor b = a.get(0);
+			session.setAttribute("userId",b.getId());
+			session.setAttribute("isLogged", true);
+			System.out.println("yeeeeh" + b.getName());
+			return b;
+		}
+		else{
+			session.setAttribute("userId", null);
+			session.setAttribute("isLogged", false);
+			return null;
+		}
 	}
 	
 //FRIENDSSSSSSS
