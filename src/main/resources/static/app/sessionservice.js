@@ -5,8 +5,8 @@ sessionservice.$inject = [ "$resource" ];
 function sessionservice($resource) {
 	var that = this;
 	
-	var PeopleResource = $resource('/people/login',
-			{ loginRequest : { method : "POST" }}
+	var PeopleResource = $resource('/people/login'//,
+			//{ loginRequest : { method : "POST" }}
 		);
 	
 	var sdo = {
@@ -14,13 +14,10 @@ function sessionservice($resource) {
 	    username: ''
 	 };
 	
-	return {
-		login : login,
-	}
-	
 	function login (credentials){
-		var user = PeopleResource.loginRequest(credentials)
-			 $promise.then(
+		//var user = new PeopleResource(credentials).loginRequest
+		var user = new PeopleResource(credentials).$save()
+			 .$promise.then(
 		        //success
 		        function( value ){
 		        	that.sdo.username = value.name;
@@ -33,5 +30,8 @@ function sessionservice($resource) {
 		return user;
 	};
 	
-  return sdo;
+  return {
+	  sdo : sdo,
+	  login : login
+  }
 };

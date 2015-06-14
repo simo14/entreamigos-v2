@@ -1,7 +1,7 @@
 angular.module("webapp").controller("logincontroller", logincontroller);
 logincontroller.$inject = ["$location","$resource","sessionservice"];
 
-function logincontroller($resource,$location,session) {
+function logincontroller($resource,$location,sessionservice) {
 	var vm = this;
 		
 	vm.credentials = {
