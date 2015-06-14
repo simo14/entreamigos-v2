@@ -69,9 +69,9 @@ public class ActorsController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public Actor login(HttpSession session, @RequestBody String[] cred){
-		if(cred[2] == this.PASS){				
-			ArrayList<Actor> a = (ArrayList<Actor>)actorService.findByName(cred[1]);
+	public Actor login(HttpSession session, @RequestBody Credentials cred){
+		if(cred.getPassword().equals(this.PASS)){				
+			ArrayList<Actor> a = (ArrayList<Actor>)actorService.findByName(cred.getUsername());
 			Actor b = a.get(0);
 			session.setAttribute("userId",b.getId());
 			session.setAttribute("isLogged", true);
@@ -81,6 +81,7 @@ public class ActorsController {
 		else{
 			session.setAttribute("userId", null);
 			session.setAttribute("isLogged", false);
+			System.out.println("pe");
 			return null;
 		}
 	}

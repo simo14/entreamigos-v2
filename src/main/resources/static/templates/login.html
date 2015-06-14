@@ -2,11 +2,11 @@
   <md-content flex layout="column" layout-align="center center">
 	    <md-input-container>
 	      <label>Usuario</label>
-	      <input type="text" ng-model="credentials.username" required />
+	      <input type="text" ng-model="vm.credentials.username" required />
 	    </md-input-container>
 	    <md-input-container>
 	      <label>Contraseña</label>
-	      <input type="password" ng-model="credentials.password" required />
+	      <input type="password" ng-model="vm.credentials.password" required />
 	    </md-input-container>
 	    <button ng-click = "vm.submit()">Enviar</button>
   </md-content>
