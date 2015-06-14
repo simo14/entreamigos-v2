@@ -1,12 +1,12 @@
 <div ng-controller="logincontroller as vm" layout="column" class="inputdemoBasicUsage">
-  <md-content flex md-theme="docs-dark" layout="column" layout-align="center center">
+  <md-content flex layout="column" layout-align="center center">
 	    <md-input-container>
 	      <label>Usuario</label>
-	      <input type="text" ng-model="vm.name" required />
+	      <input type="text" ng-model="credentials.username" required />
 	    </md-input-container>
 	    <md-input-container>
 	      <label>Contraseña</label>
-	      <input type="password" />
+	      <input type="password" ng-model="credentials.password" required />
 	    </md-input-container>
 	    <button ng-click = "vm.submit()">Enviar</button>
   </md-content>

@@ -1,4 +1,8 @@
-/*angular.module("webapp").factory('sessionservice', [function() {
+
+angular.module("webapp").factory('sessionservice', sessionservice);
+sessionservice.$inject = [ "$resource" ];
+
+function sessionservice($resource) {
 	var that = this;
 	
 	var PeopleResource = $resource('/people/login',
@@ -10,7 +14,11 @@
 	    username: ''
 	 };
 	
-	function login(credentials){
+	return {
+		login : login,
+	}
+	
+	function login (credentials){
 		var user = PeopleResource.loginRequest(credentials)
 			 $promise.then(
 		        //success
@@ -26,4 +34,4 @@
 	};
 	
   return sdo;
-}]);*/
+};

@@ -34,10 +34,10 @@ function ppservice($resource, $timeout) {
 			}}
 	);
 
-function autoreload(){
-    reload();
-    $timeout(autoreload, 5000);
-}
+	function autoreload(){
+	    reload();
+	    $timeout(autoreload, 5000);
+	}
 	
 	autoreload();
 	
