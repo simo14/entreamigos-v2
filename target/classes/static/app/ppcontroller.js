@@ -9,19 +9,18 @@ function ppcontroller(ppservice,$location,$routeParams) {
     
     vm.events = [];
     vm.newEvent = {};
-    vm.event = {}
+
     vm.searchparam="";
-    vm.evento = {}
     
     //Controller logic
     vm.events = ppservice.getEvents();
-    vm.event = ppservice.getEvent($routeParams.id)
    
     //Controller actions
-    vm.viewEvent = function(event) {
+   /* vm.viewEvent = function(event) {
  
 		$location.path("/event");
 	};
+    */
     
     vm.search = function (param) {
     	vm.events = ppservice.search(param);
@@ -39,15 +38,7 @@ function ppcontroller(ppservice,$location,$routeParams) {
 		
 		$location.path("/");
 	};
-	
-	vm.join = function () {
-		vm.sessionId = ppservice.join($routeParams.id);
-		if(vm.sessionId!==0){
-			alert("¡Te has inscrito con éxito!");
-		}else {
-			alert("Por favor, inicia sesión antes de inscribirte.");
-		}
-	}
+
 	
 	/*
 	  vm.search = ppservice.search({
