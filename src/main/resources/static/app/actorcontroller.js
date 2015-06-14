@@ -8,17 +8,15 @@ function actorcontroller(actorservice) {
     //View model properties
     
     vm.actors = [];
-    vm.friends =[];
     vm.newActor = {};
     
     //Controller logic
     vm.actors = actorservice.getActors();
-	vm.friends = actorservice.findFriends();
    
     //Controller actions
-    vm.viewEvent = function(event) {
+   /* vm.viewEvent = function(event) {
 		$location.path("/person");
-	};
+	};*/
 	
     vm.search = function (param) {
 		vm.actors = actorservice.search(param);
