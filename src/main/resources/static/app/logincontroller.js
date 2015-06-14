@@ -1,7 +1,7 @@
 angular.module("webapp").controller("logincontroller", logincontroller);
-logincontroller.$inject = ["$location","$resource","sessionservice"];
+logincontroller.$inject = ["$resource","$location","$window","sessionservice"];
 
-function logincontroller($resource,$location,sessionservice) {
+function logincontroller($resource,$location,$window,sessionservice) {
 	var vm = this;
 		
 	vm.credentials = {
@@ -11,9 +11,9 @@ function logincontroller($resource,$location,sessionservice) {
 	
     vm.submit = function() {
     	sessionservice.login(vm.credentials).then(function (user) {
-    		
+    	   	vm.credentials.username = user.name;
+        	$window.alert("Bienvenido/a "+user.name);
+    		$location.path("/");
     	});
-    	alert("Has iniciado sesión");
-		$location.path("/");
 	};
 }

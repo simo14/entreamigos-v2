@@ -75,13 +75,11 @@ public class ActorsController {
 			Actor b = a.get(0);
 			session.setAttribute("userId",b.getId());
 			session.setAttribute("isLogged", true);
-			System.out.println("yeeeeh" + b.getName());
 			return b;
 		}
 		else{
 			session.setAttribute("userId", null);
 			session.setAttribute("isLogged", false);
-			System.out.println("pe");
 			return null;
 		}
 	}

@@ -12,11 +12,6 @@ function actorcontroller(actorservice) {
     
     //Controller logic
     vm.actors = actorservice.getActors();
-   
-    //Controller actions
-   /* vm.viewEvent = function(event) {
-		$location.path("/person");
-	};*/
 	
     vm.search = function (param) {
 		vm.actors = actorservice.search(param);

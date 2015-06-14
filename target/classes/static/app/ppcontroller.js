@@ -32,11 +32,12 @@ function ppcontroller(ppservice,$location,$routeParams) {
     
     vm.addEvent = function(evt) {
 		
-		ppservice.newEvent(evt);
+		ppservice.newEvent(evt).then(function(){
 		
-		vm.newEvent= {};
-		
-		$location.path("/");
+			vm.newEvent= {};
+			
+			$location.path("/");
+		})
 	};
 
 	

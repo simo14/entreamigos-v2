@@ -16,17 +16,12 @@ function sessionservice($resource) {
 	
 	function login (credentials){
 		//var user = new PeopleResource(credentials).loginRequest
-		var user = new PeopleResource(credentials).$save()
-			 .$promise.then(
-		        //success
-		        function( value ){
-		        	that.sdo.username = value.name;
-		        	that.sdo.isLogged = true;
+		var user = new PeopleResource(credentials).$save(function( value ){
+		        	sdo.username = value.name;
+		        	sdo.isLogged = true;
 		        	return value;
-		        },
+		        });
 		        //error
-		        function( error ){}
-		      );
 		return user;
 	};
 	
