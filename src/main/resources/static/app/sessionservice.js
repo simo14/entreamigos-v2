@@ -17,9 +17,14 @@ function sessionservice($resource) {
 	function login (credentials){
 		//var user = new PeopleResource(credentials).loginRequest
 		var user = new PeopleResource(credentials).$save(function( value ){
-		        	sdo.username = value.name;
-		        	sdo.isLogged = true;
-		        	return value;
+		        	if(value){
+		        		sdo.username = value.name;
+			        	sdo.isLogged = true;
+			        	return value;
+		        	}
+		        	else{
+		        		sdo.isLogged = false;
+		        	}
 		        });
 		        //error
 		return user;

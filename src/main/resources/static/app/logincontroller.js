@@ -12,7 +12,11 @@ function logincontroller($resource,$location,$window,sessionservice) {
     vm.submit = function() {
     	sessionservice.login(vm.credentials).then(function (user) {
     	   	vm.credentials.username = user.name;
-        	$window.alert("Bienvenido/a "+user.name);
+    	   	if(user.isLogged){
+    	   		$window.alert("Bienvenido/a "+user.name);
+    	   	}else{
+    	   		$window.alert("Usuario o contraseña incorrecto");
+    	   	}
     		$location.path("/");
     	});
 	};

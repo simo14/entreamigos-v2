@@ -72,10 +72,15 @@ public class ActorsController {
 	public Actor login(HttpSession session, @RequestBody Credentials cred){
 		if(cred.getPassword().equals(this.PASS)){				
 			ArrayList<Actor> a = (ArrayList<Actor>)actorService.findByName(cred.getUsername());
-			Actor b = a.get(0);
-			session.setAttribute("userId",b.getId());
-			session.setAttribute("isLogged", true);
-			return b;
+			try{
+				Actor b = a.get(0);
+				session.setAttribute("userId",b.getId());
+				session.setAttribute("isLogged", true);
+				return b;
+			}
+			catch (IndexOutOfBoundsException e){
+				return null;
+			}
 		}
 		else{
 			session.setAttribute("userId", null);

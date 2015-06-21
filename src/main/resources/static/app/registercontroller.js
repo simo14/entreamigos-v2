@@ -1,8 +1,8 @@
 angular.module("webapp").controller("registercontroller", registercontroller)
 
-registercontroller.$inject = ["actorservice","$location","$routeParams"];
+registercontroller.$inject = ["actorservice","sessionservice","$location","$routeParams"];
 
-function registercontroller (actorservice,$location,$routeParams){
+function registercontroller (actorservice,sessionservice,$location,$routeParams){
 	var vm = this;
 	vm.persona = {};
 	vm.upersona = {};
