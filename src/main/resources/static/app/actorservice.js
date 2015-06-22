@@ -115,7 +115,7 @@ function autoreload(){
 				},
 				//error
 				function(error){
-					window.alert("No ha sido posible el registro, su nombre de usuario ya existe.");
+					return error;
 				});
 		return answer;	//We need to return something so that the controller can execute "then"
 	}

@@ -10,21 +10,30 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams)
 	
 	vm.addPersona = function(persona) {
 		
-		actorservice.newPersona(persona).then(function (){
-		
-			vm.newPersona = {};
+		if (!sessionservice.sdo.isLogged) {
+			actorservice.newPersona(persona).then(function (){
 			
-			var credentials = [persona.username, 1234];
-			
-		  //login
-			sessionservice.login(credentials).then(function (user) {
-	    	   	vm.credentials.username = user.name;
-	    	   	if(user.isLogged){
-	    	   		$window.alert("Bienvenido/a "+user.name);
-	    	   	}
-	    	});
-		});
-		$location.path("/gente");
+				vm.newPersona = {};
+				
+				var credentials = [persona.username, 1234];
+				
+			  //login
+				sessionservice.login(credentials).then(function (user) {
+		    	   	vm.credentials.username = user.name;
+		    	   	if(user.isLogged){
+		    	   		window.alert("Bienvenido/a "+user.name);
+		    	   	}
+		    	});
+			},
+			//error
+			function (){
+				window.alert("No ha sido posible el registro, su nombre de usuario ya existe.");
+			}
+			);
+		}else {
+			window.alert("Por favor, cierre sesión antes de registrarse.");
+		}
+			$location.path("/gente");
 	};
 	
 	vm.addOrg = function(org) {

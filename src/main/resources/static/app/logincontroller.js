@@ -12,7 +12,7 @@ function logincontroller($resource,$location,$window,sessionservice) {
     vm.submit = function() {
     	sessionservice.login(vm.credentials).then(function (user) {
     	   	vm.credentials.username = user.name;
-    	   	if(user.isLogged){
+    	   	if(sessionservice.sdo.isLogged){
     	   		$window.alert("Bienvenido/a "+user.name);
     	   	}else{
     	   		$window.alert("Usuario o contraseña incorrecto");
