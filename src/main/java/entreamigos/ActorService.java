@@ -26,8 +26,8 @@ public class ActorService {
 	}
 	
 	public Actor save(Actor actor){
-		lRep.save(actor.getDefaultLocation());
-		return aRep.save(actor);
+			lRep.save(actor.getDefaultLocation());
+			return aRep.save(actor);
 	}
 	
 	public void delete(Actor actor){
@@ -42,8 +42,12 @@ public class ActorService {
 		return aRep.findOne(idActor);
 	}
 	
-	public Iterable<Actor> findByName(String name){
+	public Iterable<Actor> findByNameContains(String name){
 		return aRep.findByNameContains(name);
+	}
+	
+	public Iterable<Actor> findByName(String name){
+		return aRep.findByName(name);
 	}
 	
 	public Iterable<Actor> findByRating(Rating rating){

@@ -33,10 +33,13 @@ public class ActorsController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Person> addPerson (@RequestBody Person person) {
-		/*happening.setId(0);
-		Happening newHappening = ELService.save(happening);*/
-		actorService.save(person);
-		return new ResponseEntity<>(person,HttpStatus.CREATED);
+		try{
+			actorService.findByName(person.name);
+		}catch(NullPointerException e){
+			actorService.save(person);
+			return new ResponseEntity<>(person,HttpStatus.CREATED);
+		}
+		return new ResponseEntity<>(person,HttpStatus.NOT_ACCEPTABLE);
 	}
 	
 	@RequestMapping(value = "/org", method = RequestMethod.POST)
@@ -71,7 +74,7 @@ public class ActorsController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public Actor login(HttpSession session, @RequestBody Credentials cred){
 		if(cred.getPassword().equals(this.PASS)){				
-			ArrayList<Actor> a = (ArrayList<Actor>)actorService.findByName(cred.getUsername());
+			ArrayList<Actor> a = (ArrayList<Actor>)actorService.findByNameContains(cred.getUsername());
 			try{
 				Actor b = a.get(0);
 				session.setAttribute("userId",b.getId());
@@ -151,7 +154,7 @@ public class ActorsController {
 		String [] palabras = param.split(" ");
 /*We perform a search for each word in the search input. Searchs are made in category, title and location. If an event was already found by one of those, it won't be returned again*/
 		for(String palabra:palabras){
-			a.addAll(((ArrayList<Actor>) actorService.findByName(palabra)));
+			a.addAll(((ArrayList<Actor>) actorService.findByNameContains(palabra)));
 			ArrayList<Actor> aux=((ArrayList<Actor>) filterByLocation(palabra));
 			for (Actor hap:aux){
 				if (!a.contains(hap)){

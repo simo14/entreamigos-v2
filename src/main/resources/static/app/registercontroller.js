@@ -10,10 +10,20 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams)
 	
 	vm.addPersona = function(persona) {
 		
-		actorservice.newPersona(persona);
+		actorservice.newPersona(persona).then(function (){
 		
-		vm.newPersona = {};
-		
+			vm.newPersona = {};
+			
+			var credentials = [persona.username, 1234];
+			
+		  //login
+			sessionservice.login(credentials).then(function (user) {
+	    	   	vm.credentials.username = user.name;
+	    	   	if(user.isLogged){
+	    	   		$window.alert("Bienvenido/a "+user.name);
+	    	   	}
+	    	});
+		});
 		$location.path("/gente");
 	};
 	

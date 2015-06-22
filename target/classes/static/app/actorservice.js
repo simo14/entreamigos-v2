@@ -107,10 +107,17 @@ function autoreload(){
 	}
 	
 	function newPersona(newPersona) {
-		new PeopleResource(newPersona).$save(function(post) {
-			actors.push(post);
-			reload();
-		});
+		var answer = new PeopleResource(newPersona).$save(
+				//success
+				function(post){
+					actors.push(post);
+					reload();
+				},
+				//error
+				function(error){
+					window.alert("No ha sido posible el registro, su nombre de usuario ya existe.");
+				});
+		return answer;	//We need to return something so that the controller can execute "then"
 	}
 	
 	function newOrg(newOrg) {
