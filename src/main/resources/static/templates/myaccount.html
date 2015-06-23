@@ -1,28 +1,31 @@
 <div ng-controller="registercontroller as vm" layout="column" class="inputdemoBasicUsage">
 	<h1>Mi cuenta</h1>
-		<form ng-submit="vm.modifyPerson(vm.upersona)">
-			  <md-content flex md-theme="docs-dark" layout="column" layout-align="center center">
-			    <md-input-container>
-			      <label>Barrio</label>
-			      <input ng-model="vm.upersona.defaultLocation.neighborhood">
-			    </md-input-container>
-			    <md-input-container>
-			      <label>Contraseña</label>
-			      <input type="password">
-			    </md-input-container>
-			    <md-input-container>
-			      <label>Bio</label>
-			      <textarea ng-model="vm.upersona.bio" columns="1" md-maxlength="150"></textarea>
-			    </md-input-container>
-			    <md-select placeholder="Humor" ng-model="vm.upersona.mood">
-					    <md-option value="1">Amoroso</md-option>
-					    <md-option value="2">Deportista</md-option>
-				        <md-option value="3">Aventurero</md-option>
-				        <md-option value="4">Fiestero</md-option>
-			  		</md-select>
-			  		<div></div>
-			    <div></div>
-			    <md-button type="submit" class="md-raised">Guardar</md-button>
-			  </md-content>
-		</form>
+		<div ng-if = "!vm.session.isLogged">Identifíquese para acceder a su cuenta. <a href="#/login">Login</a></div>
+		<div ng-if = "vm.session.isLogged">
+			<form ng-submit="vm.modifyPerson(vm.upersona)">
+				  <md-content flex md-theme="docs-dark" layout="column" layout-align="center center">
+				    <md-input-container>
+				      <label>Barrio</label>
+				      <input ng-model="vm.upersona.defaultLocation.neighborhood">
+				    </md-input-container>
+				    <md-input-container>
+				      <label>Contraseña</label>
+				      <input type="password">
+				    </md-input-container>
+				    <md-input-container>
+				      <label>Bio</label>
+				      <textarea ng-model="vm.upersona.bio" columns="1" md-maxlength="150"></textarea>
+				    </md-input-container>
+				    <md-select placeholder="Humor" ng-model="vm.upersona.mood">
+						    <md-option value="1">Amoroso</md-option>
+						    <md-option value="2">Deportista</md-option>
+					        <md-option value="3">Aventurero</md-option>
+					        <md-option value="4">Fiestero</md-option>
+				  		</md-select>
+				  		<div></div>
+				    <div></div>
+				    <md-button type="submit" class="md-raised">Guardar</md-button>
+				  </md-content>
+			</form>
+		</div>
 </div>

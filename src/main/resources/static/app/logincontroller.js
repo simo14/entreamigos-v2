@@ -9,6 +9,8 @@ function logincontroller($resource,$location,$window,sessionservice) {
 		password: ''
 	};
 	
+	vm.session = sessionservice.sdo;
+	
     vm.submit = function() {
     	sessionservice.login(vm.credentials).then(function (user) {
     	   	vm.credentials.username = user.name;

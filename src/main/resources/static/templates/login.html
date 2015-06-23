@@ -1,13 +1,19 @@
-<div ng-controller="logincontroller as vm" layout="column" class="inputdemoBasicUsage">
-  <md-content flex layout="column" layout-align="center center">
-	    <md-input-container>
-	      <label>Usuario</label>
-	      <input type="text" ng-model="vm.credentials.username" required />
-	    </md-input-container>
-	    <md-input-container>
-	      <label>Contraseña</label>
-	      <input type="password" ng-model="vm.credentials.password" required />
-	    </md-input-container>
-	    <button ng-click = "vm.submit()">Enviar</button>
-  </md-content>
-</div>
+<h1>Login</h1>	
+	<div ng-controller="logincontroller as vm" layout="column" class="inputdemoBasicUsage">
+		<div ng-if = "vm.session.isLogged">Ya ha iniciado sesión</div>
+		<div ng-if = "!vm.session.isLogged">
+		<form ng-submit="vm.submit()">
+			  <md-content flex layout="column" layout-align="center center">
+				    <md-input-container>
+				      <label>Usuario</label>
+				      <input type="text" ng-model="vm.credentials.username" required />
+				    </md-input-container>
+				    <md-input-container>
+				      <label>Contraseña</label>
+				      <input type="password" ng-model="vm.credentials.password" required />
+				    </md-input-container>
+				    <input type="submit"></input>
+			  </md-content>
+		</form>
+		 </div>
+	</div>

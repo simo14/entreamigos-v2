@@ -1,14 +1,17 @@
 "use strict";
 angular.module("webapp").controller("friendscontroller", friendscontroller);
-friendscontroller.$inject = [ "actorservice" ];
+friendscontroller.$inject = [ "actorservice", "sessionservice" ];
 
-function friendscontroller(actorservice) {
+function friendscontroller(actorservice, sessionservice) {
 	var vm = this;
     
     //View model properties 
-    vm.friends =[];
+	vm.session = sessionservice.sdo;
+    vm.friends = [];
     
     //Controller logic
-	vm.friends = actorservice.findFriends();
+	if (vm.session.isLogged){
+		vm.friends = actorservice.findFriends();
+	}
 }
     

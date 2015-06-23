@@ -14,6 +14,8 @@ function sessionservice($resource) {
 	    username: ''
 	 };
 	
+	var person = {};
+	
 	function login (credentials){
 		//var user = new PeopleResource(credentials).loginRequest
 		var user = new PeopleResource(credentials).$save(function( value ){
@@ -26,12 +28,14 @@ function sessionservice($resource) {
 		        		sdo.isLogged = false;
 		        	}
 		        });
-		        //error
+    	//person = user;
+		angular.copy(user,that.person);
 		return user;
 	};
 	
   return {
 	  sdo : sdo,
-	  login : login
+	  person : person,
+	  login : login,
   }
 };
