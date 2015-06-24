@@ -12,11 +12,13 @@ function sessionservice($resource) {
 	    username: ''
 	 };
 	
-	var user = {};
+	var user = {
+			user:{}
+	};
 	
 	function login (credentials){
 		//var user = new PeopleResource(credentials).loginRequest
-		user = new PeopleResource(credentials).$save(function( value ){
+		user.user = new PeopleResource(credentials).$save(function( value ){
 		        	if(value){
 		        		sdo.username = value.name;
 			        	sdo.isLogged = true;
@@ -26,7 +28,7 @@ function sessionservice($resource) {
 		        		sdo.isLogged = false;
 		        	}
 		        });
-		return user;
+		return user.user;
 	};
 	
   return {
