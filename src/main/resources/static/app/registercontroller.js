@@ -12,7 +12,7 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams)
 	
 //My account / controller logic
 	if (sessionservice.sdo.isLogged){
-		vm.upersona = sessionservice.user.user;
+		vm.upersona = sessionservice.user.user.$$state.value;
 		console.log(vm.upersona);
 	}
 	
