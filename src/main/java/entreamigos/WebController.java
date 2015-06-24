@@ -74,12 +74,16 @@ public class WebController implements CommandLineRunner {
 	
 	@RequestMapping(value = "/filter/{parameter}", method = RequestMethod.GET)
 	public Iterable<Happening> filteringPpCategory (@PathVariable String parameter){
-		return ELService.findByCategory(parameter);
+		if(!parameter.matches("-?\\d+(\\.\\d+)?")){			//It's not a number
+			return ELService.findByCategory(parameter);
+		}else{
+			return ELService.findByPrize(Integer.parseInt(parameter));
+		}
 	}
 	
-	@RequestMapping(value = "/date/{parameter}", method = RequestMethod.GET)
-	public Iterable<Happening> filteringPpDate(@PathVariable Date d){
-		return ELService.findByDate(d);
+	@RequestMapping(value = "/date/{d}", method = RequestMethod.GET)
+	public Iterable<Happening> filteringPpDate(@PathVariable long d){
+		return ELService.findByDate(new Date(d));	
 	}
 	
 	@RequestMapping(value = "/location/{param}", method = RequestMethod.GET)
@@ -162,15 +166,15 @@ public class WebController implements CommandLineRunner {
 		
 		ArrayList<Actor> atendees=new ArrayList<Actor>();
 		atendees.add(jaime);
-		Happening h1=new Happening("Playa el viernes",atendees,aux,new Date(),"Día de sol y cervezas en las mejores playas españolas.",jaime,0,"playa");
+		Happening h1=new Happening("Playa el viernes",atendees,aux,new Date(1435186800000L),"Día de sol y cervezas en las mejores playas españolas.",jaime,0,"playa");
 		ELService.save(h1);
-		h1=new Happening("A la guay montaña",atendees,aux2,new Date(14318),"Montañismo mágico y especial",null,300,"montaña");
+		h1=new Happening("A la guay montaña",atendees,aux2,new Date(1435273200000L),"Montañismo mágico y especial",null,20,"montaña");
 		ELService.save(h1);
-		h1=new Happening("Copas??",atendees,aux2,new Date(14318),"Y lo que surja",null,300,"fiesta");
+		h1=new Happening("Copas??",atendees,aux2,new Date(1435446000000L),"Y lo que surja",null,300,"fiesta");
 		ELService.save(h1);
-		h1=new Happening("Visitamos el museo",atendees,aux2,new Date(14318),"Nobody expects the spanish inquisition",null,300,"cultural");
+		h1=new Happening("Visitamos el museo",atendees,aux2,new Date(1436396400000L),"Nobody expects the spanish inquisition",null,10,"cultural");
 		ELService.save(h1);
-		h1=new Happening("Dia de piscina",atendees,aux2,new Date(14318),"Traed cremita",null,300,"deportes");
+		h1=new Happening("Dia de piscina",atendees,aux2,new Date(1436396400000L),"Traed cremita",null,5,"deportes");
 		ELService.save(h1);
 	}
 }

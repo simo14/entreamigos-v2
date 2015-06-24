@@ -2,7 +2,9 @@
 	<div layout="row" layout-fill="" style="padding-bottom: 32px;" layout-align="center center">
 		  <md-whiteframe flex="50" class="md-whiteframe-z5" layout="column" layout-align="center center" id="containerPersona">
 		      <div layout="row" layout-align="center" id="containerPersonaFoto">
-		        <div flex="50" layout="column" layout-align="center" ><img src="/../img/mood/{{vm.actor.mood}}.png"  id="avatarPersona" class="md-avatar avatarPersona" alt="{{actor.mood}}"><md-button id="login_button" ng-click="vm.beFriends()">Añadir</md-button></div>
+		        <div flex="50" layout="column" layout-align="center" ><img src="/../img/mood/{{vm.actor.mood}}.png"  id="avatarPersona" class="md-avatar avatarPersona" alt="{{actor.mood}}">
+		        	<md-button id="login_button" ng-click="vm.beFriends()">Añadir</md-button>
+		        </div>
 		        <div flex="50" id="containerPersonaFoto">
 					<h2> {{vm.actor.name | uppercase}} </h2>
 					<p> {{vm.actor.defaultLocation.neighborhood}}</p>

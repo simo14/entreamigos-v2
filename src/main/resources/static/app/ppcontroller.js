@@ -12,6 +12,8 @@ function ppcontroller(ppservice,$location,$routeParams) {
 
     vm.searchparam="";
     
+    vm.DateSearch={};
+    
     //Controller logic
     vm.events = ppservice.getEvents();
    
@@ -21,6 +23,9 @@ function ppcontroller(ppservice,$location,$routeParams) {
 		$location.path("/event");
 	};
     */
+    vm.searchDate = function(param){
+    	vm.events = ppservice.searchDate(param.getTime());
+    }
     
     vm.search = function (param) {
     	vm.events = ppservice.search(param);
@@ -28,6 +33,10 @@ function ppcontroller(ppservice,$location,$routeParams) {
     
     vm.searchCategory = function (param) {
     	vm.events = ppservice.searchCategory(param);
+    }
+    
+    vm.freeEvents = function (param) {
+    	vm.events = ppservice.searchByPrize(0);
     }
     
     vm.addEvent = function(evt) {

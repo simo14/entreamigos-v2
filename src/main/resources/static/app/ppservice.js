@@ -31,7 +31,16 @@ function ppservice($resource, $timeout) {
 						action:"filter",
 						query: '@query'
 					}
-			}}
+			},
+			 'searchByDate': {
+					method: 'GET',
+					isArray: true,
+					params: {
+						action:"date",
+						query: '@query'
+					}
+			}
+			}
 	);
 
 	function autoreload(){
@@ -48,7 +57,9 @@ function ppservice($resource, $timeout) {
 		join : join,
 		search : search,
 		searchCategory : searchCategory,
-		newEvent : newEvent
+		newEvent : newEvent,
+		searchDate : searchDate,
+		searchByPrize : searchByPrize
 	}
 
 	function reload(){
@@ -85,6 +96,16 @@ function ppservice($resource, $timeout) {
 		that.events = EventSearch.searchByCategory ({myParam : param});
 		return that.events;
 	}
+	
+	function searchDate (param) {
+		that.events = EventSearch.searchByDate({myParam : param});
+		return that.events;
+	}
+	
+	function searchByPrize (param) {
+		
+	}
+	
 	
 	function newEvent (param) {		
 		new EventResource(param).$save(function(post) {
