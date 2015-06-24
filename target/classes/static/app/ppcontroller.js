@@ -28,7 +28,11 @@ function ppcontroller(ppservice,$location,$routeParams) {
     }
     
     vm.search = function (param) {
-    	vm.events = ppservice.search(param);
+    	if(param){
+    		vm.events = ppservice.search(param);
+    	}else{
+    		vm.events = ppservice.getEvents();
+    	}
     }
     
     vm.searchCategory = function (param) {
@@ -36,11 +40,19 @@ function ppcontroller(ppservice,$location,$routeParams) {
     }
     
     vm.freeEvents = function (param) {
-    	vm.events = ppservice.searchByPrize(0);
+    	if(param){
+    		vm.events = ppservice.searchByPrize(0);
+    	}else{
+    		vm.events = ppservice.getEvents();
+    	}
     }
     
     vm.searchDistance = function (param) {
-    	vm.events = ppservice.searchByDistance(param);
+    	if(param){
+    		vm.events = ppservice.searchByDistance(param);
+    	}else{
+    		vm.events = ppservice.getEvents();
+    	}
     }
     
     vm.addEvent = function(evt) {

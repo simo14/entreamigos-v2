@@ -142,28 +142,22 @@ public class WebController implements CommandLineRunner {
 		actorService.save(jaime);
 		
 		Location aux3=new Location("valencia","","",null);
-		ELService.save(aux);
+		ELService.save(aux3);
 		Person uhu=new Person("paola","Livin la vida loca",2, null,null,null,aux3);
 		actorService.save(uhu);
 		
-		aux3=new Location("valencia","","",null);
-		ELService.save(aux);
 		uhu=new Person("brian","Romani Ite Domun",4, null,null,null,aux3);
 		actorService.save(uhu);
 		
-		aux3=new Location("valencia","","",null);
-		ELService.save(aux);
 		uhu=new Person("pedro","Picapiedra",2, null,null,null,aux3);
 		actorService.save(uhu);
 		
-		aux3=new Location("valencia","","",null);
-		ELService.save(aux);
 		uhu=new Person("fodo","Me gusta andar y las cosas brillantes",2, null,null,null,aux3);
 		actorService.save(uhu);
 		
-		aux3=new Location("logroño","","",null);
-		ELService.save(aux);
-		uhu=new Person("xXQuixoteXx","De la mancha district, dude",1, null,null,null,aux3);
+		Location aux4=new Location("logroño","","",null);
+		ELService.save(aux3);
+		uhu=new Person("xXQuixoteXx","De la mancha district, dude",1, null,null,null,aux4);
 		actorService.save(uhu);
 		
 		ArrayList<Actor> atendees=new ArrayList<Actor>();
@@ -173,11 +167,11 @@ public class WebController implements CommandLineRunner {
 		ELService.save(h1);
 		h1=new Happening("A la guay montaña",atendees,aux2,new Date(1435273200000L),"Montañismo mágico y especial",null,20,"montaña");
 		ELService.save(h1);
-		h1=new Happening("Copas??",atendees,aux2,new Date(1435446000000L),"Y lo que surja",null,300,"fiesta");
+		h1=new Happening("Copas??",atendees,aux3,new Date(1435446000000L),"Y lo que surja",null,300,"fiesta");
 		ELService.save(h1);
-		h1=new Happening("Visitamos el museo",atendees,aux2,new Date(1436396400000L),"Nobody expects the spanish inquisition",null,10,"cultural");
+		h1=new Happening("Visitamos el museo",atendees,aux4,new Date(1436396400000L),"Nobody expects the spanish inquisition",null,10,"cultural");
 		ELService.save(h1);
-		h1=new Happening("Dia de piscina",atendees,aux2,new Date(1436396400000L),"Traed cremita",null,0,"deportes");
+		h1=new Happening("Dia de piscina",atendees,aux4,new Date(1436396400000L),"Traed cremita",null,0,"deportes");
 		ELService.save(h1);
 	}
 }
