@@ -88,7 +88,9 @@ public class WebController implements CommandLineRunner {
 	
 	@RequestMapping(value = "/location/{param}", method = RequestMethod.GET)
 	public Iterable<Happening> filteringPpLocation(@PathVariable String param){
-		return ELService.findByLocation(param);
+		ArrayList <Happening> aux= (ArrayList<Happening>)ELService.findByLocation(param);
+		aux.addAll((ArrayList<Happening>)ELService.findByCity(param));
+		return aux;
 	}
 	
 	@RequestMapping(value = "/search/{param}", method = RequestMethod.GET)
@@ -166,6 +168,7 @@ public class WebController implements CommandLineRunner {
 		
 		ArrayList<Actor> atendees=new ArrayList<Actor>();
 		atendees.add(jaime);
+		//Date needs an L because as an integer it is out of range.
 		Happening h1=new Happening("Playa el viernes",atendees,aux,new Date(1435186800000L),"Día de sol y cervezas en las mejores playas españolas.",jaime,0,"playa");
 		ELService.save(h1);
 		h1=new Happening("A la guay montaña",atendees,aux2,new Date(1435273200000L),"Montañismo mágico y especial",null,20,"montaña");
@@ -174,7 +177,7 @@ public class WebController implements CommandLineRunner {
 		ELService.save(h1);
 		h1=new Happening("Visitamos el museo",atendees,aux2,new Date(1436396400000L),"Nobody expects the spanish inquisition",null,10,"cultural");
 		ELService.save(h1);
-		h1=new Happening("Dia de piscina",atendees,aux2,new Date(1436396400000L),"Traed cremita",null,5,"deportes");
+		h1=new Happening("Dia de piscina",atendees,aux2,new Date(1436396400000L),"Traed cremita",null,0,"deportes");
 		ELService.save(h1);
 	}
 }

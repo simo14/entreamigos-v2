@@ -39,6 +39,10 @@ function ppcontroller(ppservice,$location,$routeParams) {
     	vm.events = ppservice.searchByPrize(0);
     }
     
+    vm.searchDistance = function (param) {
+    	vm.events = ppservice.searchByDistance(param);
+    }
+    
     vm.addEvent = function(evt) {
 		
 		ppservice.newEvent(evt).then(function(){

@@ -1,5 +1,6 @@
 package entreamigos;
 import java.util.Date;
+
 import org.springframework.data.repository.CrudRepository;
 
 public interface HappeningRepository extends CrudRepository <Happening, Long> {
@@ -15,4 +16,5 @@ public interface HappeningRepository extends CrudRepository <Happening, Long> {
 	public Iterable<Happening> findByOrganizer	(Actor actor);
 	public Iterable<Happening> findByCategory	(String category);
 	public Iterable<Happening> findByPrize 		(int prize);
+	public Iterable<Happening> findByLocationCity(String city);
 }

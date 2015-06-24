@@ -39,6 +39,13 @@ function ppservice($resource, $timeout) {
 						action:"date",
 						query: '@query'
 					}
+			},
+			'searchByLocation' : {
+					method: 'GET',
+					isArray : true,
+					params: {
+						action:"date"
+					}
 			}
 			}
 	);
@@ -103,7 +110,13 @@ function ppservice($resource, $timeout) {
 	}
 	
 	function searchByPrize (param) {
-		
+		that.events = EventSearch.searchByCategory ({myParam : param});			//No es lo más bonito que hemos visto pero es porque he reutilizado el método.
+		return that.events;
+	}
+	
+	function searchByDistance (param) {
+		that.events = EventSearch.searchByLocation({myParam : param});
+		return that.events;
 	}
 	
 	

@@ -48,10 +48,8 @@
         </md-input-container>
         <md-checkbox ng-model="ifFree" ng-change="vm.freeEvents(ifFree)" type="checkbox" aria-label="gratis?">Sólo eventos gratis</md-checkbox>
         <md-select ng-model="distance" ng-change="vm.searchDistance(distance)" placeholder="Distancia a ti">
-            <md-option ng-value="1">1 - 5 km</md-option>
-            <md-option ng-value="6">6 - 15 km</md-option>
-            <md-option ng-value="16">16 - 25 km</md-option>
-            <md-option ng-value="26">26 - 50 km</md-option>
+            <md-option ng-value="barrio">En mi barrio</md-option>
+            <md-option ng-value="ciudad">En mi ciudad</md-option>
         </md-select>
     </md-toolbar>
     </div>  
