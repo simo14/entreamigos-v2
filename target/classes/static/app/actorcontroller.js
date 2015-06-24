@@ -17,4 +17,7 @@ function actorcontroller(actorservice) {
 		vm.actors = actorservice.search(param);
     }
     
+    vm.searchCategory = function (param) {
+    	vm.actors = actorservice.search(param);
+    }   
 }

@@ -12,8 +12,8 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams)
 	
 //My account / controller logic
 	if (sessionservice.sdo.isLogged){
-		vm.upersona = sessionservice.person;
-		console.log(vm.upersona.name);
+		vm.upersona = sessionservice.user;
+		console.log(vm.upersona);
 	}
 	
 //operations	

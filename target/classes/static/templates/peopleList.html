@@ -25,11 +25,15 @@
             <input ng-model="searchparam" ng-change="vm.search(searchparam)"  md-maxlength="10" type="text">
         </md-input-container>
         <md-checkbox ng-model="ifEvents" type="checkbox" aria-label="eventosConmigo?">Sólo gente que comparta eventos contigo</md-checkbox>
-        <md-select ng-model="distance" placeholder="Distancia a ti">
-            <md-option ng-value="1">1 - 5 km</md-option>
-            <md-option ng-value="6">6 - 15 km</md-option>
-            <md-option ng-value="16">16 - 25 km</md-option>
-            <md-option ng-value="26">26 - 50 km</md-option>
+        <md-select ng-model="mood" ng-change = "vm.searchCategory(mood)" placeholder="Humor">
+		    <md-option value="1">Amoroso</md-option>
+		    <md-option value="2">Deportista</md-option>
+	        <md-option value="3">Aventurero</md-option>
+	        <md-option value="4">Fiestero</md-option>
+        </md-select>
+        <md-select ng-model="distance" ng-change="vm.searchDistance(distance)" placeholder="Distancia a ti">
+            <md-option ng-value="barrio">En mi barrio</md-option>
+            <md-option ng-value="ciudad">En mi ciudad</md-option>
         </md-select>
     </md-toolbar>
     </div>  

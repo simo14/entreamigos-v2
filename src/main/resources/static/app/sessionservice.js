@@ -5,20 +5,18 @@ sessionservice.$inject = [ "$resource" ];
 function sessionservice($resource) {
 	var that = this;
 	
-	var PeopleResource = $resource('/people/login'//,
-			//{ loginRequest : { method : "POST" }}
-		);
+	var PeopleResource = $resource('/people/login');
 	
 	var sdo = {
 	    isLogged: false,
 	    username: ''
 	 };
 	
-	var person = {};
+	var user = {};
 	
 	function login (credentials){
 		//var user = new PeopleResource(credentials).loginRequest
-		var user = new PeopleResource(credentials).$save(function( value ){
+		user = new PeopleResource(credentials).$save(function( value ){
 		        	if(value){
 		        		sdo.username = value.name;
 			        	sdo.isLogged = true;
@@ -28,14 +26,12 @@ function sessionservice($resource) {
 		        		sdo.isLogged = false;
 		        	}
 		        });
-    	//person = user;
-		angular.copy(user,that.person);
 		return user;
 	};
 	
   return {
 	  sdo : sdo,
-	  person : person,
-	  login : login,
+	  user : user,
+	  login : login
   }
 };

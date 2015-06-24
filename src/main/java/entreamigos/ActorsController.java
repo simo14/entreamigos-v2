@@ -161,8 +161,7 @@ public class ActorsController {
 					a.add(hap);
 				}
 			}
-			Object o = palabra;
-			if(o instanceof Integer){
+			if(palabra.matches("-?\\d+(\\.\\d+)?")){
 				ArrayList<Actor> aux2=((ArrayList<Actor>) actorService.findByMood(Integer.parseInt(palabra)));
 				for (Actor act:aux2){
 					if (!a.contains(act)){
