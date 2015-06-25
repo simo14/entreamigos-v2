@@ -9,11 +9,11 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams)
 	vm.session = sessionservice.sdo;
 	vm.upersona = {};
 	vm.newOrg = {};
+	vm.credentials = {};
 	
 //My account / controller logic
 	if (sessionservice.sdo.isLogged){
 		vm.upersona = sessionservice.user.user.$$state.value;
-		console.log(vm.upersona);
 	}
 	
 //operations	
@@ -24,13 +24,16 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams)
 			
 				vm.newPersona = {};
 				
-				var credentials = [persona.username, 1234];
+				vm.credentials = {
+						username : persona.name, 
+						password : 1234
+				}
 				
 			  //login
-				sessionservice.login(credentials).then(function (user) {
-		    	   	vm.credentials.username = user.name;
-		    	   	if(user.isLogged){
-		    	   		window.alert("Bienvenido/a "+user.name);
+				sessionservice.login(vm.credentials).then(function (user) {
+		    	   	vm.credentials.username = sessionservice.sdo.username;
+		    	   	if(sessionservice.sdo.isLogged){
+		    	   		window.alert("Bienvenido/a "+sessionservice.sdo.username);
 		    	   	}
 		    	});
 			},

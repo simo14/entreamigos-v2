@@ -33,13 +33,12 @@ public class ActorsController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Person> addPerson (@RequestBody Person person) {
-		try{
-			actorService.findByName(person.name);
-		}catch(NullPointerException e){
+		ArrayList<Actor> aux = (ArrayList<Actor>) actorService.findByName(person.name);
+		if(aux.isEmpty()){			//There is no user with that name
 			actorService.save(person);
 			return new ResponseEntity<>(person,HttpStatus.CREATED);
-		}
-		return new ResponseEntity<>(person,HttpStatus.NOT_ACCEPTABLE);
+		}else{
+		return new ResponseEntity<>(person,HttpStatus.NOT_ACCEPTABLE);}
 	}
 	
 	@RequestMapping(value = "/org", method = RequestMethod.POST)

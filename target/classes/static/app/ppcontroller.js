@@ -8,6 +8,7 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice) {
     //View model properties
     
     vm.events = [];
+    vm.hasLoggedOut = false;
     vm.newEvent = {};
 
     vm.searchparam="";
