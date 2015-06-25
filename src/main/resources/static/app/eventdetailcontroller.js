@@ -14,8 +14,8 @@ function eventdetailcontroller(ppservice,sessionservice,$location,$routeParams) 
     
     //Controller's actions
 	vm.join = function () {
-		vm.sessionId = ppservice.join($routeParams.id);
 		if(vm.session.isLogged){
+			vm.sessionId = ppservice.join($routeParams.id);
 			alert("¡Te has inscrito con éxito!");
 		}else {
 			alert("Por favor, inicia sesión antes de inscribirte.");

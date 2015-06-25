@@ -88,7 +88,6 @@ function ppservice($resource, $timeout) {
 	
 	function join (param) {
 		that.sessionId = EventResource.join({ id : param });
-		console.log(that.sessionId);
 		return that.sessionId;
 	}
 	
