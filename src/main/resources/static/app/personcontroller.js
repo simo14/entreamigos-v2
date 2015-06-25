@@ -1,8 +1,8 @@
 angular.module("webapp").controller("personcontroller", personcontroller)
 
-personcontroller.$inject = ["actorservice", "sessionservice","$routeParams"];
+personcontroller.$inject = ["actorservice", "sessionservice","$routeParams","$location"];
 
-function personcontroller(actorservice, sessionservice, $routeParams) {
+function personcontroller(actorservice, sessionservice, $routeParams,$location) {
 
 	var vm = this;
 	
@@ -22,6 +22,7 @@ function personcontroller(actorservice, sessionservice, $routeParams) {
 		if(sessionservice.sdo.isLogged){
 			actorservice.beFriends($routeParams.id);
 			alert("¡Añadido!");
+			$location.path("/amigos");
 		}else{
 			window.alert("Por favor identifícate o regístrate para hacer amigos");
 		}

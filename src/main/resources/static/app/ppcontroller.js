@@ -1,8 +1,8 @@
 "use strict";
 angular.module("webapp").controller("ppcontroller", ppcontroller);
-ppcontroller.$inject = [ "ppservice","$location","$routeParams" ];
+ppcontroller.$inject = [ "ppservice","$location","$routeParams","$scope","sessionservice" ];
 
-function ppcontroller(ppservice,$location,$routeParams) {
+function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice) {
 	var vm = this;
     
     //View model properties
@@ -16,6 +16,14 @@ function ppcontroller(ppservice,$location,$routeParams) {
     
     //Controller logic
     vm.events = ppservice.getEvents();
+    
+    $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
+    	   if(absOldUrl === "http://localhost:8080/#/logout"){
+    		   sessionservice.sdo.isLogged = false;
+    		   sessionservice.sdo.username = "";
+    	   }
+    	});
+
    
     //Controller actions
    /* vm.viewEvent = function(event) {

@@ -1,6 +1,6 @@
 <h1>Tus Amigos</h1>
-<div ng-if="vm.session.isLogged">Por favor, identifíquese para acceder a su lista de amigos.</div>
 <div flex layout="row" ng-controller="friendscontroller as vm">
+<p ng-if="!vm.session.isLogged" flex="80" layout="row">Por favor, identifíquese para acceder a su lista de amigos.</p>
   <div flex="80" layout="row" layout-align="center top"> 
         <div ng-repeat="actor in vm.friends" layout="column" layout-align="center center" class="PersonChip">
 	            <a href="/#/people/{{actor.id}}" class="link"> 

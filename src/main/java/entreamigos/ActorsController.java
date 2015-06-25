@@ -53,7 +53,7 @@ public class ActorsController {
 		return actorService.findOne(id);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value="/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Person> updatePersona(HttpSession session,@RequestBody Person newPerson) {
 		String prueba = session.getAttribute("userId")+"0";
 		Long idpersona = (Long.parseLong(prueba, 10))/10;	
