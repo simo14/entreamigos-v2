@@ -1,4 +1,5 @@
-<h1>Tus Amigos</h1>
+<h1 ng-if ="vm.session.isOrganization">Equipo</h1>
+<h1 ng-if = "!vm.session.isOrganization">Tus amigos</h1>
 <div flex layout="row" ng-controller="friendscontroller as vm">
 <p ng-if="!vm.session.isLogged" flex="80" layout="row">Por favor, identifíquese para acceder a su lista de amigos. <a href="#/login">Login</a></p>
   <div flex="80" layout="row" layout-align="center top"> 
