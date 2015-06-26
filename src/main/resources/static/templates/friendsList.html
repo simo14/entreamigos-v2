@@ -1,6 +1,6 @@
 <h1>Tus Amigos</h1>
 <div flex layout="row" ng-controller="friendscontroller as vm">
-<p ng-if="!vm.session.isLogged" flex="80" layout="row">Por favor, identifíquese para acceder a su lista de amigos. <a href="/login">Login</a></p>
+<p ng-if="!vm.session.isLogged" flex="80" layout="row">Por favor, identifíquese para acceder a su lista de amigos. <a href="#/login">Login</a></p>
   <div flex="80" layout="row" layout-align="center top"> 
         <div ng-repeat="actor in vm.friends" layout="column" layout-align="center center" class="PersonChip">
 	            <a href="/#/people/{{actor.id}}" class="link"> 
@@ -26,12 +26,10 @@
             <input ng-model="searchparam" ng-change="vm.search(searchparam)"  md-maxlength="10" type="text">
         </md-input-container>
         <md-checkbox ng-model="ifEvents" type="checkbox" aria-label="eventosConmigo?">Sólo gente que comparta eventos contigo</md-checkbox>
-        <md-select ng-model="distance" placeholder="Distancia a ti">
-            <md-option ng-value="1">1 - 5 km</md-option>
-            <md-option ng-value="6">6 - 15 km</md-option>
-            <md-option ng-value="16">16 - 25 km</md-option>
-            <md-option ng-value="26">26 - 50 km</md-option>
-        </md-select>
+        <md-select ng-model="distance" ng-change="vm.searchDistance(distance)" placeholder="Distancia a ti">
+            <md-option value="barrio">En mi barrio</md-option>
+            <md-option value="ciudad">En mi ciudad</md-option>
+        </md-select>a
     </md-toolbar>
     </div>  
 </div>

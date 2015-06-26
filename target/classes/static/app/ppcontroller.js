@@ -1,4 +1,3 @@
-"use strict";
 angular.module("webapp").controller("ppcontroller", ppcontroller);
 ppcontroller.$inject = [ "ppservice","$location","$routeParams","$scope","sessionservice" ];
 
@@ -10,6 +9,7 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice) {
     vm.events = [];
     vm.hasLoggedOut = false;
     vm.newEvent = {};
+    vm.session = sessionservice.sdo;
 
     vm.searchparam="";
     
@@ -67,13 +67,14 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice) {
     }
     
     vm.addEvent = function(evt) {
-		
-		ppservice.newEvent(evt).then(function(){
-		
-			vm.newEvent= {};
+    	if(sessionservice.sdo.isLogged){
+			ppservice.newEvent(evt).then(function(){
 			
-			$location.path("/");
-		})
+				vm.newEvent= {};
+				
+				$location.path("/");
+			},function(){});
+    	}
 	};
 
 	
