@@ -44,7 +44,7 @@ function ppservice($resource, $timeout) {
 					method: 'GET',
 					isArray : true,
 					params: {
-						action:"date"
+						action:"location"
 					}
 			}
 			}
@@ -66,7 +66,8 @@ function ppservice($resource, $timeout) {
 		searchCategory : searchCategory,
 		newEvent : newEvent,
 		searchDate : searchDate,
-		searchByPrize : searchByPrize
+		searchByPrize : searchByPrize,
+		searchByDistance : searchByDistance
 	}
 
 	function reload(){

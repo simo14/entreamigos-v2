@@ -30,18 +30,21 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams)
 				}
 				
 			  //login
-				sessionservice.login(vm.credentials).then(function (user) {
-		    	   	vm.credentials.username = sessionservice.sdo.username;
-		    	   	if(sessionservice.sdo.isLogged){
-		    	   		window.alert("Bienvenido/a "+sessionservice.sdo.username);
-		    	   	}
-		    	});
-			},
-			//error
-			function (){
-				window.alert("No ha sido posible el registro, su nombre de usuario ya existe.");
-			}
-			);
+				sessionservice.login(vm.credentials).then(
+					//success
+					function (user) {
+			    	   	vm.credentials.username = sessionservice.sdo.username;
+			    	   	if(sessionservice.sdo.isLogged){
+			    	   		window.alert("Bienvenido/a "+sessionservice.sdo.username);
+			    	   	}
+			    		},
+					
+					//error
+					function (){
+						window.alert("No ha sido posible el registro, su nombre de usuario ya existe.");
+					}
+				);
+			});
 			$location.path("/gente");
 	};
 	

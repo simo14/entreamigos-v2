@@ -58,11 +58,10 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice) {
     }
     
     vm.searchDistance = function (param) {
-    	console.log("pp"+param);
-    	if(param){
-    		
-    		vm.events = ppservice.searchByDistance(param);
+    	if(sessionservice.sdo.isLogged){
+    		ppservice.searchByDistance(param);
     	}else{
+    		window.alert("Regístrate o identifícate para acceder a estas y otras funcionalidades");
     		vm.events = ppservice.getEvents();
     	}
     }
