@@ -87,6 +87,15 @@ public class WebController implements CommandLineRunner {
 	}
 	
 	@RequestMapping(value = "/location/{param}", method = RequestMethod.GET)
+	public Iterable<Happening> findByDistance(@PathVariable String param, HttpSession session){
+		Actor a = actorService.findOne((long)session.getAttribute("userId"));
+		if(param.equals("barrio")){
+			return ELService.findByLocation(a.getDefaultLocation().getNeighborhood());
+		}else if (param.equals("ciudad")){
+			return ELService.findByCity(a.getDefaultLocation().getCity());
+		}else return new ArrayList<Happening>();
+	}
+	
 	public Iterable<Happening> filteringPpLocation(@PathVariable String param){
 		ArrayList <Happening> aux= (ArrayList<Happening>)ELService.findByLocation(param);
 		aux.addAll((ArrayList<Happening>)ELService.findByCity(param));

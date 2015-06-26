@@ -58,7 +58,9 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice) {
     }
     
     vm.searchDistance = function (param) {
+    	console.log("pp"+param);
     	if(param){
+    		
     		vm.events = ppservice.searchByDistance(param);
     	}else{
     		vm.events = ppservice.getEvents();
