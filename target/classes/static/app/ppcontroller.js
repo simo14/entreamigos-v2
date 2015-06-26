@@ -22,6 +22,7 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice) {
     	   if(absOldUrl === "http://localhost:8080/#/logout"){
     		   sessionservice.sdo.isLogged = false;
     		   sessionservice.sdo.username = "";
+    		   sessionservice.logout();
     	   }
     	});
 

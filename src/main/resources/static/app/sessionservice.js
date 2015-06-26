@@ -6,6 +6,7 @@ function sessionservice($resource) {
 	var that = this;
 	
 	var PeopleResource = $resource('/people/login');
+	var LogoutResource = $resource('/people/logout');
 	
 	var sdo = {
 	    isLogged: false,
@@ -31,9 +32,14 @@ function sessionservice($resource) {
 		return user.user;
 	};
 	
+	function logout(){
+		LogoutResource.get();
+	}
+	
   return {
 	  sdo : sdo,
 	  user : user,
-	  login : login
+	  login : login,
+	  logout : logout
   }
 };

@@ -91,7 +91,14 @@ public class ActorsController {
 		}
 	}
 	
-//FRIENDSSSSSSS
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ResponseEntity<Long> logout (HttpSession session){
+		session.setAttribute("userId", 0);
+		session.setAttribute("isLogged", false);
+		return new ResponseEntity<>(0L,HttpStatus.OK);
+	}
+	
+//-----------------FRIENDS------------------------------------------------
 	
 	@RequestMapping(value="/friends", method = RequestMethod.GET)
 	public Iterable<Person> friendsP (HttpSession session){
