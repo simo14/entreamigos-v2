@@ -1,7 +1,7 @@
 angular.module("webapp").controller("ppcontroller", ppcontroller);
-ppcontroller.$inject = [ "ppservice","$location","$routeParams","$scope","sessionservice" ];
+ppcontroller.$inject = [ "ppservice","$location","$routeParams","$scope","sessionservice","ngDialog" ];
 
-function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice) {
+function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice,ngDialog) {
 	var vm = this;
     
     //View model properties
@@ -62,9 +62,9 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice) {
     
     vm.searchDistance = function (param) {
     	if(sessionservice.sdo.isLogged){
-    		ppservice.searchByDistance(param);
+    		vm.events = ppservice.searchByDistance(param);
     	}else{
-    		window.alert("Regístrate o identifícate para acceder a estas y otras funcionalidades");
+    		vm.open("notLogged");
     		vm.events = ppservice.getEvents();
     	}
     }
@@ -79,6 +79,14 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice) {
 			},function(){});
     	}
 	};
+	
+	vm.open = function (mensaje) {
+		console.log("deberia aparecer algo")
+		ngDialog.open({
+			template: mensaje,
+			className: 'ngdialog-theme-default',
+		});
+	}
 
 	
 	/*
