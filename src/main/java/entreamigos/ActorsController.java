@@ -162,6 +162,21 @@ public class ActorsController {
 		return actorService.findByDefaultLocationNeighborhood(location);
 	}
 	
+/**@RequestMapping(value = "/location/{param}", method = RequestMethod.GET)
+	public Iterable<Happening> findByDistance(@PathVariable String param, HttpSession session){
+		try{
+			Actor a = actorService.findOne((long)session.getAttribute("userId"));
+			if(param.equals("barrio")){
+				return ELService.findByLocation(a.getDefaultLocation().getNeighborhood());
+			}else{
+				return ELService.findByCity(a.getDefaultLocation().getCity());
+			}
+		}catch(NullPointerException e){
+			return pp(session);
+		}
+		
+	} **/
+	
 	@RequestMapping(value = "/search/{param}", method = RequestMethod.GET)
 	public Iterable<Actor> searching(@PathVariable String param){
 		ArrayList <Actor> a= new ArrayList<Actor> ();
