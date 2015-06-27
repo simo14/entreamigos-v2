@@ -1,6 +1,5 @@
 <div flex layout="row" ng-controller="ppcontroller as vm">
-<p>{{vm.message}}</p>
-<p ng-if=vm.hasLoggedOut>Has cerrado sesión con éxito</p>
+
    <div flex="80" layout="column">
        <div layout="row">
 	       	<div id="subtoolbar" layout="row">
@@ -12,6 +11,10 @@
 	       		<md-button id="subtoolbar_button" ng-click = "vm.searchCategory('deportes')">Deportes</md-button>
 	       	</div>   
        </div>
+		<div layout="row">
+   			<p>{{vm.message}}</p>
+			<p ng-if=vm.hasLoggedOut>Has cerrado sesión con éxito</p>
+		</div>
   <div flex="80"> 
     <md-list>
         <md-list-item class="md-3-line" ng-repeat="event in vm.events">

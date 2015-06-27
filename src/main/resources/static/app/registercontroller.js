@@ -63,7 +63,6 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams,
 			    	   		window.alert("Bienvenido/a "+sessionservice.sdo.username);
 			    	   	}
 			    	},
-					
 					//error
 					function (){
 						window.alert("No ha sido posible el registro, su nombre de usuario ya existe.");
