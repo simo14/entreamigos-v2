@@ -1,5 +1,5 @@
 "use strict";
-angular.module("webapp", ['ngMaterial','ngResource','ngRoute'])
+angular.module("webapp", ['ngMaterial','ngResource','ngRoute','ngDialog'])
     .config(function($mdThemingProvider) {
       $mdThemingProvider.theme('default')
         .primaryPalette('green', {
