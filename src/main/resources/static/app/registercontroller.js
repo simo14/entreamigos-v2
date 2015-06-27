@@ -33,14 +33,14 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams,
 				sessionservice.login(vm.credentials).then(function (user) {
 		    	   	vm.credentials.username = sessionservice.sdo.username;
 		    	   	if(sessionservice.sdo.isLogged){
-		    	   		vm.open("mensajeLogInCorrect");
+		    	   		vm.open();
 		    	   		window.alert("Bienvenido/a "+sessionservice.sdo.username);
 		    	   	}
 		    	});
 			},
 			//error
 			function (){
-				vm.open("mensajeLogInIncorrect");
+				vm.open();
 				window.alert("No ha sido posible el registro, su nombre de usuario ya existe.");
 			}
 			);
@@ -61,10 +61,11 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams,
 		vm.upersona = {};
 		$location.path("/");
 	};
-	vm.open = function (template) {
+	vm.open = function () {
 		console.log("deberia aparecer algo")
 		ngDialog.open({
-			template: template,
+			template: "PENE",
+			className: 'ngdialog-theme-default',
 		});
 	}
 }
