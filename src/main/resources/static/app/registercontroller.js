@@ -33,7 +33,7 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams,
 				sessionservice.login(vm.credentials).then(function (user) {
 		    	   	vm.credentials.username = sessionservice.sdo.username;
 		    	   	if(sessionservice.sdo.isLogged){
-		    	   		vm.open('externalTemplate.html');
+		    	   		vm.open("mensajeLogInCorrect");
 		    	   		window.alert("Bienvenido/a "+sessionservice.sdo.username);
 		    	   	}
 		    	});
