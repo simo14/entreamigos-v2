@@ -84,7 +84,7 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams,
 		console.log("deberia aparecer algo")
 		ngDialog.open({
 			template: "PENE",
-			className: 'ngdialog-theme-default ngdialog-theme-custom',
+			className: 'ngdialog-theme-default',
 		});
 	}
 }
