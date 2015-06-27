@@ -60,12 +60,12 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams,
 						vm.session.isOrganization = true;
 			    	   	vm.credentials.username = sessionservice.sdo.username;
 			    	   	if(sessionservice.sdo.isLogged){
-			    	   		window.alert("Bienvenido/a "+sessionservice.sdo.username);
+			    	   		vm.open("mensajeLogInCorrect");
 			    	   	}
 			    	},
 					//error
 					function (){
-						window.alert("No ha sido posible el registro, su nombre de usuario ya existe.");
+			    		vm.open("mensajeLogInIncorrect");
 					}
 				);
 		

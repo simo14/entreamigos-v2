@@ -18,7 +18,7 @@ function eventdetailcontroller(ppservice,sessionservice,$location,$routeParams,n
 			vm.sessionId = ppservice.join($routeParams.id);
 			vm.open("done");
 		}else {
-			vm.open("mensajeLogInCorrect");
+			vm.open("notLogged");
 		}
 		$location.path("/");
     }

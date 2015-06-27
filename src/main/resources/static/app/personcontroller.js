@@ -21,13 +21,21 @@ function personcontroller(actorservice, sessionservice, $routeParams,$location) 
 	vm.beFriends = function () {
 		if(sessionservice.sdo.isLogged && !sessionservice.sdo.isOrganization){
 			actorservice.beFriends($routeParams.id);
-			alert("¡Añadido!");
+			vm.open("done");
 			$location.path("/amigos");
 		}else{
-			window.alert("Por favor identifícate o regístrate para hacer amigos");
+			vm.open("notLogged");
 		}
 	}
 	vm.friends = function (param) {
 		vm.actors = actorservice.findFriends(param);
     }
+	
+	vm.open = function (mensaje) {
+		console.log("deberia aparecer algo")
+		ngDialog.open({
+			template: mensaje,
+			className: 'ngdialog-theme-default',
+		});
+	}
 };
