@@ -11,10 +11,6 @@
 	       		<md-button id="subtoolbar_button" ng-click = "vm.searchCategory('deportes')">Deportes</md-button>
 	       	</div>   
        </div>
-		<div layout="row">
-   			<p>{{vm.message}}</p>
-			<p ng-if=vm.hasLoggedOut>Has cerrado sesión con éxito</p>
-		</div>
   <div flex="80"> 
     <md-list>
         <md-list-item class="md-3-line" ng-repeat="event in vm.events">
