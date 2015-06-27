@@ -1,8 +1,8 @@
 "use strict";
 angular.module("webapp").controller("eventdetailcontroller", eventdetailcontroller);
-eventdetailcontroller.$inject = [ "ppservice","sessionservice","$location","$routeParams" ];
+eventdetailcontroller.$inject = [ "ppservice","sessionservice","$location","$routeParams","ngDialog" ];
 
-function eventdetailcontroller(ppservice,sessionservice,$location,$routeParams) {
+function eventdetailcontroller(ppservice,sessionservice,$location,$routeParams,ngDialog) {
 	var vm = this;
 	
 	//View model properties
@@ -16,12 +16,19 @@ function eventdetailcontroller(ppservice,sessionservice,$location,$routeParams) 
 	vm.join = function () {
 		if(vm.session.isLogged){
 			vm.sessionId = ppservice.join($routeParams.id);
-			alert("¡Te has inscrito con éxito!");
+			vm.open("done");
 		}else {
-			alert("Por favor, inicia sesión antes de inscribirte.");
+			vm.open("mensajeLogInCorrect");
 		}
 		$location.path("/");
     }
+	vm.open = function (mensaje) {
+		console.log("deberia aparecer algo")
+		ngDialog.open({
+			template: mensaje,
+			className: 'ngdialog-theme-default',
+		});
+	}
 }
 
 

@@ -20,11 +20,11 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice,ngD
     vm.events = ppservice.getEvents();
     
     $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
-    	   if(absOldUrl === "http://localhost:8080/#/logout"){
+    	   if(absNewUrl === "http://localhost:8080/#/logout"){
     		   sessionservice.sdo.isLogged = false;
     		   sessionservice.sdo.username = "";
-    		   console.log("logout");
     		   sessionservice.logout();
+    		   vm.open("done");
     	   }
     	});
 
