@@ -1,4 +1,5 @@
 <div flex layout="row" ng-controller="ppcontroller as vm">
+<p>{{vm.message}}</p>
 <p ng-if=vm.hasLoggedOut>Has cerrado sesión con éxito</p>
    <div flex="80" layout="column">
        <div layout="row">
@@ -33,6 +34,7 @@
 	</md-list>
   </div> 
   </div>
+
   <div flex="20">
     <md-toolbar id="sidebar" flex hide-sm class="md-primary md-hue-1">
         <h2>Busca un evento</h2>
@@ -55,3 +57,4 @@
     </md-toolbar>
     </div>  
 </div>
+

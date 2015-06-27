@@ -18,6 +18,8 @@ function sessionservice($resource) {
 			user:{}
 	};
 	
+	var message = "";
+	
 	function login (credentials){
 		//var user = new PeopleResource(credentials).loginRequest
 		user.user = new PeopleResource(credentials).$save(function( value ){
@@ -41,6 +43,7 @@ function sessionservice($resource) {
 	  sdo : sdo,
 	  user : user,
 	  login : login,
-	  logout : logout
+	  logout : logout,
+	  message : message
   }
 };

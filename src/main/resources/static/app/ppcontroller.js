@@ -10,6 +10,7 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice) {
     vm.hasLoggedOut = false;
     vm.newEvent = {};
     vm.session = sessionservice.sdo;
+    vm.message = sessionservice.message;
 
     vm.searchparam="";
     
@@ -22,9 +23,11 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice) {
     	   if(absOldUrl === "http://localhost:8080/#/logout"){
     		   sessionservice.sdo.isLogged = false;
     		   sessionservice.sdo.username = "";
+    		   console.log("logout");
     		   sessionservice.logout();
     	   }
     	});
+
 
    
     //Controller actions
