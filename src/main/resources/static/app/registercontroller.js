@@ -1,8 +1,8 @@
 angular.module("webapp").controller("registercontroller", registercontroller)
 
-registercontroller.$inject = ["actorservice","sessionservice","$location","$routeParams","ngDialog"];
+registercontroller.$inject = ["actorservice","sessionservice","$location","$routeParams"];
 
-function registercontroller (actorservice,sessionservice,$location,$routeParams,ngDialog){
+function registercontroller (actorservice,sessionservice,$location,$routeParams){
 	
 	var vm = this;
 	vm.persona = {};
@@ -33,14 +33,12 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams,
 				sessionservice.login(vm.credentials).then(function (user) {
 		    	   	vm.credentials.username = sessionservice.sdo.username;
 		    	   	if(sessionservice.sdo.isLogged){
-		    	   		vm.open();
 		    	   		window.alert("Bienvenido/a "+sessionservice.sdo.username);
 		    	   	}
 		    	});
 			},
 			//error
 			function (){
-				vm.open();
 				window.alert("No ha sido posible el registro, su nombre de usuario ya existe.");
 			}
 			);
@@ -61,11 +59,4 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams,
 		vm.upersona = {};
 		$location.path("/");
 	};
-	vm.open = function () {
-		console.log("deberia aparecer algo")
-		ngDialog.open({
-			template: "PENE",
-			className: 'ngdialog-theme-default ngdialog-theme-custom',
-		});
-	}
 }
