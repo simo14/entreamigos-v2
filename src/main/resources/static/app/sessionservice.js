@@ -10,7 +10,8 @@ function sessionservice($resource) {
 	
 	var sdo = {
 	    isLogged: false,
-	    username: ''
+	    username: '',
+	    isOrganization: false
 	 };
 	
 	var user = {

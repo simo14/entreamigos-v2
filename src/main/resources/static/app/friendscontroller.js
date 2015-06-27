@@ -11,7 +11,11 @@ function friendscontroller(actorservice, sessionservice) {
     
     //Controller logic
 	if (vm.session.isLogged){
+		if(vm.session.isOrganization){
+			vm.friends = actorservice.findCrew();
+		}else{
 		vm.friends = actorservice.findFriends();
+		}
 	}
 }
     

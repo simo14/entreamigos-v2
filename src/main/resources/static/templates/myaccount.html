@@ -1,5 +1,6 @@
 <div ng-controller="registercontroller as vm" layout="column" class="inputdemoBasicUsage">
 	<h1>Mi cuenta</h1>
+	<h2>{{vm.session.username | uppercase}}</h2>
 		<div ng-if = "!vm.session.isLogged">Identifíquese para acceder a su cuenta. <a href="#/login">Login</a></div>
 		<div ng-if = "vm.session.isLogged">
 			<form ng-submit="vm.modifyPerson(vm.upersona)">

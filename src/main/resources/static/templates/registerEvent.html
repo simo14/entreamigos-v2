@@ -1,28 +1,30 @@
 <div ng-controller="ppcontroller as vm" layout="column" class="inputdemoBasicUsage">
-	
-	<md-content flex layout="column" layout-align="center center">
-		  <form ng-submit="vm.addEvent(vm.evento)">
-			    <md-input-container>
-			      <label>Titulo</label>
-			      <input ng-model="vm.evento.title">
-			    </md-input-container>
-			    <md-input-container>
-			      <label>Barrio</label>
-			      <input ng-model="vm.evento.location.neighborhood">
-			    </md-input-container>
-			    <md-input-container>
-			      <label>Descripcion</label>
-			      <textarea ng-model="vm.evento.descripcion" columns="1" md-maxlength="150"></textarea>
-			    </md-input-container>
-			      	<md-select placeholder="Categoria" ng-model="vm.evento.category">
-					    <md-option value="deportes">Deportes</md-option>
-					    <md-option value="cultural">Cultural</md-option>
-				        <md-option value="playa">Playa</md-option>
-				        <md-option value="monta�a">Monta�a</md-option>
-			  		</md-select>
-			  		<div></div>
-			    	<button  type="submit">Crear evento</button>
-		    </form>
-	</md-content>
-	
+	<h1>Registra un evento</h1>
+	<div ng-if = "!vm.session.isLogged">Regístrate o identifícate para acceder a estas y otras funcionalidades. <a href="#/login">Login</a></div>
+	<div ng-if = "vm.session.isLogged">
+		<md-content flex layout="column" layout-align="center center">
+			  <form ng-submit="vm.addEvent(vm.evento)">
+				    <md-input-container>
+				      <label>Titulo</label>
+				      <input ng-model="vm.evento.title">
+				    </md-input-container>
+				    <md-input-container>
+				      <label>Barrio</label>
+				      <input ng-model="vm.evento.location.neighborhood">
+				    </md-input-container>
+				    <md-input-container>
+				      <label>Descripcion</label>
+				      <textarea ng-model="vm.evento.descripcion" columns="1" md-maxlength="150"></textarea>
+				    </md-input-container>
+				      	<md-select placeholder="Categoria" ng-model="vm.evento.category">
+						    <md-option value="deportes">Deportes</md-option>
+						    <md-option value="cultural">Cultural</md-option>
+					        <md-option value="playa">Playa</md-option>
+					        <md-option value="monta�a">Monta�a</md-option>
+				  		</md-select>
+				  		<div></div>
+				    	<button  type="submit">Crear evento</button>
+			    </form>
+		</md-content>
+	</div>
 </div>

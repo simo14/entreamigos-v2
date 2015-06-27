@@ -88,12 +88,17 @@ public class WebController implements CommandLineRunner {
 	
 	@RequestMapping(value = "/location/{param}", method = RequestMethod.GET)
 	public Iterable<Happening> findByDistance(@PathVariable String param, HttpSession session){
-		Actor a = actorService.findOne((long)session.getAttribute("userId"));
-		if(param.equals("barrio")){
-			return ELService.findByLocation(a.getDefaultLocation().getNeighborhood());
-		}else if (param.equals("ciudad")){
-			return ELService.findByCity(a.getDefaultLocation().getCity());
-		}else return new ArrayList<Happening>();
+		try{
+			Actor a = actorService.findOne((long)session.getAttribute("userId"));
+			if(param.equals("barrio")){
+				return ELService.findByLocation(a.getDefaultLocation().getNeighborhood());
+			}else{
+				return ELService.findByCity(a.getDefaultLocation().getCity());
+			}
+		}catch(NullPointerException e){
+			return pp(session);
+		}
+		
 	}
 	
 	public Iterable<Happening> filteringPpLocation(@PathVariable String param){
@@ -129,9 +134,9 @@ public class WebController implements CommandLineRunner {
 	@Override
 	public void run(String... arg0) throws Exception {
 //NOMBRES SIEMPRE EN MINUSCULA TODOS
-		Location aux=new Location("madrid","","",null);
+		Location aux=new Location("madrid","madrid","",null);
 		ELService.save(aux);
-		Location aux2=new Location("madrid","JAJAJA","",null);
+		Location aux2=new Location("villaverde","madrid","",null);
 		ELService.save(aux2);
 		
 		Person jaime=new Person("jaime","Soy una taza",1, null,null,null,aux2);
@@ -150,21 +155,21 @@ public class WebController implements CommandLineRunner {
 		jaime.setRating(r);
 		actorService.save(jaime);
 		
-		Location aux3=new Location("valencia","","",null);
+		Location aux3=new Location("valencia","valencia","",null);
 		ELService.save(aux3);
-		Person uhu=new Person("paola","Livin la vida loca",2, null,null,null,aux3);
+		Person uhu=new Person("paola","Livin la vida loca",3, null,null,null,aux3);
 		actorService.save(uhu);
 		
 		uhu=new Person("brian","Romani Ite Domun",4, null,null,null,aux3);
 		actorService.save(uhu);
 		
-		uhu=new Person("pedro","Picapiedra",2, null,null,null,aux3);
+		uhu=new Person("pedro","Picapiedra",3, null,null,null,aux3);
 		actorService.save(uhu);
 		
 		uhu=new Person("fodo","Me gusta andar y las cosas brillantes",2, null,null,null,aux3);
 		actorService.save(uhu);
 		
-		Location aux4=new Location("logroño","","",null);
+		Location aux4=new Location("logroño","logroño","",null);
 		ELService.save(aux3);
 		uhu=new Person("xXQuixoteXx","De la mancha district, dude",1, null,null,null,aux4);
 		actorService.save(uhu);

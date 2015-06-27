@@ -19,7 +19,7 @@ function personcontroller(actorservice, sessionservice, $routeParams,$location) 
 
 	//Controller actions
 	vm.beFriends = function () {
-		if(sessionservice.sdo.isLogged){
+		if(sessionservice.sdo.isLogged && !sessionservice.sdo.isOrganization){
 			actorservice.beFriends($routeParams.id);
 			alert("¡Añadido!");
 			$location.path("/amigos");

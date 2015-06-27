@@ -108,6 +108,14 @@ public class ActorsController {
 		return aux.getFriends();
 	}
 	
+	@RequestMapping(value="/crew", method = RequestMethod.GET)
+	public Iterable<Person> friendsO (HttpSession session){
+		String prueba = session.getAttribute("userId")+"0";
+		Long idpersona = (Long.parseLong(prueba, 10))/10;
+		Organization aux = (Organization) actorService.findOne(idpersona);
+		return aux.getCrew();
+	}
+	
 	@RequestMapping(value="/friends", method = RequestMethod.POST)		//sin probar porq postman es tonto
 	public ResponseEntity<Person> addFriend (@RequestBody long idPerson, HttpSession session) {
 		

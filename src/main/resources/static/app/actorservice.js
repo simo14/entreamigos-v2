@@ -40,6 +40,11 @@ function actorservice($resource, $timeout) {
 					isArray: true,
 					params : {action:"friends"}
 			},
+			getCrew: {
+				method:'GET',
+				isArray: true,
+				params : {action:"crew"}
+			},
 			newOrganization: {
 				method: 'POST',
 				params: {
@@ -67,7 +72,8 @@ function autoreload(){
 		newPersona : newPersona,
 		newOrg : newOrg,
 		updatePersona : updatePersona,
-		findFriends : findFriends
+		findFriends : findFriends,
+		findCrew : findCrew
 	}
 	
 
@@ -134,7 +140,15 @@ function autoreload(){
 	}
 	
 	function findFriends(){
-		that.friends = PeopleSearch.getFriends(function(){
+		that.friends = PeopleSearch.getFriends (function(){
+			return that.friends
+		});
+		return that.friends;
+	}
+	
+	function findCrew(){
+		console.log("pene");
+		that.friends = PeopleSearch.getCrew (function(){
 			return that.friends
 		});
 		return that.friends;
