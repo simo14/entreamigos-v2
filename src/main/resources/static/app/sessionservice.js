@@ -21,8 +21,8 @@ function sessionservice($resource) {
 	var message = "";
 	
 	function login (credentials){
-		//var user = new PeopleResource(credentials).loginRequest
 		user.user = new PeopleResource(credentials).$save(function( value ){
+			console.log(value);
 		        	if(value){
 		        		sdo.username = value.name;
 			        	sdo.isLogged = true;
