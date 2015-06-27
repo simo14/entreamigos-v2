@@ -23,7 +23,6 @@ function eventdetailcontroller(ppservice,sessionservice,$location,$routeParams,n
 		$location.path("/");
     }
 	vm.open = function (mensaje) {
-		console.log("deberia aparecer algo")
 		ngDialog.open({
 			template: mensaje,
 			className: 'ngdialog-theme-default',

@@ -78,7 +78,6 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams,
 		$location.path("/");
 	};
 	vm.open = function (mensaje) {
-		console.log("deberia aparecer algo")
 		ngDialog.open({
 			template: mensaje,
 			className: 'ngdialog-theme-default',

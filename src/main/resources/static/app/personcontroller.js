@@ -32,7 +32,6 @@ function personcontroller(actorservice, sessionservice, $routeParams,$location) 
     }
 	
 	vm.open = function (mensaje) {
-		console.log("deberia aparecer algo")
 		ngDialog.open({
 			template: mensaje,
 			className: 'ngdialog-theme-default',
