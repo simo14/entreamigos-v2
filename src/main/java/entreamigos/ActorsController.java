@@ -202,4 +202,30 @@ public class ActorsController {
 		//h.addAll((ArrayList<Happening>) ELService.findByPrize(Integer.parseInt(param))); 	Obviamente si es un string el parse peta
 		return a;
 	}
+	
+	@RequestMapping(value = "/friends/search/{param}", method = RequestMethod.GET)
+	public Iterable<Actor> searchingFriends(@PathVariable String param){
+		ArrayList <Actor> a= new ArrayList<Actor> ();
+		String [] palabras = param.split(" ");
+/*We perform a search for each word in the search input. Searchs are made in category, title and location. If an event was already found by one of those, it won't be returned again*/
+		for(String palabra:palabras){
+			a.addAll(((ArrayList<Actor>) actorService.findByNameContains(palabra)));
+			ArrayList<Actor> aux=((ArrayList<Actor>) filterByLocation(palabra));
+			for (Actor hap:aux){
+				if (!a.contains(hap)){
+					a.add(hap);
+				}
+			}
+			if(palabra.matches("-?\\d+(\\.\\d+)?")){
+				ArrayList<Actor> aux2=((ArrayList<Actor>) actorService.findByMood(Integer.parseInt(palabra)));
+				for (Actor act:aux2){
+					if (!a.contains(act)){
+						a.add(act);
+					}
+				}
+			}
+		}
+		//h.addAll((ArrayList<Happening>) ELService.findByPrize(Integer.parseInt(param))); 	Obviamente si es un string el parse peta
+		return a;
+	}
 }

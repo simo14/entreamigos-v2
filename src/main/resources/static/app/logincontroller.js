@@ -17,7 +17,7 @@ function logincontroller($resource,$location,$window,sessionservice,$scope,popup
     
     $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
    	   if(absNewUrl === "http://localhost:8080/#/" && sessionservice.sdo.isLogged){
-   		 popup.abrir ("Bienvenido/a "+sessionservice.sdo.username);
+   		 popup.abrir("Bienvenido "+sessionservice.sdo.username);
    	   }
       });
     

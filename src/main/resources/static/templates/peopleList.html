@@ -24,7 +24,6 @@
             <label>Buscar</label>
             <input ng-model="searchparam" ng-change="vm.search(searchparam)"  md-maxlength="10" type="text">
         </md-input-container>
-        <md-checkbox ng-model="ifEvents" type="checkbox" aria-label="eventosConmigo?">Sólo gente que comparta eventos contigo</md-checkbox>
         <md-select ng-model="mood" ng-change = "vm.searchCategory(mood)" placeholder="Humor">
 		    <md-option value="1">Amoroso</md-option>
 		    <md-option value="2">Deportista</md-option>

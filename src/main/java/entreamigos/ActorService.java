@@ -88,8 +88,5 @@ public class ActorService {
 	public String findPrinciples(long idOrganization){
 		return aOrg.findOne(idOrganization).getPrinciples();
 	}
-	
-	/**public Iterable<Actor> findByHappening(Happening happening){
-		return aRep.findByHappening(happening);
-	}**/
+
 }
