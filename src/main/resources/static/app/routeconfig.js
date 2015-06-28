@@ -15,4 +15,5 @@ function RouteConfig($routeProvider) {
 	$routeProvider.when('/amigos', { templateUrl : "templates/friendsList.html"});
 	$routeProvider.when('/nuevoEvento', { templateUrl : "templates/registerEvent.html"});
 	$routeProvider.when('/logout', { templateUrl : "templates/eventsList.html"});
+	$routeProvider.when('/redirect', { templateUrl : "templates/redirect.html"});
 }

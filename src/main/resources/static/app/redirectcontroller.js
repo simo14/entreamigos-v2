@@ -1,7 +1,7 @@
 angular.module("webapp").controller("redirectcontroller", redirectcontroller);
-ppcontroller.$inject = ["$location","$scope"];
+ppcontroller.$inject = ["$location","$scope","sessionservice"];
 
-function redirectcontroller(ppservice,$location,$routeParams,$scope) {
+function redirectcontroller($location,$scope,sessionservice) {
 	var vm = this;
 	
     $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
