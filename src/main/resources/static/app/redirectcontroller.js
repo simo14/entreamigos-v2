@@ -3,10 +3,16 @@ redirectcontroller.$inject = ["$location","$scope","sessionservice"];
 
 function redirectcontroller($location,$scope,sessionservice) {
 	var vm = this;
-	console.log("estoy en redirect");
-	$location.path("/");
-    //$scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
-    //	$location.path(absOldUrl);   
-    //});
-    
+
+	vm.onload = function () {
+		var url = $location.path();
+		if(url ==="/redirect/events"){
+			$location.path("/");
+		}else if (url ==="/redirect/people"){
+			$location.path("/gente");
+		}else if (url === "/redirect/friends"){
+			$location.path("/amigos");
+		}    
+	};
+	vm.onload();
 }

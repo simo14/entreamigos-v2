@@ -18,15 +18,9 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice,pop
     
     //Controller logic
     vm.events = ppservice.getEvents();
-    vm.reload = function () {
-    	$location.path("/redirect");
+    vm.reload = function (param) {
+    	$location.path("/redirect/param");
     }
-    //$scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
-    //	if(absNewUrl === "http://localhost:8080/#/redirect"){
-    //		console.log(absOldUrl);
-    //		$location.path(absOldUrl);
-    //	}
-    //});
     
     $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
     	   if(absNewUrl === "http://localhost:8080/#/logout"){
@@ -40,11 +34,7 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice,pop
 
    
     //Controller actions
-   /* vm.viewEvent = function(event) {
- 
-		$location.path("/event");
-	};
-    */
+
     vm.searchDate = function(param){
     	vm.events = ppservice.searchDate(param.getTime());
     }
@@ -88,10 +78,4 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice,pop
 			},function(){});
     	}
 	};
-	
-	
-	/*
-	  vm.search = ppservice.search({
-    	   query: vm.searchparam  
-    	}, function(result){}); */
 }
