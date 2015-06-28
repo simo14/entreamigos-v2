@@ -25,7 +25,7 @@ function logincontroller($resource,$location,$window,sessionservice,$scope,popup
     
     $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
    	   if(absNewUrl === "http://localhost:8080/#/" && sessionservice.sdo.isLogged){
-   		 popup.abrir("Bienvenido "+sessionservice.sdo.username);
+   		 popup.abrir("LogInCompleted");
    	   }
       });
     
@@ -35,7 +35,7 @@ function logincontroller($resource,$location,$window,sessionservice,$scope,popup
     	sessionservice.login(vm.credentials).then(function (user) {
     	   	vm.credentials.username = user.name;
     	   	if(!sessionservice.sdo.isLogged){
-    	   		popup.abrir("Usuario o contraseña incorrecto");
+    	   		popup.abrir("mensajeLogInIncorrect");
     	   	}
     		$location.path("/");
     	});
