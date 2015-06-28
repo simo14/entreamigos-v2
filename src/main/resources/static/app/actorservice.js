@@ -25,7 +25,7 @@ function actorservice($resource, $timeout) {
 					method: 'GET',
 					isArray: true,
 					params: {
-						action:"filter",
+						action:"location",
 						query: '@query'
 					}
 			},
