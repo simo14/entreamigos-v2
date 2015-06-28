@@ -156,13 +156,13 @@
 #containerPersonaFoto{
   align:left;
   margin:10px;  
-  margin-left:5em;
+  margin-left:2em;
 }
 #containerPersonaBio{
   align:left;
   margin:2em;
   margin-left:4em;
-  width:100%;
+  width:80%;
 }
 .containerEventData{
   margin-left:10px;
