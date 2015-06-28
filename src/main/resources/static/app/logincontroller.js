@@ -4,6 +4,14 @@ logincontroller.$inject = ["$resource","$location","$window","sessionservice","$
 function logincontroller($resource,$location,$window,sessionservice,$scope,popup) {
 	var vm = this;
 	
+	vm.credentials = {
+			username: '',
+			password: ''
+		};
+		
+		
+	vm.session = sessionservice.sdo;
+		
 	
     $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
  	   if(absNewUrl === "http://localhost:8080/#/logout"){
@@ -22,14 +30,7 @@ function logincontroller($resource,$location,$window,sessionservice,$scope,popup
       });
     
 		
-	vm.credentials = {
-		username: '',
-		password: ''
-	};
-	
-	
-	vm.session = sessionservice.sdo;
-	
+
     vm.submit = function() {
     	sessionservice.login(vm.credentials).then(function (user) {
     	   	vm.credentials.username = user.name;
