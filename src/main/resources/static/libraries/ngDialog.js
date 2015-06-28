@@ -32,6 +32,7 @@
     var openIdStack = [];
     var keydownIsBound = false;
 
+
     m.provider('ngDialog', function () {
         var defaults = this.defaults = {
             className: 'ngdialog-theme-default',

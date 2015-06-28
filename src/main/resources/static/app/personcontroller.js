@@ -1,10 +1,21 @@
 angular.module("webapp").controller("personcontroller", personcontroller)
 
-personcontroller.$inject = ["actorservice", "sessionservice","$routeParams","$location"];
+personcontroller.$inject = ["actorservice", "sessionservice","$routeParams","$location","$scope","popup"];
 
-function personcontroller(actorservice, sessionservice, $routeParams,$location) {
+function personcontroller(actorservice, sessionservice, $routeParams,$location,$scope,popup) {
 
 	var vm = this;
+	
+	
+    $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
+ 	   if(absNewUrl === "http://localhost:8080/#/logout"){
+ 		   sessionservice.sdo.isLogged = false;
+ 		   sessionservice.sdo.username = "";
+ 		   sessionservice.logout();
+ 		   popup.abrir("done");
+ 	   }
+ 	});
+    
 	
 	//View model properties
 	
@@ -21,20 +32,14 @@ function personcontroller(actorservice, sessionservice, $routeParams,$location) 
 	vm.beFriends = function () {
 		if(sessionservice.sdo.isLogged && !sessionservice.sdo.isOrganization){
 			actorservice.beFriends($routeParams.id);
-			vm.open("done");
+			popup.abrir("done");
 			$location.path("/amigos");
 		}else{
-			vm.open("notLogged");
+			popup.abrir("notLogged");
 		}
 	}
 	vm.friends = function (param) {
 		vm.actors = actorservice.findFriends(param);
     }
-	
-	vm.open = function (mensaje) {
-		ngDialog.open({
-			template: mensaje,
-			className: 'ngdialog-theme-default',
-		});
-	}
+
 };

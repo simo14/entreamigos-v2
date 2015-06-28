@@ -1,9 +1,19 @@
 "use strict";
 angular.module("webapp").controller("eventdetailcontroller", eventdetailcontroller);
-eventdetailcontroller.$inject = [ "ppservice","sessionservice","$location","$routeParams","ngDialog" ];
+eventdetailcontroller.$inject = [ "ppservice","sessionservice","$location","$routeParams","ngDialog","$scope","popup" ];
 
-function eventdetailcontroller(ppservice,sessionservice,$location,$routeParams,ngDialog) {
+function eventdetailcontroller(ppservice,sessionservice,$location,$routeParams,ngDialog,$scope,popup) {
 	var vm = this;
+	
+    $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
+ 	   if(absNewUrl === "http://localhost:8080/#/logout"){
+ 		   sessionservice.sdo.isLogged = false;
+ 		   sessionservice.sdo.username = "";
+ 		   sessionservice.logout();
+ 		  popup.abrir("done");
+ 	   }
+ 	});
+	
 	
 	//View model properties
     vm.event = {}
@@ -16,18 +26,12 @@ function eventdetailcontroller(ppservice,sessionservice,$location,$routeParams,n
 	vm.join = function () {
 		if(vm.session.isLogged){
 			vm.sessionId = ppservice.join($routeParams.id);
-			vm.open("done");
+			popup.abrir("done");
 		}else {
-			vm.open("notLogged");
+			popup.abrir("notLogged");
 		}
 		$location.path("/");
     }
-	vm.open = function (mensaje) {
-		ngDialog.open({
-			template: mensaje,
-			className: 'ngdialog-theme-default',
-		});
-	}
 }
 
 

@@ -1,8 +1,8 @@
 angular.module("webapp").controller("registercontroller", registercontroller)
 
-registercontroller.$inject = ["actorservice","sessionservice","$location","$routeParams","ngDialog"];
+registercontroller.$inject = ["actorservice","sessionservice","$location","$routeParams","ngDialog","$scope","popup"];
 
-function registercontroller (actorservice,sessionservice,$location,$routeParams,ngDialog){
+function registercontroller (actorservice,sessionservice,$location,$routeParams,ngDialog,$scope,popup){
 	
 	var vm = this;
 	vm.persona = {};
@@ -10,6 +10,16 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams,
 	vm.upersona = {};
 	vm.newOrg = {};
 	vm.credentials = {};
+	
+	
+    $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
+ 	   if(absNewUrl === "http://localhost:8080/#/logout"){
+ 		   sessionservice.sdo.isLogged = false;
+ 		   sessionservice.sdo.username = "";
+ 		   sessionservice.logout();
+ 		  popup.abrir("done");
+ 	   }
+ 	});
 	
 //My account / controller logic
 	if (sessionservice.sdo.isLogged){
@@ -33,13 +43,13 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams,
 				sessionservice.login(vm.credentials).then(function (user) {
 		    	   	vm.credentials.username = sessionservice.sdo.username;
 		    	   	if(sessionservice.sdo.isLogged){
-		    	   		vm.open("mensajeLogInCorrect");
+		    	   		popup.abrir("mensajeLogInCorrect");
 		    	   	}
 		    	});
 			},
 			//error
 			function (){
-				vm.open("mensajeLogInIncorrect");
+				popup.abrir("mensajeLogInIncorrect");
 			}
 			);
 			$location.path("/gente");
@@ -60,12 +70,12 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams,
 						vm.session.isOrganization = true;
 			    	   	vm.credentials.username = sessionservice.sdo.username;
 			    	   	if(sessionservice.sdo.isLogged){
-			    	   		vm.open("mensajeLogInCorrect");
+			    	   		popup.abrir("mensajeLogInCorrect");
 			    	   	}
 			    	},
 					//error
 					function (){
-			    		vm.open("mensajeLogInIncorrect");
+			    		popup.abrir("mensajeLogInIncorrect");
 					}
 				);
 		
@@ -77,10 +87,5 @@ function registercontroller (actorservice,sessionservice,$location,$routeParams,
 		vm.upersona = {};
 		$location.path("/");
 	};
-	vm.open = function (mensaje) {
-		ngDialog.open({
-			template: mensaje,
-			className: 'ngdialog-theme-default',
-		});
-	}
+
 }

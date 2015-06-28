@@ -1,9 +1,19 @@
 "use strict";
 angular.module("webapp").controller("actorcontroller", actorcontroller);
-actorcontroller.$inject = [ "actorservice","ngDialog","sessionservice"];
+actorcontroller.$inject = [ "actorservice","ngDialog","sessionservice","$scope", "popup"];
 
-function actorcontroller(actorservice,ngDialog,sessionservice) {
+function actorcontroller(actorservice,ngDialog,sessionservice,$scope, popup) {
 	var vm = this;
+	
+	
+    $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
+ 	   if(absNewUrl === "http://localhost:8080/#/logout"){
+ 		   sessionservice.sdo.isLogged = false;
+ 		   sessionservice.sdo.username = "";
+ 		   sessionservice.logout();
+ 		   popup.abrir("done");
+ 	   }
+ 	});
     
     //View model properties
     
@@ -29,15 +39,8 @@ function actorcontroller(actorservice,ngDialog,sessionservice) {
     	if(sessionservice.sdo.isLogged){
     		vm.actors = actorservice.searchLocation(param);
     	}else{
-    		vm.open("notLogged");
+    		popup.abrir("notLogged");
     		vm.actors = actorservice.getActors();
     	}
     }
-    
-    vm.open = function (mensaje) {
-		ngDialog.open({
-			template: mensaje,
-			className: 'ngdialog-theme-default',
-		});
-	}
 }
