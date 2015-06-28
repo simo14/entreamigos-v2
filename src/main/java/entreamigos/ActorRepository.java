@@ -8,5 +8,6 @@ public interface ActorRepository extends CrudRepository <Actor, Long> {
 	public Iterable<Actor> findByDefaultLocation(Location location);
 	public Iterable<Actor> findByMood(int mood);
 	public Iterable<Actor> findByDefaultLocationNeighborhood(String s);
-	public Iterable<Actor> findByHappening(Happening h);
+	public Iterable<Actor> findByDefaultLocationCity(String s);
+	//public Iterable<Actor> findByHappening(Happening h);
 }

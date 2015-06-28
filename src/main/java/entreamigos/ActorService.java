@@ -62,6 +62,10 @@ public class ActorService {
 		return aRep.findByDefaultLocationNeighborhood(location);
 	}
 	
+	public Iterable<Actor> findByDefaultLocationCity(String location){
+		return aRep.findByDefaultLocationCity(location);
+	}
+	
 	public Iterable<Person> findFriends(long idActor){
 		return aPer.findOne(idActor).getFriends();
 	}
@@ -85,7 +89,7 @@ public class ActorService {
 		return aOrg.findOne(idOrganization).getPrinciples();
 	}
 	
-	public Iterable<Actor> findByHappening(Happening happening){
+	/**public Iterable<Actor> findByHappening(Happening happening){
 		return aRep.findByHappening(happening);
-	}
+	}**/
 }
