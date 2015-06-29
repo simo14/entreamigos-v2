@@ -22,7 +22,7 @@ function sessionservice($resource) {
 	
 	function login (credentials){
 		user.user = new PeopleResource(credentials).$save(function( value ){
-		        	if(value.mood){
+		        	if(value.bio){
 		        		sdo.username = value.name;
 			        	sdo.isLogged = true;
 			        	return value;
