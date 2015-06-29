@@ -1,11 +1,11 @@
-angular.module("webapp").controller("logincontroller", logincontroller);
-logincontroller.$inject = ["$resource","$location","$window","sessionservice","$scope","popup"];
+angular.module("webapp").controller("admincontroller", admincontroller);
+admincontroller.$inject = ["$resource","$location","$window","sessionservice","$scope","popup","adminservice"];
 
-function logincontroller($resource,$location,$window,sessionservice,$scope,popup) {
+function admincontroller($resource,$location,$window,sessionservice,$scope,popup,adminservice) {
 	var vm = this;
 	
 	vm.credentials = {
-			username: '',
+			id: '',
 			password: ''
 		};
 		
@@ -16,6 +16,7 @@ function logincontroller($resource,$location,$window,sessionservice,$scope,popup
     $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
  	   if(absNewUrl === "http://localhost:8080/#/logout"){
  		   sessionservice.sdo.isLogged = false;
+ 		   sessionservice.sdo.isAdmin = false;
  		   sessionservice.sdo.username = "";
  		   sessionservice.logout();
  		   popup.abrir("done");
