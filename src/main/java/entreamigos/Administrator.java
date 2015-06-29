@@ -13,13 +13,15 @@ public class Administrator{
 	
 	private boolean[] rights;	//A true in each field is an ability to perform certain action
 	
+	private String password;
+	
 	public Administrator(){
-		super();
 		this.rights=new boolean[5];
 	}
-	public Administrator(boolean[] rights){
+	public Administrator(boolean[] rights, String password){
 
 		this.rights=rights;
+		this.password=password;
 	}
 	
 	public boolean[] getRights(){
@@ -29,4 +31,18 @@ public class Administrator{
 	public void setRights(boolean[] b){
 		this.rights=b;
 	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
 }
