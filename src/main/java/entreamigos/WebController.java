@@ -141,11 +141,11 @@ public class WebController implements CommandLineRunner {
 		
 		Person jaime=new Person("jaime","Soy una taza",1, null,null,null,aux2);
 		actorService.save(jaime);
-		ArrayList<Person> a=new ArrayList<Person>();
+		ArrayList<Actor> a=new ArrayList<Actor>();
 		a.add(jaime);
 		Person marta=new Person("marta","Una tetera",2, null,null,a,aux);
 		actorService.save(marta);
-		ArrayList<Person> b=new ArrayList<Person>();
+		ArrayList<Actor> b=new ArrayList<Actor>();
 		b.add(marta);
 		jaime.setFriends(b);
 		Person raul=new Person("raul","Una cuchara",4, null,null,a,aux);

@@ -30,10 +30,10 @@ function personcontroller(actorservice, sessionservice, $routeParams,$location,$
 
 	//Controller actions
 	vm.beFriends = function () {
-		if(sessionservice.sdo.isLogged && !sessionservice.sdo.isOrganization){
+		if(sessionservice.sdo.isLogged){
 			actorservice.beFriends($routeParams.id);
 			popup.abrir("done");
-			$location.path("/amigos");
+			$location.path("/redirect/friends");
 		}else{
 			popup.abrir("notLogged");
 		}

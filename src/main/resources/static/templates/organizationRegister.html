@@ -1,29 +1,31 @@
 <p style="display:block;">En este apartado puedes registrar una organización. Luego podrás identificarte como organización para organizar eventos!</p>
-
-<div ng-controller="registercontroller as vm" layout="column" class="inputdemoBasicUsage" ng-app="MyApp">
-  <form ng-submit="vm.addOrg(vm.newOrg)">
-		<md-content flex md-theme="docs-dark" layout="column" layout-align="center center">
-		    <md-input-container>
-		      	<label>Usuario / Nombre de la organización</label>
-		      	<input ng-model="vm.newOrg.name">
-		    </md-input-container>
-	    	<md-input-container>
-		      	<label>Barrio de actuación</label>
-		      	<input ng-model="vm.newOrg.defaultLocation.neighborhood">
-	    	</md-input-container>
-	    	<md-input-container>
-	      		<label>Contraseña</label>
-	      		<input type="password">
-	    	</md-input-container>
-	    	<md-input-container>
-	      		<label>Biografía</label>
-	      		<textarea ng-model="vm.newOrg.bio" columns="1" md-maxlength="150"></textarea>
-	    	</md-input-container>
-	    	<md-input-container>
-	      		<label>Principios</label>
-	      		<textarea ng-model="vm.newOrg.principles" columns="1" md-maxlength="150"></textarea>
-	    	</md-input-container>
-	    	<md-button class="md-raised">Guardar</md-button>
-	  	</md-content>
-  </form>
-</div>
+	<div ng-if = "vm.session.isLogged">Ya ha iniciado sesión</div>
+	<div ng-if = "!vm.session.isLogged">
+		<div ng-controller="registercontroller as vm" layout="column" class="inputdemoBasicUsage" ng-app="MyApp">
+		  <form ng-submit="vm.addOrg(vm.newOrg)">
+				<md-content flex md-theme="docs-dark" layout="column" layout-align="center center">
+				    <md-input-container>
+				      	<label>Usuario / Nombre de la organización</label>
+				      	<input ng-model="vm.newOrg.name">
+				    </md-input-container>
+			    	<md-input-container>
+				      	<label>Barrio de actuación</label>
+				      	<input ng-model="vm.newOrg.defaultLocation.neighborhood">
+			    	</md-input-container>
+			    	<md-input-container>
+			      		<label>Contraseña</label>
+			      		<input type="password">
+			    	</md-input-container>
+			    	<md-input-container>
+			      		<label>Biografía</label>
+			      		<textarea ng-model="vm.newOrg.bio" columns="1" md-maxlength="150"></textarea>
+			    	</md-input-container>
+			    	<md-input-container>
+			      		<label>Principios</label>
+			      		<textarea ng-model="vm.newOrg.principles" columns="1" md-maxlength="150"></textarea>
+			    	</md-input-container>
+			    	<md-button class="md-raised">Guardar</md-button>
+			  	</md-content>
+		  </form>
+		</div>
+	</div>

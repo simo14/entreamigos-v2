@@ -101,7 +101,7 @@ public class ActorsController {
 //-----------------FRIENDS------------------------------------------------
 	
 	@RequestMapping(value="/friends", method = RequestMethod.GET)
-	public Iterable<Person> friendsP (HttpSession session){
+	public Iterable<Actor> friendsP (HttpSession session){
 		String prueba = session.getAttribute("userId")+"0";
 		Long idpersona = (Long.parseLong(prueba, 10))/10;
 		Person aux = (Person) actorService.findOne(idpersona);
@@ -121,14 +121,21 @@ public class ActorsController {
 		
 		String prueba = session.getAttribute("userId")+"0";
 		Long idpersona = (Long.parseLong(prueba, 10))/10;
-		
 		Person aux = (Person) actorService.findOne(idpersona);
-		Person amigo = (Person)actorService.findOne(idPerson);
-		aux.getFriends().add(amigo);
-		actorService.save(aux);
-		amigo.getFriends().add(aux);	//It has to be bidirectional
-		actorService.save(amigo);
-		return new ResponseEntity<>(amigo,HttpStatus.OK);
+		try{
+			Person amigo = (Person)actorService.findOne(idPerson);
+			aux.getFriends().add(amigo);
+			actorService.save(aux);
+			amigo.getFriends().add(aux);	//It has to be bidirectional
+			actorService.save(amigo);
+		}catch(ClassCastException e){
+			Organization amigo = (Organization) actorService.findOne(idPerson);
+			aux.getFriends().add(amigo);
+			actorService.save(aux);
+			amigo.getCrew().add(aux);	//It has to be bidirectional
+			actorService.save(amigo);		
+		}
+		return new ResponseEntity<>(aux,HttpStatus.OK);
 	}
 	
 //No existe un people/friends/{id} get porque clickar en un amigo hace una petición get a people/{id}

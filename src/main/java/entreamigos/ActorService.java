@@ -66,7 +66,7 @@ public class ActorService {
 		return aRep.findByDefaultLocationCity(location);
 	}
 	
-	public Iterable<Person> findFriends(long idActor){
+	public Iterable<Actor> findFriends(long idActor){
 		return aPer.findOne(idActor).getFriends();
 	}
 	

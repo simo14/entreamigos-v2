@@ -140,9 +140,11 @@ function autoreload(){
 	}
 	
 	function findFriends(){
+		console.log("lo llama");
 		that.friends = PeopleSearch.getFriends (function(){
 			return that.friends
 		});
+		console.log(that.friends);
 		return that.friends;
 	}
 	
