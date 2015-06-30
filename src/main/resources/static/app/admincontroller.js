@@ -1,48 +1,36 @@
 angular.module("webapp").controller("admincontroller", admincontroller);
-admincontroller.$inject = ["$resource","$location","$window","sessionservice","$scope","popup","adminservice"];
+admincontroller.$inject = ["$resource","$location","$window","$scope","popup","adminservice"];
 
-function admincontroller($resource,$location,$window,sessionservice,$scope,popup,adminservice) {
+function admincontroller($resource,$location,$window,$scope,popup,adminservice) {
 	var vm = this;
 	
 	vm.credentials = {
 			id: '',
 			password: ''
-		};
-	
-	vm.request = {
-			id: '',
-			password: ''
-	}
-		
+		};		
 		
 	vm.session = sessionservice.sdo;
 		
 	
     $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
  	   if(absNewUrl === "http://localhost:8080/#/logout"){
- 		   sessionservice.sdo.isLogged = false;
- 		   sessionservice.sdo.isAdmin = false;
- 		   sessionservice.sdo.username = "";
- 		   sessionservice.logout();
+ 		   adminservice.isLogged = false;
+ 		   sessionservice.credentials.username = "";
+ 		   adminservice.logout();
  		   popup.abrir("done");
  	   }
  	});
     
     
     $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
-   	   if(absNewUrl === "http://localhost:8080/#/" && sessionservice.sdo.isLogged){
+   	   if(absNewUrl === "/SITIO PARA HACER COSAS DE ADMIN" && adminservice.isLogged){
    		 popup.abrir("LogInCompleted");
    	   }
       });	
 
     vm.submit = function() {
-    	sessionservice.login(vm.credentials).then(function (admin) {
-    	   	vm.request.id = admin.id;
-    	   	vm.request.password = admin.password;
-    	   	if(request.password === credentials.password){
-    	   		sessionservice.sdo.isLogged=true;
-    	   		popup.abrir("mensajeLogInCorrect");
-    	   	} else {
+    	adminservice.login(vm.credentials).then(function (admin) {
+    	   	if (!admin.id) {
     	   		popup.abrir("mensajeLogInIncorrect");
     	   	}
     		$location.path("/SITIO PARA HACER COSAS DE ADMIN");

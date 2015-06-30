@@ -6,8 +6,8 @@ function adminservice($resource, $timeout) {
 	var that = this;
 	var isLogged = false;
 	var credentials = {
-			id: "";
-			password: "";
+			id: "",
+			password: ""
 	};
 	
 	var AdminResource = $resource('/adminLogin',
@@ -25,6 +25,7 @@ function adminservice($resource, $timeout) {
 		var admin = new AdminResource(credentials).$save(function( value ){
 		        	if(admin){
 		        		credentials.id = value.id;
+		        		isLogged = true;
 			        	return value;
 		        	}
 		        	else{
@@ -35,7 +36,6 @@ function adminservice($resource, $timeout) {
 	};
 	
 	return {
-		getAdmin : getAdmin,
 		isLogged : isLogged
 	}
 }
