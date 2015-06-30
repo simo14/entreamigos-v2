@@ -12,7 +12,7 @@ function adminservice($resource, $timeout) {
 	
 	var AdminResource = $resource('/adminLogin',
 			{ id : '@id' },
-			{ 	update : { method : "PUT" },
+			{ 	update : { method : "GET" },
 			}
 		);
 	
@@ -36,6 +36,7 @@ function adminservice($resource, $timeout) {
 	};
 	
 	return {
-		isLogged : isLogged
+		isLogged : isLogged,
+		login:login
 	}
 }

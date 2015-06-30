@@ -20,7 +20,7 @@ public class AdminController {
 //------------------------------------------------	
 
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public Administrator getAdmin(@PathVariable long id, @RequestBody String pass, HttpSession session) {
 		String aux = adminService.findOneAdministrator(id).getPassword();
 		if (pass.equals(aux)){
