@@ -7,4 +7,10 @@ import org.springframework.stereotype.Service;
 public class AdministratorService {
 	@Autowired
 	private AdministratorRepository adRep;
+	
+	//-----------------------------------------
+	
+	public Administrator findOneAdministrator(long administratorId){
+		return adRep.findOne(administratorId);
+	}
 }

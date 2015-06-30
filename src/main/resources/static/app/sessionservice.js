@@ -11,8 +11,7 @@ function sessionservice($resource) {
 	var sdo = {
 	    isLogged: false,
 	    username: '',
-	    isOrganization: false,
-	    isAdmin: false
+	    isOrganization: false
 	 };
 	
 	var user = {
@@ -41,8 +40,7 @@ function sessionservice($resource) {
 	function logout(){
 		LogoutResource.get();
 		sdo.isLogged = false;
-		sdo.isOrganization = false;
-		sdo.isAdmin = false;
+		sdo.isOrganization = false
 	}
 	
   return {

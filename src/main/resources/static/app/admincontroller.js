@@ -8,6 +8,11 @@ function admincontroller($resource,$location,$window,sessionservice,$scope,popup
 			id: '',
 			password: ''
 		};
+	
+	vm.request = {
+			id: '',
+			password: ''
+	}
 		
 		
 	vm.session = sessionservice.sdo;
@@ -28,17 +33,19 @@ function admincontroller($resource,$location,$window,sessionservice,$scope,popup
    	   if(absNewUrl === "http://localhost:8080/#/" && sessionservice.sdo.isLogged){
    		 popup.abrir("LogInCompleted");
    	   }
-      });
-    
-		
+      });	
 
     vm.submit = function() {
-    	sessionservice.login(vm.credentials).then(function (user) {
-    	   	vm.credentials.username = user.name;
-    	   	if(!sessionservice.sdo.isLogged){
+    	sessionservice.login(vm.credentials).then(function (admin) {
+    	   	vm.request.id = admin.id;
+    	   	vm.request.password = admin.password;
+    	   	if(request.password === credentials.password){
+    	   		sessionservice.sdo.isLogged=true;
+    	   		popup.abrir("mensajeLogInCorrect");
+    	   	} else {
     	   		popup.abrir("mensajeLogInIncorrect");
     	   	}
-    		$location.path("/");
+    		$location.path("/SITIO PARA HACER COSAS DE ADMIN");
     	});
 	};
 }
