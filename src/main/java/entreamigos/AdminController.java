@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -20,8 +21,8 @@ public class AdminController {
 //------------------------------------------------	
 
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public Administrator getAdmin(@PathVariable long id, @RequestBody String pass, HttpSession session) {
+	@RequestMapping(method = RequestMethod.POST)
+	public Administrator getAdmin(@RequestParam long id, @RequestBody String pass, HttpSession session) {
 		String aux = adminService.findOneAdministrator(id).getPassword();
 		if (pass.equals(aux)){
 			session.setAttribute("id", id);

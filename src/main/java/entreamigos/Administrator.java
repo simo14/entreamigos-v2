@@ -20,7 +20,7 @@ public class Administrator{
 	}
 	
 	public Administrator(String password){
-
+		this.rights = new boolean[5];
 		for(int i=0;i<5;i++){
 			this.rights[i] = true;
 		}

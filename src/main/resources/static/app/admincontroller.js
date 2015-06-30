@@ -23,7 +23,7 @@ function admincontroller($resource,$location,$window,$scope,popup,adminservice) 
     
     
     $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
-   	   if(absNewUrl === "/SITIO PARA HACER COSAS DE ADMIN" && adminservice.isLogged){
+   	   if(absNewUrl === "http://localhost:8080/#/SITIO PARA HACER COSAS DE ADMIN" && adminservice.isLogged){
    		 popup.abrir("LogInCompleted");
    	   }
       });	
