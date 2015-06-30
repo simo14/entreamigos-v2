@@ -26,6 +26,7 @@ function adminservice($resource, $timeout) {
 		        	if(admin){
 		        		credentials.id = value.id;
 		        		isLogged = true;
+		        		console.log(isLogged)
 			        	return value;
 		        	}
 		        	else{

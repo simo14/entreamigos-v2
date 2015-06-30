@@ -1,8 +1,13 @@
 angular.module("webapp").controller("admincontroller", admincontroller);
-admincontroller.$inject = ["$resource","$location","$window","$scope","popup","adminservice"];
+admincontroller.$inject = ["$resource","$location","$window","$scope","popup","adminservice","ppservice","actorservice"];
 
-function admincontroller($resource,$location,$window,$scope,popup,adminservice) {
+function admincontroller($resource,$location,$window,$scope,popup,adminservice,ppservice,actorservice) {
 	var vm = this;
+	
+	vm.people = actorservice.getActors();
+	vm.events = ppservice.getEvents();
+	vm.evento = {};
+	vm.persona = {};
 	
 	vm.credentials = {
 			id: '',
@@ -23,17 +28,25 @@ function admincontroller($resource,$location,$window,$scope,popup,adminservice) 
     
     
     $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
-   	   if(absNewUrl === "http://localhost:8080/#/SITIO PARA HACER COSAS DE ADMIN" && adminservice.isLogged){
+    	console.log(adminservice.isLogged)
+   	   if(absNewUrl === "http://localhost:8080/#/adminpanel" && adminservice.isLogged){
    		 popup.abrir("LogInCompleted");
    	   }
       });	
 
-    vm.submit = function() {
+    vm.eliminarPersona = function(persona) {
+    	console.log(persona.name);
+	};
+	vm.eliminarEvento = function(evento) {
+		console.log(evento.title);
+	};
+	
+	vm.submit = function() {
     	adminservice.login(vm.credentials).then(function (admin) {
     	   	if (!admin.id) {
     	   		popup.abrir("mensajeLogInIncorrect");
     	   	}
-    		$location.path("/SITIO PARA HACER COSAS DE ADMIN");
+    		$location.path("/adminpanel");
     	});
-	};
+	}
 }
