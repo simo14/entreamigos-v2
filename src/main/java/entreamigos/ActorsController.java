@@ -53,15 +53,25 @@ public class ActorsController {
 	}
 	
 	@RequestMapping(value="/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Person> updatePersona(HttpSession session,@RequestBody Person newPerson) {
+	public ResponseEntity<Person> updatePersona(HttpSession session,@RequestBody Actor newActor) {
 		String prueba = session.getAttribute("userId")+"0";
-		Long idpersona = (Long.parseLong(prueba, 10))/10;	
-		Person antigua = (Person) actorService.findOne(idpersona);
-		antigua.setBio(newPerson.getBio());
-		antigua.setDefaultLocation(newPerson.getDefaultLocation());
-		antigua.setMood(newPerson.getMood());
-		actorService.save(antigua);
-		return new ResponseEntity<>(antigua,HttpStatus.OK);
+		Long idpersona = (Long.parseLong(prueba, 10))/10;
+		try{
+			Person antigua = (Person) actorService.findOne(idpersona);
+			Person newPerson = (Person) newActor;
+			antigua.setBio(newPerson.getBio());
+			antigua.setDefaultLocation(newPerson.getDefaultLocation());
+			antigua.setMood(newPerson.getMood());
+			actorService.save(antigua);
+		}catch(NullPointerException e){
+			Organization antigua = (Organization) actorService.findOne(idpersona);
+			Organization newOrg = (Organization) newActor;
+			antigua.setBio(newOrg.getBio());
+			antigua.setDefaultLocation(newOrg.getDefaultLocation());
+			antigua.setPrinciples(newOrg.getPrinciples());
+			actorService.save(antigua);
+		}
+		return new ResponseEntity<>(new Person(),HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

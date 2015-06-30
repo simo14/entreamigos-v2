@@ -140,16 +140,13 @@ function autoreload(){
 	}
 	
 	function findFriends(){
-		console.log("lo llama");
 		that.friends = PeopleSearch.getFriends (function(){
 			return that.friends
 		});
-		console.log(that.friends);
 		return that.friends;
 	}
 	
 	function findCrew(){
-		console.log("pene");
 		that.friends = PeopleSearch.getCrew (function(){
 			return that.friends
 		});

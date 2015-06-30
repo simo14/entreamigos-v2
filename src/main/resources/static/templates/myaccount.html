@@ -17,7 +17,11 @@
 				      <label>Bio</label>
 				      <textarea ng-model="vm.upersona.bio" columns="1" md-maxlength="150"></textarea>
 				    </md-input-container>
-				    <md-select placeholder="Humor" ng-model="vm.upersona.mood">
+				    <md-input-container ng-if ="vm.session.isOrganization">
+				      <label>Principios de la organización</label>
+				      <textarea ng-model="vm.upersona.principles" columns="1" md-maxlength="150"></textarea>
+				    </md-input-container>
+				    <md-select ng-if = "!vm.session.isOrganization" placeholder="Humor" ng-model="vm.upersona.mood">
 						    <md-option value="1">Amoroso</md-option>
 						    <md-option value="2">Deportista</md-option>
 					        <md-option value="3">Aventurero</md-option>
