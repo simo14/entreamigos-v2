@@ -87,5 +87,11 @@ function registercontroller (actorservice,sessionservice,$location,ngDialog,$sco
 		vm.upersona = {};
 		$location.path("/");
 	};
+	
+	vm.modifyOrg = function(){
+		actorservice.updateOrg(vm.upersona);
+		vm.upersona = {};
+		$location.path("/");
+	};
 
 }

@@ -50,7 +50,13 @@ function actorservice($resource, $timeout) {
 				params: {
 					action:"org"
 				}
-		}
+			},
+			updateOrganization: {
+				method: 'PUT',
+				params: {
+					action:"org"
+				}
+			}
 			
 			});
 
@@ -73,7 +79,8 @@ function autoreload(){
 		newOrg : newOrg,
 		updatePersona : updatePersona,
 		findFriends : findFriends,
-		findCrew : findCrew
+		findCrew : findCrew,
+		updateOrg: updateOrg
 	}
 	
 
@@ -151,6 +158,13 @@ function autoreload(){
 			return that.friends
 		});
 		return that.friends;
+	}
+	
+	function updateOrg(organization) {
+		console.log("p");
+		new PeopleSearch.updateOrganization(organization, function(){
+			reload();
+		});
 	}
 	
  /*   

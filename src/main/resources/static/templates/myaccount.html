@@ -3,7 +3,7 @@
 	<h2>{{vm.session.username | uppercase}}</h2>
 		<div ng-if = "!vm.session.isLogged">Identifíquese para acceder a su cuenta. <a href="#/login">Login</a></div>
 		<div ng-if = "vm.session.isLogged">
-			<form ng-submit="vm.modifyPerson(vm.upersona)">
+			<form>
 				  <md-content flex md-theme="docs-dark" layout="column" layout-align="center center">
 				    <md-input-container>
 				      <label>Barrio</label>
@@ -29,7 +29,8 @@
 				  		</md-select>
 				  		<div></div>
 				    <div></div>
-				    <md-button type="submit" class="md-raised">Guardar</md-button>
+				    <md-button ng-if ="!vm.session.isOrganization" ng-click="vm.modifyPerson(vm.upersona)" type="submit" class="md-raised">Guardar</md-button>
+					<md-button ng-if ="vm.session.isOrganization" ng-click="vm.modifyOrg(vm.upersona)" type="submit" class="md-raised">Guardar</md-button>				 
 				  </md-content>
 			</form>
 		</div>

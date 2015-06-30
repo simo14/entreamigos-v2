@@ -26,6 +26,9 @@ function sessionservice($resource) {
 		        	if(value.bio){
 		        		sdo.username = value.name;
 			        	sdo.isLogged = true;
+			        	if(value.principles){
+			        		sdo.isOrganization = true;
+			        	}
 			        	return value;
 		        	}
 		        	else{
