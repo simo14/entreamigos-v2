@@ -28,8 +28,7 @@ function admincontroller($resource,$location,$window,$scope,popup,adminservice,p
     
     
     $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
-    	console.log(adminservice.isLogged)
-   	   if(absNewUrl === "http://localhost:8080/#/adminpanel" && adminservice.isLogged){
+   	   if(absNewUrl === "http://localhost:8080/#/adminpanel" && adminservice.sdo.isLogged){
    		 popup.abrir("LogInCompleted");
    	   }
       });	

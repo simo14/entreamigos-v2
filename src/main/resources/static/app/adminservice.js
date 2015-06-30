@@ -4,7 +4,7 @@ adminservice.$inject = [ "$resource", "$timeout" ];
 
 function adminservice($resource, $timeout) {
 	var that = this;
-	var isLogged = false;
+	var sdo = {isLogged : false};
 	var credentials = {
 			id: "",
 			password: ""
@@ -25,8 +25,7 @@ function adminservice($resource, $timeout) {
 		var admin = new AdminResource(credentials).$save(function( value ){
 		        	if(admin){
 		        		credentials.id = value.id;
-		        		isLogged = true;
-		        		console.log(isLogged)
+		        		sdo.isLogged = true;
 			        	return value;
 		        	}
 		        	else{
@@ -37,7 +36,7 @@ function adminservice($resource, $timeout) {
 	};
 	
 	return {
-		isLogged : isLogged,
+		sdo : sdo,
 		login:login
 	}
 }
