@@ -18,9 +18,12 @@ public class Administrator{
 	public Administrator(){
 		this.rights=new boolean[5];
 	}
-	public Administrator(boolean[] rights, String password){
+	
+	public Administrator(String password){
 
-		this.rights=rights;
+		for(int i=0;i<5;i++){
+			this.rights[i] = true;
+		}
 		this.password=password;
 	}
 	

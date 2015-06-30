@@ -28,6 +28,9 @@ public class WebController implements CommandLineRunner {
 	@Autowired
 	private RatingRepository ratingRep;
 	
+	@Autowired
+	private AdministratorRepository adRep;
+	
 //------------------------------------------------	
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -187,5 +190,8 @@ public class WebController implements CommandLineRunner {
 		ELService.save(h1);
 		h1=new Happening("Dia de piscina",atendees,aux4,new Date(1436396400000L),"Traed cremita",null,0,"deportes");
 		ELService.save(h1);
+		
+		Administrator admin = new Administrator("admin");
+		adRep.save(admin);
 	}
 }
