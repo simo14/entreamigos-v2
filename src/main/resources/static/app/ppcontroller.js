@@ -36,6 +36,7 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice,pop
     //Controller actions
 
     vm.searchDate = function(param){
+    	console.log(param.getTime());
     	vm.events = ppservice.searchDate(param.getTime());
     }
     
