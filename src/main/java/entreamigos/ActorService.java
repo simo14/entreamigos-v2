@@ -88,5 +88,9 @@ public class ActorService {
 	public String findPrinciples(long idOrganization){
 		return aOrg.findOne(idOrganization).getPrinciples();
 	}
+	
+	public void deleteA(long id){
+		aRep.delete(id);
+	}
 
 }
