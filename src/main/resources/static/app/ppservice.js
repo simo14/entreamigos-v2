@@ -143,23 +143,13 @@ function ppservice($resource, $timeout,adminservice) {
 		});
 	}
 
-  
- /*   
-	this.getEvents = function(){
-		this.events = EventResource.query();
-		console.log(this.events);
-		return this.events;
-	}
-    
-
-    
-	this.updateEvent = function(updatedEvent) {
-		updatedPost.$update();
-	}
-    
-	this.deleteEvent = function(event) {
-		post.$remove(function() {
-			that.events.splice(that.posts.indexOf(post), 1);
+	function eliminar (happ){
+		EventResource.erase(
+				happ, 
+				function(){
+					console.log("creo que esto significa que se ha eliminado");
+					reload();
 		});
-	}	*/
+	}
+ 
 }

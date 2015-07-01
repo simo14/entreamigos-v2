@@ -193,4 +193,13 @@ function autoreload(){
 	function addHead(person){
 		new PeopleSearch.addOrgHead(person);
 	}
+	
+	function eliminar (per){
+		PeopleResource.erase(
+				per, 
+				function(){
+					console.log("creo que esto significa que se ha eliminado");
+					reload();
+		});
+	}
 }
