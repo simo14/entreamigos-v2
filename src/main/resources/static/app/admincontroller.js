@@ -32,14 +32,20 @@ function admincontroller($resource,$location,$window,$scope,popup,adminservice,p
       });	
 
     vm.eliminarPersona = function(persona) {
-    	actorservice.eliminar(persona);
-    	popup.abrir("done");
+    	if (actorservice.eliminar(persona)) {
+    		popup.abrir("done");
+    	} else {
+    		popup.abrir("error");
+    	}
     	$location.path("/adminpanel");
 	};
 	
 	vm.eliminarEvento = function(evento) {
-		ppservice.eliminar(evento);
-		popup.abrir("done");
+		if (ppservice.eliminar(evento)) {
+			popup.abrir("done");
+		} else {
+			popup.abrir("error");
+		}
 		$location.path("/adminpanel");
 	};
 	
@@ -51,6 +57,7 @@ function admincontroller($resource,$location,$window,$scope,popup,adminservice,p
     		$location.path("/adminpanel");
     	});
 	}
+	
 	vm.onload = function () {
 		var url = $location.path();
 		if((url ==="/adminlogin") && (adminservice.sdo.isLogged)){

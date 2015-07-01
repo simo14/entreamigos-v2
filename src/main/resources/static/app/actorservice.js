@@ -1,13 +1,14 @@
 "use strict";
 angular.module("webapp").service("actorservice", actorservice);
-actorservice.$inject = [ "$resource", "$timeout" ];
+actorservice.$inject = [ "$resource", "$timeout","adminservice"];
 
-function actorservice($resource, $timeout) {
+function actorservice($resource, $timeout,adminservice) {
 	var that = this;
 	var actors = [];                          
 	var PeopleResource = $resource('/people/:id/:action',
 			{ id : '@id' },
 			{ 	update : { method : "PUT" },
+				erase : { method : "DELETE" }
 			}
 		);
 	
@@ -88,7 +89,8 @@ function autoreload(){
 		findFriends : findFriends,
 		findCrew : findCrew,
 		updateOrg: updateOrg,
-		addHead : addHead
+		addHead : addHead,
+		eliminar: eliminar
 	}
 	
 
@@ -98,6 +100,20 @@ function autoreload(){
 			actors.push.apply(actors, newActors);
 		}).$promise;
 		return promise;
+	}
+	
+	function eliminar (tio){
+		if (adminservice.sdo.isLogged){
+			PeopleResource.erase(
+					tio, 
+					function(){
+						console.log("creo que esto significa que se ha eliminado");
+						reload();
+			});
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	function getActors() {
