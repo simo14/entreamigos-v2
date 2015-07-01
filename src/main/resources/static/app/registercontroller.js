@@ -91,9 +91,8 @@ function registercontroller (actorservice,sessionservice,$location,ngDialog,$sco
 	vm.modifyOrg = function(persona){
 		actorservice.updateOrg(vm.upersona);
 		if(persona){
-			console.log("se introduce: " + persona.name);
-			console.log("Antiguo Jefe: "+vm.upersona.head.name);
-			actorservice.addHead(persona);
+			actorservice.addHead(persona);		//Actualize in server
+			vm.upersona.head = persona;			//Actualize in client
 		}
 		vm.upersona = {};
 		$location.path("/");

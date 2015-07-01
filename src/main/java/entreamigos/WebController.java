@@ -177,7 +177,7 @@ public class WebController implements CommandLineRunner {
 		uhu=new Person("xXQuixoteXx","De la mancha district, dude",1, null,null,null,aux4);
 		actorService.save(uhu);
 		
-		Organization org = new Organization("urjc","Si quieres librarte de nosotros traénos una almáciga",2,null,null,uhu,"Aceptamos hasta a los tontos",null,aux4);
+		Organization org = new Organization("urjc","Si quieres librarte de nosotros traénos una almáciga",0,null,null,uhu,"Aceptamos hasta a los tontos",null,aux4);
 		actorService.save(org);
 		
 		ArrayList<Actor> atendees=new ArrayList<Actor>();
