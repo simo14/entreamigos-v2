@@ -1,7 +1,7 @@
-<div ng-controller="admincontroller as vm" id="containerEvento" layout="row">
+<div ng-controller="admincontroller as vm" id="containerEvento" layout="column">
 
-	<md-whiteframe flex="50" class="md-whiteframe-z5" layout="column" id="containerPersona">
-		<div flex="30" class="" layout="column" id="container">
+	<md-whiteframe flex="50" class="md-whiteframe-z5" layout="column" id="containerAdmin">
+		<div flex="80" class="" layout="column" id="containerInteriorAdmin">
 			<p>Seleccione el evento que desee eliminar</p>
   			<div layout="column" layout-align="center center" style="height: 100px;">
    			<md-select ng-model="evento" style="min-width: 200px;">
@@ -10,24 +10,22 @@
     		</md-select>
     		
     		<p class="md-caption">Va a eliminar: {{ evento ? evento.title : 'Aún ninguno' }}</p>
+		</div>
 			<md-button id="login_button" style="margin-top:4em;" ng-click="vm.eliminarEvento(evento)">Eliminar</md-button>
 		</div>
-		</div>
 		</md-whiteframe>
-		<md-whiteframe flex="50" class="md-whiteframe-z5" layout="column" id="containerPersona">
-		<div flex="30" class="" layout="column" id="container">
+		<md-whiteframe flex="50" class="md-whiteframe-z5" layout="column" id="containerAdmin">
+		<div flex="80" class="" layout="column" id="containerInteriorAdmin">
 			<p>Seleccione el usuario que desee eliminar</p>
   			<div layout="column" layout-align="center center" style="height: 100px;">
    			<md-select ng-model="persona" style="min-width: 200px;">
       		<md-select-label>{{ persona ? persona.name : 'Seleccione el usuario' }}</md-select-label>
       			<md-option ng-value="persona" ng-repeat="persona in vm.people">{{persona.name}}</md-option>
     		</md-select>
-    		
     		<p class="md-caption">Va a eliminar: {{ persona ? persona.name : 'Aún ninguno' }}</p>
-			<md-button id="login_button" style="margin-top:4em;" ng-click="vm.eliminarPersona(persona)">Eliminar</md-button>    
-		</dic>
+		</div>
+		<md-button id="login_button" style="margin-top:4em;" ng-click="vm.eliminarPersona(persona)">Eliminar</md-button>
 	</div>
 </div>
-<md-whiteframe flex="50" class="md-whiteframe-z5" layout="column" id="containerPersona">
 </div>
 

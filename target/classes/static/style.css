@@ -176,3 +176,19 @@
 #eventImg{
 	width:100%;
 }
+
+#containerAdmin{
+  background-color: rgb(231,235,222);
+      border-style:inset;
+    border-color:dark-grey;
+    width:60em;
+    height:30em;
+    margin:2em;
+    align-self:center;
+}
+
+#containerInteriorAdmin{
+	margin-left:2em;
+	align-self:center;
+	height:40em;
+}
