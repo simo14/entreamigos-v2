@@ -27,7 +27,7 @@ public class Organization extends Actor{	//By extending Actor Organization is pr
 		// TODO Auto-generated constructor stub
 	}
 	public Organization(String name, String bio, int mood, List<Happening> happenings,
-			Rating rating, List<Person> friends, Person head, String principles, List<Person> crew, Location defaultLocation) {
+			Rating rating, Person head, String principles, List<Person> crew, Location defaultLocation) {
 		super(name, bio, mood,happenings, rating,defaultLocation);
 		// TODO Auto-generated constructor stub
 		this.head=head;

@@ -76,6 +76,16 @@ public class ActorsController {
 		return new ResponseEntity<>(new Person(),HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/org/head", method = RequestMethod.POST)
+	public ResponseEntity<Person> addHead(HttpSession session, @RequestBody Person head) {
+		String prueba = session.getAttribute("userId")+"0";
+		Long idpersona = (Long.parseLong(prueba, 10))/10;
+		Organization antigua = (Organization) actorService.findOne(idpersona);
+		antigua.setHead(head);
+		actorService.save(antigua);
+		return new ResponseEntity<>(new Person(), HttpStatus.OK);
+	}
+	
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Long> deleteActor(@PathVariable long id) {

@@ -27,10 +27,14 @@
 					        <md-option value="3">Aventurero</md-option>
 					        <md-option value="4">Fiestero</md-option>
 				  		</md-select>
+   					<md-select ng-if= "vm.session.isOrganization" ng-model="persona" style="min-width: 200px;">
+      					<md-select-label>{{ persona ? persona.name : 'Jefe de la organización' }}</md-select-label>{{vm.upersona.head.name}}
+      					<md-option ng-value="persona" ng-repeat="persona in vm.people">{{persona.name}}</md-option>
+    				</md-select>
 				  		<div></div>
 				    <div></div>
 				    <md-button ng-if ="!vm.session.isOrganization" ng-click="vm.modifyPerson(vm.upersona)" type="submit" class="md-raised">Guardar</md-button>
-					<md-button ng-if ="vm.session.isOrganization" ng-click="vm.modifyOrg(vm.upersona)" type="submit" class="md-raised">Guardar</md-button>				 
+					<md-button ng-if ="vm.session.isOrganization" ng-click="vm.modifyOrg(persona)" type="submit" class="md-raised">Guardar</md-button>				 
 				  </md-content>
 			</form>
 		</div>

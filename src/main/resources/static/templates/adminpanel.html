@@ -9,7 +9,7 @@
       			<md-option ng-value="evento" ng-repeat="evento in vm.events">{{evento.title}}</md-option>
     		</md-select>
     		
-    		<p class="md-caption">Va a eliminar: {{ evento ? evento.title : 'Aún ninguno' }}</p>
+    		<p class="md-caption">Va a eliminar: {{ evento ? evento.title : 'Aï¿½n ninguno' }}</p>
 		</div>
 			<md-button id="login_button" style="margin-top:4em;" ng-click="vm.eliminarEvento(evento)">Eliminar</md-button>
 		</div>
@@ -22,7 +22,7 @@
       		<md-select-label>{{ persona ? persona.name : 'Seleccione el usuario' }}</md-select-label>
       			<md-option ng-value="persona" ng-repeat="persona in vm.people">{{persona.name}}</md-option>
     		</md-select>
-    		<p class="md-caption">Va a eliminar: {{ persona ? persona.name : 'Aún ninguno' }}</p>
+    		<p class="md-caption">Va a eliminar: {{ persona ? persona.name : 'Aï¿½n ninguno' }}</p>
 		</div>
 		<md-button id="login_button" style="margin-top:4em;" ng-click="vm.eliminarPersona(persona)">Eliminar</md-button>
 	</div>

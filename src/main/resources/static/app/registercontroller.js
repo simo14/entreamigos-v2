@@ -10,7 +10,7 @@ function registercontroller (actorservice,sessionservice,$location,ngDialog,$sco
 	vm.upersona = {};
 	vm.newOrg = {};
 	vm.credentials = {};
-	
+	vm.people = actorservice.getActors();
 	
     $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
  	   if(absNewUrl === "http://localhost:8080/#/logout"){
@@ -88,8 +88,14 @@ function registercontroller (actorservice,sessionservice,$location,ngDialog,$sco
 		$location.path("/");
 	};
 	
-	vm.modifyOrg = function(){
+	vm.modifyOrg = function(persona){
 		actorservice.updateOrg(vm.upersona);
+		console.log(persona);
+		if(persona){
+			console.log("pe"+vm.upersona.head.name);
+			actorservice.addHead(persona);
+		}
+		console.log("pee"+vm.upersona.head.name);
 		vm.upersona = {};
 		$location.path("/");
 	};

@@ -56,6 +56,13 @@ function actorservice($resource, $timeout) {
 				params: {
 					action:"org"
 				}
+			},
+			addOrgHead: {
+				method: 'POST',
+				params: {
+					action:"org",
+					myParam:"head"
+				}
 			}
 			
 			});
@@ -80,7 +87,8 @@ function autoreload(){
 		updatePersona : updatePersona,
 		findFriends : findFriends,
 		findCrew : findCrew,
-		updateOrg: updateOrg
+		updateOrg: updateOrg,
+		addHead : addHead
 	}
 	
 
@@ -161,32 +169,12 @@ function autoreload(){
 	}
 	
 	function updateOrg(organization) {
-		console.log("p");
 		new PeopleSearch.updateOrganization(organization, function(){
 			reload();
 		});
 	}
 	
- /*   
-	this.getEvents = function(){
-		this.events = EventResource.query();
-		console.log(this.events);
-		return this.events;
+	function addHead(person){
+		new PeopleSearch.addOrgHead(person);
 	}
-    
-	this.newEvent = function(newEvent) {		
-		new EventResource(newEvent).$save(function(event) {
-			that.Events.push(event);
-		});
-	}
-    
-	this.updateEvent = function(updatedEvent) {
-		updatedPost.$update();
-	}
-    
-	this.deleteEvent = function(event) {
-		post.$remove(function() {
-			that.events.splice(that.posts.indexOf(post), 1);
-		});
-	}	*/
 }
