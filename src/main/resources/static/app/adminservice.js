@@ -16,9 +16,9 @@ function adminservice($resource, $timeout) {
 			}
 		);
 	
-	function logout(){
-		LogoutResource.get();
-		isLogged = false
+	var logout = function (){
+		sdo.isLogged = false;
+		credentials.id = "";
 	}
 	
 	function login (credentials){
@@ -37,6 +37,8 @@ function adminservice($resource, $timeout) {
 	
 	return {
 		sdo : sdo,
-		login:login
+		login:login,
+		credentials:credentials,
+		logout: logout
 	}
 }
