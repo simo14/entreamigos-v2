@@ -1,8 +1,8 @@
 "use strict";
 angular.module("webapp").service("ppservice", ppservice);
-ppservice.$inject = [ "$resource", "$timeout" ];
+ppservice.$inject = ["$resource", "$timeout","adminservice"];
 
-function ppservice($resource, $timeout) {
+function ppservice($resource, $timeout,adminservice) {
 	var that = this;
 	var events = [];                          //Events = happenings
 	var sessionId = 0;
@@ -10,7 +10,8 @@ function ppservice($resource, $timeout) {
 			{ id : '@id' },
 			{ 
 				update : { method : "PUT" },
-				join : { method : "POST", params: { action:"join"}}
+				join : { method : "POST", params: { action:"join"}},
+				erase : { method : "DELETE" }
 			}
 		);
 	
@@ -67,7 +68,17 @@ function ppservice($resource, $timeout) {
 		newEvent : newEvent,
 		searchDate : searchDate,
 		searchByPrize : searchByPrize,
-		searchByDistance : searchByDistance
+		searchByDistance : searchByDistance,
+		eliminar: eliminar
+	}
+	
+	function eliminar (happ){
+		EventResource.erase(
+				happ, 
+				function(){
+					console.log("creo que esto significa que se ha eliminado");
+					reload();
+		});
 	}
 
 	function reload(){

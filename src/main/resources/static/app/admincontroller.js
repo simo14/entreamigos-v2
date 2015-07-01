@@ -32,14 +32,15 @@ function admincontroller($resource,$location,$window,$scope,popup,adminservice,p
       });	
 
     vm.eliminarPersona = function(persona) {
-    	console.log(persona.name);
     	actorservice.eliminar(persona);
     	popup.abrir("done");
+    	$location.path("/adminpanel");
 	};
+	
 	vm.eliminarEvento = function(evento) {
-		console.log(evento.title);
 		ppservice.eliminar(evento);
 		popup.abrir("done");
+		$location.path("/adminpanel");
 	};
 	
 	vm.submit = function() {
