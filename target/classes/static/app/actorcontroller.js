@@ -11,6 +11,15 @@ function actorcontroller(actorservice,ngDialog,sessionservice,$scope, popup) {
     
     //Controller logic
     vm.actors = actorservice.getActors();
+    
+    $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
+ 	   if(absNewUrl === "http://localhost:8080/#/logout"){
+ 		   sessionservice.sdo.isLogged = false;
+ 		   sessionservice.sdo.username = "";
+ 		   sessionservice.logout();
+ 		   popup.abrir("done");
+ 	   }
+ 	});
 	
     vm.search = function (param) {
 		if(param){

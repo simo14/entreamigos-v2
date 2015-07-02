@@ -3,6 +3,15 @@ redirectcontroller.$inject = ["$location","$scope","sessionservice"];
 
 function redirectcontroller($location,$scope,sessionservice) {
 	var vm = this;
+	
+    $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
+ 	   if(absNewUrl === "http://localhost:8080/#/logout"){
+ 		   sessionservice.sdo.isLogged = false;
+ 		   sessionservice.sdo.username = "";
+ 		   sessionservice.logout();
+ 		   popup.abrir("done");
+ 	   }
+ 	});
 
 	vm.onload = function () {
 		var url = $location.path();

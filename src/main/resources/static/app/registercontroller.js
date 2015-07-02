@@ -11,6 +11,15 @@ function registercontroller (actorservice,sessionservice,$location,ngDialog,$sco
 	vm.newOrg = {};
 	vm.credentials = {};
 	vm.people = actorservice.getActors();
+	
+    $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
+ 	   if(absNewUrl === "http://localhost:8080/#/logout"){
+ 		   sessionservice.sdo.isLogged = false;
+ 		   sessionservice.sdo.username = "";
+ 		   sessionservice.logout();
+ 		   popup.abrir("done");
+ 	   }
+ 	});
 
 	
 //My account / controller logic

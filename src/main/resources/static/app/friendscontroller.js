@@ -11,6 +11,15 @@ function friendscontroller(actorservice, sessionservice, $scope,popup,$routePara
 	vm.actor = {};
 	vm.friends = [];
 	vm.sessionId = 0;
+	
+    $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
+ 	   if(absNewUrl === "http://localhost:8080/#/logout"){
+ 		   sessionservice.sdo.isLogged = false;
+ 		   sessionservice.sdo.username = "";
+ 		   sessionservice.logout();
+ 		   popup.abrir("done");
+ 	   }
+ 	});
 		
 	//Controller logic
 	if(!($location.path() === "/amigos")){
