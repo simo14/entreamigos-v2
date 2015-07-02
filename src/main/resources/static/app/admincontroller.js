@@ -10,7 +10,7 @@ function admincontroller($resource,$location,$window,$scope,popup,adminservice,p
 	vm.persona = {};
 	
 	vm.credentials = {
-			id: '',
+			username: '',
 			password: ''
 		};		
 		

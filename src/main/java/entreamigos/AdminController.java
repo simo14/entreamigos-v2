@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -21,14 +20,18 @@ public class AdminController {
 
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Administrator getAdmin(@RequestParam long id, @RequestBody String pass, HttpSession session) {
-		String aux = adminService.findOneAdministrator(id).getPassword();
-		if (pass.equals(aux)){
-			session.setAttribute("id", id);
-			return adminService.findOneAdministrator(id);
-		} else {
-			return null;
-		}
+	public Administrator getAdmin(@RequestBody Credentials c, HttpSession session) {
+		try{
+			long ide = Long.parseLong(c.getUsername());
+			String aux = adminService.findOneAdministrator(ide).getPassword();
+			if (c.getPassword().equals(aux)){
+				session.setAttribute("id", c.getUsername());
+				return adminService.findOneAdministrator(ide);
+			} else {
+				return null;
+			}
+		}catch(Exception e){return null;}
+		
 	}
 	
 }

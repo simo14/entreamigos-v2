@@ -10,11 +10,7 @@ function adminservice($resource, $timeout) {
 			password: ""
 	};
 	
-	var AdminResource = $resource('/adminLogin',
-			{ id : '@id' },
-			{ update : { method : "GET" },
-			}
-		);
+	var AdminResource = $resource('/adminLogin');
 	
 	var logout = function (){
 		sdo.isLogged = false;
