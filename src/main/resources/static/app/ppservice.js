@@ -143,12 +143,15 @@ function ppservice($resource, $timeout,adminservice) {
 	}
 
 	function eliminar (happ){
-		EventResource.erase(
-				happ, 
-				function(){
-					console.log("creo que esto significa que se ha eliminado");
-					reload();
-		});
+		if (adminservice.sdo.isLogged){
+			EventResource.erase(
+					happ, 
+					function(){
+						reload();
+			});
+			return true;
+		}else{
+				return false;
+		}
 	}
- 
 }

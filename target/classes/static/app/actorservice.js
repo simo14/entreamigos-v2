@@ -107,7 +107,6 @@ function autoreload(){
 			PeopleResource.erase(
 					tio, 
 					function(){
-						console.log("creo que esto significa que se ha eliminado");
 						reload();
 			});
 			return true;
@@ -194,11 +193,4 @@ function autoreload(){
 		new PeopleSearch.addOrgHead(person);
 	}
 	
-	function eliminar (per){
-		PeopleResource.erase(
-				per, 
-				function(){
-					reload();
-		});
-	}
 }
