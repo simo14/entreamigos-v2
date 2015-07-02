@@ -10,21 +10,25 @@
 					<p> {{vm.actor.defaultLocation.neighborhood}}</p>
 				</div>
 		      </div>
-		      <div id="containerPersonaBio">Biografía: <span>{{vm.actor.bio}}</span></div>
+		      <div id="containerPersonaBio">
+			      <h3>Biografía: </h3>
+			      <p><span>{{vm.actor.bio}}</span></p>
+		      </div>
 		      <div ng-if="vm.actor.principles" id="containerPersonaBio">
-		      	<p>Nuestros principios: <span>{{vm.actor.principles}}</span></p>
-		      	<p>Líder</p>
+		      	<h3>Nuestros principios: </h3>
+		      	<p><span>{{vm.actor.principles}}</span></p>
+		      	<h3>Líder</h3>
 			      	<a href="/#/people/{{vm.actor.head.id}}" class="link"> 
-			
+									<div  layout-align="center center" class="PersonChip" layout="column">
 					                <div layout="row" layout-align="center center">
 					                	<div><img src="/../img/mood/{{vm.actor.head.mood}}.png"  id="avatarPersona" class="md-avatar avatarPersona" alt="{vm.actor.head.mood}"> </img></div>
 					                </div>
-					                <div class="md-list-item-text contenidoPersonChip" layout="row" layout-align="center center" >
+					                <div class="md-list-item-text contenidoPersonChip" layout="row">
 					                    <div>
 					                  		<p class="nombrePersonChip">{{vm.actor.head.name | uppercase}}</p>
 					                  		<p class="barrioPersonChip">{{vm.actor.head.defaultLocation.neighborhood | uppercase}}</p>
 					                    </div>
-			
+					            	</div>
 					            	</div>
 				     </a>
 		      </div>
