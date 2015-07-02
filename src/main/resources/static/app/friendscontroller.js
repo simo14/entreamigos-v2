@@ -19,18 +19,28 @@ function friendscontroller(actorservice, sessionservice, $scope,popup,$routePara
     
     //Controller logic
 	if (vm.session.isLogged){
-		if(vm.session.isOrganization){
-			vm.friends = actorservice.findCrew();
-		}else{
-		vm.friends = actorservice.findFriends();
-		}
+			if(vm.session.isOrganization){
+				vm.friends = actorservice.findCrew();
+			}else{
+				vm.friends = actorservice.findFriends();
+			}
 	}
 	
 	vm.beFriends = function () {
 		if(sessionservice.sdo.isLogged){
-			actorservice.beFriends($routeParams.id);
-			popup.abrir("done");
-			$location.path("/redirect/friends");
+			var yaesamigo = false;
+			vm.friends.forEach(function (amigo){
+				if(amigo.id = $routeParams.id){
+					yaesamigo = true
+				}
+			});
+			if(!yaesamigo){
+				actorservice.beFriends($routeParams.id);
+				popup.abrir("done");
+				$location.path("/redirect/friends");
+			}else{
+				popup.abrir("error");
+			}
 		}else{
 			popup.abrir("notLogged");
 		}
