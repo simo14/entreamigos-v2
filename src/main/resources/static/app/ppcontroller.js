@@ -60,7 +60,7 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice,pop
 		}else {
 			popup.abrir("notLogged");
 		}
-		$location.path("/");
+		$location.path("/redirect/events");
     }
 
     vm.searchDate = function(param){
@@ -100,7 +100,7 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice,pop
     	if(sessionservice.sdo.isLogged){
 			ppservice.newEvent(evt);
 			vm.newEvent= {};
-			$location.path("/");
+			$location.path("/redirect/events");
 			popup.abrir("done");
     	} else {
     		popup.abrir("notLogged");

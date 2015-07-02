@@ -46,7 +46,7 @@ function logincontroller($resource,$location,$window,sessionservice,$scope,popup
     	   	if(!sessionservice.sdo.isLogged){
     	   		popup.abrir("mensajeLogInIncorrect");
     	   	}
-    		$location.path("/");
+    		$location.path("/redirect/eventos");
     	});
 	};
 }

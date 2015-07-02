@@ -53,7 +53,7 @@ function registercontroller (actorservice,sessionservice,$location,ngDialog,$sco
 				popup.abrir("mensajeLogInIncorrect");
 			}
 			);
-			$location.path("/gente");
+			$location.path("/redirect/gente");
 	};
 	
 	vm.addOrg = function(org) {
@@ -80,14 +80,14 @@ function registercontroller (actorservice,sessionservice,$location,ngDialog,$sco
 					}
 				);
 		
-		$location.path("/");
+		$location.path("/redirect/events");
 	};
 	
 	vm.modifyPerson = function(){
 		actorservice.updatePersona(vm.upersona);
 		vm.upersona = {};
 		popup.abrir("done");
-		$location.path("/");
+		$location.path("/redirect/events");
 	};
 	
 	vm.modifyOrg = function(persona){
@@ -98,7 +98,7 @@ function registercontroller (actorservice,sessionservice,$location,ngDialog,$sco
 		}
 		vm.upersona = {};
 		popup.abrir("done");
-		$location.path("/");
+		$location.path("/redirect/events");
 	};
 
 }
