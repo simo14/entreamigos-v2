@@ -11,6 +11,7 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice,pop
     vm.newEvent = {};
     vm.session = sessionservice.sdo;
     vm.message = sessionservice.message;
+    vm.event = {};
 
     vm.searchparam="";
     
@@ -21,6 +22,9 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice,pop
     vm.reload = function (param) {
     	$location.path("/redirect/param");
     }
+	if(($location.path().includes("/event"))){
+	    vm.event = ppservice.getEvent($routeParams.id);
+	}
     
     $scope.$on('$locationChangeStart',function(evt, absNewUrl, absOldUrl) {
     	   if(absNewUrl === "http://localhost:8080/#/logout"){
@@ -34,9 +38,28 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice,pop
 
    
     //Controller actions
+    
+	vm.join = function () {
+		if(vm.session.isLogged){
+			var yaparticipa = false;
+			vm.event.attendees.forEach(function (asistente){
+				if(asistente.id == $routeParams.id){
+					yaparticipa = true;
+				}
+			});
+			if(!yaparticipa){
+				vm.sessionId = ppservice.join($routeParams.id);
+				popup.abrir("done");
+			}else{
+				popup.abrir("error");
+			}
+		}else {
+			popup.abrir("notLogged");
+		}
+		$location.path("/");
+    }
 
     vm.searchDate = function(param){
-    	console.log(param.getTime());
     	vm.events = ppservice.searchDate(param.getTime());
     }
     
