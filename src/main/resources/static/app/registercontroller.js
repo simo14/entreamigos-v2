@@ -85,6 +85,7 @@ function registercontroller (actorservice,sessionservice,$location,ngDialog,$sco
 	vm.modifyPerson = function(){
 		actorservice.updatePersona(vm.upersona);
 		vm.upersona = {};
+		popup.abrir("done");
 		$location.path("/");
 	};
 	
@@ -95,6 +96,7 @@ function registercontroller (actorservice,sessionservice,$location,ngDialog,$sco
 			vm.upersona.head = persona;			//Actualize in client
 		}
 		vm.upersona = {};
+		popup.abrir("done");
 		$location.path("/");
 	};
 
