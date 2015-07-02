@@ -98,12 +98,12 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice,pop
     
     vm.addEvent = function(evt) {
     	if(sessionservice.sdo.isLogged){
-			ppservice.newEvent(evt).then(function(){
-			
-				vm.newEvent= {};
-				
-				$location.path("/");
-			},function(){});
+			ppservice.newEvent(evt);
+			vm.newEvent= {};
+			$location.path("/");
+			popup.abrir("done");
+    	} else {
+    		popup.abrir("notLogged");
     	}
-	};
+	}
 }
