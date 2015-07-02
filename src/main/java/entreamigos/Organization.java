@@ -7,6 +7,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @PrimaryKeyJoinColumn(name="ActorId")
 public class Organization extends Actor{	//By extending Actor Organization is provided with a name, a list of events, rating and friends
@@ -19,6 +22,7 @@ public class Organization extends Actor{	//By extending Actor Organization is pr
 	private String principles; //Organization's description or principles
 	
 	@OneToMany
+	@Cascade({CascadeType.DETACH})
 	private List<Person> crew;
 	
 //Constructor

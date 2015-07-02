@@ -43,12 +43,16 @@ function ppcontroller(ppservice,$location,$routeParams,$scope,sessionservice,pop
 		if(vm.session.isLogged){
 			var yaparticipa = false;
 			vm.event.attendees.forEach(function (asistente){
-				if(asistente.id == $routeParams.id){
+				if(asistente.id == sessionservice.user.user.$$state.value.id){		//es el id de la persona logueada
+					console.log(asistente.id);
+					console.log(sessionservice.user.user.$$state.value.id);
 					yaparticipa = true;
 				}
+				console.log(yaparticipa);
 			});
+
 			if(!yaparticipa){
-				vm.sessionId = ppservice.join($routeParams.id);
+				vm.sessionId = ppservice.join($routeParams.id);			//routeparams.id es el id del evento
 				popup.abrir("done");
 			}else{
 				popup.abrir("error");

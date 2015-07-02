@@ -3,6 +3,7 @@ package entreamigos;
 import java.util.List;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 
+
 @Entity
 public class Happening {
 	@Id
@@ -20,7 +22,7 @@ public class Happening {
 	
 	private String title;
 	
-	@ManyToMany(fetch = FetchType.LAZY) 	// load them on-demand - getAttendees()
+	@ManyToMany(fetch = FetchType.LAZY,cascade =  CascadeType.DETACH)
 	private List<Actor> attendees;
 	
 	@ManyToOne

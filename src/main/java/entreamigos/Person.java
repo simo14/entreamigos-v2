@@ -3,9 +3,12 @@ package entreamigos;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
+
+import org.hibernate.annotations.Cascade;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -16,10 +19,10 @@ public class Person extends Actor{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;*/
 	
-	@ManyToMany
+	@ManyToMany(cascade =  CascadeType.DETACH)
 	//Avoids infinite loop when asking for friends (bidirectional relation). Instead, friends are return without friend's field, and to see them a get request must be performed with its id
 	//http://stackoverflow.com/questions/3325387/infinite-recursion-with-jackson-json-and-hibernate-jpa-issue
-	@JsonIgnore							
+	@JsonIgnore
 	private List<Actor> friends;
 	
 //Constructors

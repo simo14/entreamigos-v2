@@ -30,7 +30,7 @@ function friendscontroller(actorservice, sessionservice, $scope,popup,$routePara
 		if(sessionservice.sdo.isLogged){
 			var yaesamigo = false;
 			vm.friends.forEach(function (amigo){
-				if(amigo.id = $routeParams.id){
+				if(amigo.id == $routeParams.id){
 					yaesamigo = true
 				}
 			});

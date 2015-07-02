@@ -2,6 +2,7 @@ package entreamigos;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,7 @@ public abstract class Actor {
 	
 	protected int mood;
 	
-	@ManyToMany
+	@ManyToMany(cascade =  CascadeType.DETACH)
 	protected List<Happening> happenings;
 	
 	@ManyToOne
