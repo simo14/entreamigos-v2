@@ -18,7 +18,6 @@ function actorcontroller(actorservice,ngDialog,sessionservice,$scope, popup) {
     //View model properties
     
     vm.actors = [];
-    vm.newActor = {};
     
     //Controller logic
     vm.actors = actorservice.getActors();

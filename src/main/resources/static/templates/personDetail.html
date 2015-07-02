@@ -3,7 +3,7 @@
 		  <md-whiteframe flex="35" class="md-whiteframe-z5" layout="column" layout-align="center center" id="containerPersona">
 		      <div layout="row" layout-align="center" id="containerPersonaFoto">
 		        <div flex="50" layout="column" layout-align="center" ><img src="/../img/mood/{{vm.actor.mood}}.png"  id="avatarPersona" class="md-avatar avatarPersona" alt="{{actor.mood}}">
-		        	<md-button ng-if="vm.actor.principles" id="login_button" ng-click="vm.beFriends()">Añadir</md-button>
+		        	<md-button ng-if="!vm.sessionservice.sdo.isOrganization" id="login_button" ng-click="vm.beFriends()">Añadir</md-button>
 		        </div>
 		        <div flex="50" id="containerPersonaFoto">
 					<h2> {{vm.actor.name | uppercase}} </h2>

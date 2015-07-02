@@ -32,6 +32,7 @@ function personcontroller(actorservice, sessionservice, $routeParams,$location,$
 	vm.beFriends = function () {
 		if(sessionservice.sdo.isLogged){
 			actorservice.beFriends($routeParams.id);
+			vm.friends();
 			popup.abrir("done");
 			$location.path("/redirect/friends");
 		}else{

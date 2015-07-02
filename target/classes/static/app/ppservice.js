@@ -9,7 +9,6 @@ function ppservice($resource, $timeout,adminservice) {
 	var EventResource = $resource('/events/:id/:action',      //en vez de /event/:id para ser coherente con REST ponemos raíz
 			{ id : '@id' },
 			{ 
-				update : { method : "PUT" },
 				join : { method : "POST", params: { action:"join"}},
 				erase : { method : "DELETE" }
 			}
