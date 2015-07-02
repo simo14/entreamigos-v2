@@ -1,13 +1,21 @@
 "use strict";
 angular.module("webapp").controller("friendscontroller", friendscontroller);
-friendscontroller.$inject = [ "actorservice", "sessionservice", "$scope", "popup" ];
+friendscontroller.$inject = [ "actorservice", "sessionservice", "$scope", "popup","$routeParams","$location" ];
 
-function friendscontroller(actorservice, sessionservice, $scope,popup) {
+function friendscontroller(actorservice, sessionservice, $scope,popup,$routeParams,$location) {
 	var vm = this;
     
     //View model properties 
 	vm.session = sessionservice.sdo;
     vm.friends = [];
+	vm.actor = {};
+	vm.friends = [];
+	vm.sessionId = 0;
+		
+	//Controller logic
+	if(!($location.path() === "/amigos")){
+		vm.actor = actorservice.getActor($routeParams.id);
+	}
     
     //Controller logic
 	if (vm.session.isLogged){
@@ -15,6 +23,16 @@ function friendscontroller(actorservice, sessionservice, $scope,popup) {
 			vm.friends = actorservice.findCrew();
 		}else{
 		vm.friends = actorservice.findFriends();
+		}
+	}
+	
+	vm.beFriends = function () {
+		if(sessionservice.sdo.isLogged){
+			actorservice.beFriends($routeParams.id);
+			popup.abrir("done");
+			$location.path("/redirect/friends");
+		}else{
+			popup.abrir("notLogged");
 		}
 	}
 }
