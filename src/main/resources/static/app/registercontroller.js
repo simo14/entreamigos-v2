@@ -53,7 +53,7 @@ function registercontroller (actorservice,sessionservice,$location,ngDialog,$sco
 				popup.abrir("mensajeLogInIncorrect");
 			}
 			);
-			$location.path("/redirect/gente");
+			$location.path("/redirect/people");
 	};
 	
 	vm.addOrg = function(org) {
